@@ -22,7 +22,7 @@ class Claim extends Model
      * @var array
      */
     protected $fillable = [
-        'no_claim', 'tgl_claim', 'point_potong', 'status_potong', 'reward_id', 'pelanggan_id'
+        'no_claim', 'tgl_claim', 'point_potong', 'status', 'reward_id', 'pelanggan_id'
     ];
 
     /**

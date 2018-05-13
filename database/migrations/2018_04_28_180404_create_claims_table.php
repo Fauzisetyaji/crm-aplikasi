@@ -19,7 +19,7 @@ class CreateClaimsTable extends Migration
             $table->string('no_claim');
             $table->date('tgl_claim');
             $table->integer('point_potong');
-            $table->string('status_potong');
+            $table->boolean('status')->default(0);
             $table->uuid('reward_id');
             $table->uuid('pelanggan_id');
             $table->timestamps();
