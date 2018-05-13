@@ -22,7 +22,7 @@ class Pelanggan extends Model
      * @var array
      */
     protected $fillable = [
-        'nm_pelanggan', 'alamat', 'no_tlp', 'jml_poin', 'user_id'
+        'kode_pelanggan', 'nm_pelanggan', 'alamat', 'no_tlp', 'jml_poin', 'user_id'
     ];
 
     /**

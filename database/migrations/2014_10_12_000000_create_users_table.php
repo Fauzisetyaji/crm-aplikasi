@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->enum('roles', ['pelanggan', 'staff', 'manager'])->default('pelanggan');
+            $table->enum('roles', ['pelanggan', 'staff', 'kepala-cabang'])->default('pelanggan');
             $table->boolean('verified')->default(0);
             $table->rememberToken();
             $table->timestamps();

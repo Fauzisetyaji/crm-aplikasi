@@ -34,15 +34,4 @@ class Kendaraan extends Model
     {
         return $this->belongsTo(Pelanggan::class, 'pelanggan_id');
     }
-
-    /**
-     * Get kendaraan pelanggan
-     *
-     * @param param type $param
-     * @return data type
-     */
-    public function type($param)
-    {
-        return $this->hasOne(KendaraanType::class, 'kendaraan_id');
-    }
 }
