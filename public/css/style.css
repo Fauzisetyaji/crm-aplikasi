@@ -1,0 +1,7 @@
+.dropdown-container {
+    display: none;
+    transition-duration: 10s;
+}
+.dropdown-container > .nav > li > a {
+	padding-left: 30px !important;
+}
