@@ -34,7 +34,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Astrido
+                        Astrido Toyota
                     </a>
                 </div>
 
