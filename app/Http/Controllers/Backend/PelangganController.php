@@ -98,8 +98,13 @@ class PelangganController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $pelanggan = $this->pelanggan->find($id);
+        
+        $pelanggan->delete();
+        $pelanggan->user->delete();
+
+        return redirect(route('pelanggan.index'))->with('success', __('Pelanggan has been successfully deleted'));
     }
 }

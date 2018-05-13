@@ -22,7 +22,7 @@ class CreatePelanggansTable extends Migration
             $table->string('id_number')->nullable()->default(null);
             $table->longText('alamat');
             $table->string('no_tlp');
-            $table->string('jml_poin')->nullable()->default(null);
+            $table->string('jml_poin')->nullable()->default(0);
             $table->uuid('user_id');
             $table->timestamps();
         });
