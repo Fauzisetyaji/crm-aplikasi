@@ -87,6 +87,7 @@
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
                             <li><a href="{{ route('staff.index') }}">Staff</a></li>
+                            <li><a href="{{ route('pelanggan.index') }}">Pelanggan</a></li>
                             <li><a href="{{ route('mekanik.index') }}">Mekanik</a></li>
                             <li><a href="{{ route('reward.index') }}">Reward</a></li>
                             <li><a href="{{ route('operasional.index') }}">Jadwal Operasional</a></li>
