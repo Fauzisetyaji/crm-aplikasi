@@ -33,7 +33,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ route('auth-home') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         Astrido
                     </a>
                 </div>
@@ -77,7 +77,9 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                @if (!Auth::guest())
+            @if (!Auth::guest())
+                @if (Auth::user()->roles === 'staff')
+
                 <div class="col-sm-3 col-md-2 sidebar">
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('auth-home') }}">Dashboard</a></li>
@@ -85,6 +87,7 @@
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
                             <li><a href="{{ route('staff.index') }}">Staff</a></li>
+                            <li><a href="{{ route('pelanggan.index') }}">Pelanggan</a></li>
                             <li><a href="{{ route('mekanik.index') }}">Mekanik</a></li>
                             <li><a href="{{ route('reward.index') }}">Reward</a></li>
                             <li><a href="{{ route('operasional.index') }}">Jadwal Operasional</a></li>
@@ -114,8 +117,30 @@
                     </div>
                   </ul>
                 </div>
+
+                @elseif (Auth::user()->roles === 'pelanggan')
+
+                <div class="col-sm-3 col-md-2 sidebar">
+                  <ul class="nav nav-sidebar">
+                    <li><a href="{{ route('auth-home-user') }}">Dashboard</a></li>
+                  </ul>
+                  <ul class="nav nav-sidebar">
+                    <li><a href="{{ route('service.index') }}">Service</a></li>
+                  </ul>
+                  <ul class="nav nav-sidebar">
+                    <li><a href="{{ route('testimoni.index') }}">Testimoni</a></li>
+                    <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>
+                    <li><a class="dropdown-btn">Profile</a></li>
+                    <div class="dropdown-container">
+                        <ul class="nav nav-sidebar">
+                            <li><a href="">My Point</a></li>
+                            <li><a href="">My Reward</a></li>
+                        </ul>
+                    </div>
+                  </ul>
+                </div>
                 @endif
-                
+            @endif
                 @yield('content')
             </div>
         </div>

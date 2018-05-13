@@ -44,7 +44,13 @@
                         @if (Auth::guest())
                             <li class="menu-item"><a href="{{ route('login') }}">Login</a></li>
                         @else
-                            <li class="menu-item"><a href="{{ route('auth-home') }}">Dashboard</a></li>
+                            @if(Auth::user()->roles === 'staff')
+                                <li class="menu-item"><a href="{{ route('auth-home') }}">Dashboard</a></li>
+                            @elseif(Auth::user()->roles === 'pelanggan')
+                                <li class="menu-item"><a href="{{ route('auth-home-user') }}">Dashboard</a></li>
+                            @elseif(Auth::user()->roles === 'kepala-cabang')
+                                <li class="menu-item"><a href="{{ route('auth-home-branch') }}">Dashboard</a></li>
+                            @endif
                         @endif
 
                     </ul>
@@ -57,12 +63,6 @@
 
         <footer class="site-footer">
             <div class="container">
-                <div class="subscribe-form">
-                    <form action="#">
-                        <input type="text" placeholder="Enter your email to subscribe...">
-                        <button type="submit"><img src="{{ asset('frontend-assets/images/icon-envelope-white.png') }}" alt=""></button>
-                    </form>
-                </div>
                 <div class="social-links">
                     <a href="#"><i class="fa fa-facebook"></i></a>
                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -70,7 +70,7 @@
                     <a href="#"><i class="fa fa-pinterest"></i></a>
                 </div>
                 <div class="copy">
-                    <p>Copyright 2016 {{ config('app.name', 'Laravel') }}. Designed by Themeezy. All rights reserved.</p>
+                    <p>Copyright 2018 {{ config('app.name', 'Laravel') }}. All rights reserved.</p>
                 </div>
             </div>
         </footer> <!-- .site-footer -->

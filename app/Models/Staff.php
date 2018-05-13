@@ -22,7 +22,7 @@ class Staff extends Model
      * @var array
      */
     protected $fillable = [
-        'nm_staff', 'tgl_lahir', 'alamat', 'no_tlp', 'user_id'
+        'kode_staff', 'nm_staff', 'tgl_lahir', 'alamat', 'no_tlp', 'user_id'
     ];
 
     /**

@@ -17,8 +17,6 @@ class CreateJadwalOperasionalsTable extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->uuid('operasional_id');
-            $table->uuid('service_id')->nullable()->default(null);
-            $table->uuid('mekanik_id')->nullable()->default(null);
             $table->date('date')->nullable()->default(null);
             $table->integer('service_count')->nullable()->default(0);
             $table->integer('booking_count')->nullable()->default(0);

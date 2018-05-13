@@ -23,6 +23,7 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 	Route::prefix('admin')->middleware('admin')->group(function () {
 		Route::get('/dashboard', 'DashboardController@index')->name('auth-home');
 		Route::resource('staff', 'StaffController');
+		Route::resource('pelanggan', 'PelangganController');
 		Route::resource('mekanik', 'MekanikController');
 		Route::resource('reward', 'RewardController');
 		Route::resource('operasional', 'OperasionalController');
@@ -34,8 +35,14 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 	});
 
 	
-	Route::prefix('user')->group(function () {
+	Route::prefix('user')->namespace('User')->group(function () {
+		Route::get('/dashboard', 'DashboardController@index')->name('auth-home-user');
+		Route::resource('service', 'ServiceController');
+		Route::resource('keluhan', 'KeluhanController');
+	});
 
+	Route::prefix('kepala-cabang')->group(function () {
+		Route::get('/dashboard', 'DashboardController@index')->name('auth-home-branch');
 	});
 });
 
