@@ -35,10 +35,10 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => Uuid::generate()->string,
-                'email' => 'manager@mail.com',
+                'email' => 'kepala-cabang@mail.com',
                 'username' => 'Manager',
                 'password' => Hash::make('password'),
-                'roles' => 'manager',
+                'roles' => 'kepala-cabang',
                 'verified' => true,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
