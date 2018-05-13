@@ -77,6 +77,7 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
+            @if (!Auth::guest())
                 @if (Auth::user()->roles === 'staff')
 
                 <div class="col-sm-3 col-md-2 sidebar">
@@ -138,7 +139,7 @@
                   </ul>
                 </div>
                 @endif
-                
+            @endif
                 @yield('content')
             </div>
         </div>
