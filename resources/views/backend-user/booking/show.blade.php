@@ -16,6 +16,7 @@
                         <th>#id</th>
                         <th>Nama</th>
                         <th>Jenis</th>
+                        <th>Poin</th>
                         <th>Description</th>
                     </tr>
                 </thead>
@@ -24,6 +25,7 @@
                         <th scope="row">{{ $service->id }}</th>
                         <td>{{ $service->nm_service }}</td>
                         <td>{{ $service->jenis_service }}</td>
+                        <td>{{ $service->poin }}</td>
                         <td>{!! strip_tags(str_limit($service->description, 80)) !!}</td>
                     </tr>
                 </tbody>

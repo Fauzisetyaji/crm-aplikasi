@@ -37,8 +37,9 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 	
 	Route::prefix('user')->namespace('User')->group(function () {
 		Route::get('/dashboard', 'DashboardController@index')->name('auth-home-user');
-		Route::resource('service', 'ServiceController');
-		Route::resource('keluhan', 'KeluhanController');
+		Route::resource('my-booking', 'BookingController', ['except' => ['destroy']]);
+		Route::name('my-booking.cancel')->put('my-booking/cancel/{id}', 'BookingController@cancel');
+		Route::resource('my-keluhan', 'KeluhanController');
 	});
 
 	Route::prefix('kepala-cabang')->group(function () {

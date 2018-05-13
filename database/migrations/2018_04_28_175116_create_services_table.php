@@ -19,7 +19,7 @@ class CreateServicesTable extends Migration
             $table->string('nm_service');
             $table->string('jenis_service');
             $table->longText('description');
-            $table->string('price');
+            $table->string('poin');
             $table->timestamps();
         });
     }

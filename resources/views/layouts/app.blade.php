@@ -79,7 +79,6 @@
             <div class="row">
             @if (!Auth::guest())
                 @if (Auth::user()->roles === 'staff')
-
                 <div class="col-sm-3 col-md-2 sidebar">
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('auth-home') }}">Dashboard</a></li>
@@ -117,19 +116,18 @@
                     </div>
                   </ul>
                 </div>
+                @endif
 
-                @elseif (Auth::user()->roles === 'pelanggan')
-
+                @if (Auth::user()->roles === 'pelanggan')
                 <div class="col-sm-3 col-md-2 sidebar">
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('auth-home-user') }}">Dashboard</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
-                    <li><a href="{{ route('service.index') }}">Service</a></li>
+                    <li><a href="{{ route('my-booking.index') }}">Booking Service</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
-                    <li><a href="{{ route('testimoni.index') }}">Testimoni</a></li>
-                    <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>
+                    <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li>
                     <li><a class="dropdown-btn">Profile</a></li>
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">

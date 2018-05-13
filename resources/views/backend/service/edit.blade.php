@@ -46,10 +46,10 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                    <label for="price" class="col-md-2 control-label">Biaya Service</label>
+                <div class="form-group{{ $errors->has('poin') ? ' has-error' : '' }}">
+                    <label for="poin" class="col-md-2 control-label">Biaya Service</label>
                     <div class="col-md-8">
-                        <input type="text" name="price" class="form-control" value="{{ old('price', $service->price) }}" required>
+                        <input type="text" name="poin" class="form-control" value="{{ old('poin', $service->poin) }}" required>
                     </div>
                 </div>
 

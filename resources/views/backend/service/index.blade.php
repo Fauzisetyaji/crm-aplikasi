@@ -16,6 +16,7 @@
                         <th>#</th>
                         <th>Nama</th>
                         <th>Jenis</th>
+                        <th>Poin</th>
                         <th>Description</th>
                         <th>Action</th>
                     </tr>
@@ -28,6 +29,7 @@
                             <a href="{{ route('service.show', $item->id) }}">{{ $item->nm_service }}</a>
                         </td>
                         <td>{{ $item->jenis_service }}</td>
+                        <td>{{ $item->poin }}</td>
                         <td>{!! strip_tags(str_limit($item->description, 80)) !!}</td>
                         <td>
                             <a href="{{ route('service.edit', $item->id) }}" title="Ubah">
