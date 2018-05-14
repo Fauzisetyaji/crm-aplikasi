@@ -74,8 +74,8 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->booking->get();
-
+        $list = $this->booking->where('pelanggan_id', $this->user->pelanggan->id)->get();
+        
         return view('backend-user.booking.index', [ 'list' => $list ]);
     }
 
