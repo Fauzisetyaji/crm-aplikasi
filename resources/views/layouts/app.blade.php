@@ -102,9 +102,10 @@
                   </ul>
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('service.index') }}">Service</a></li>
-                    <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>
+                    <li><a href="{{ route('booking.index') }}">Booking</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
+                    <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>
                     <li><a href="{{ route('testimoni.index') }}">Testimoni</a></li>
                     <li><a class="dropdown-btn">Laporan</a></li>
                     <div class="dropdown-container">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Master Mekanik')
+@section('title', 'View Mekanik')
 
 @section('content')
 <div class="col-md-9">
