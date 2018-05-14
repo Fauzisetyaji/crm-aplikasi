@@ -22,7 +22,7 @@ class Booking extends Model
      * @var array
      */
     protected $fillable = [
-        'starts_on', 'open_on', 'cancellation', 'status', 'jenis_service', 'easyService', 'keterangan', 'pelanggan_id', 'service_id'
+        'date', 'time', 'cancellation', 'status', 'jenis_service', 'easyService', 'keterangan', 'pelanggan_id', 'service_id', 'jadwal_operasional_id'
     ];
 
     /**
