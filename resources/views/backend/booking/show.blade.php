@@ -6,7 +6,7 @@
 <div class="col-md-9">
     <div class="panel panel-default" style="margin-bottom: 50px;">
         <ol class="breadcrumb">
-            <li><a href="{{ route('service.index') }}">Back</a></li>
+            <li><a href="{{ route('booking.index') }}">Back</a></li>
             <li class="active">@yield('title')</li>
         </ol>
         @if (!$booking->cancellation)
@@ -183,6 +183,7 @@
         domainGutter: 20,
         legend: [1, 2, 4 ,8],
         legendCellSize: 20,
+        displayLegend: false,
         tooltip: true,
         highlight: scheduleHighlight,
         start: currentDate,

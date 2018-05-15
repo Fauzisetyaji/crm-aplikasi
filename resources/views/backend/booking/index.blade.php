@@ -32,7 +32,12 @@
                         <td>{{ date('h:i:s', strtotime($item->time)) }}</td>
                         <td>{{ ($item->status) ? 'Diterima' : ($item->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
                         <td>{{ $item->jenis_service }}</td>
-                        <td>{{ $item->easyService }}</td>
+                        <td>
+                            @if($item->easyService === 'send') Pick-Up My Car
+                            @elseif($item->easyService === 'pickup') Send-Up My Car
+                            @elseif($item->easyService === 'both') Pick-Up My Car & Send-Up My Car
+                            @endif
+                        </td>
                         <td>{!! strip_tags(str_limit($item->keterangan, 80)) !!}</td>
                         <td>
                             @if ((!$item->status AND !$item->cancellation) AND !$item->cancellation)

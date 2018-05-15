@@ -124,7 +124,11 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        //
+        $booking = $this->booking->find($id);
+        $services = $booking->service()->get();
+        $pelanggans = $booking->pelanggan()->get();
+        
+        return view('backend-user.booking.show', compact('booking', 'services', 'pelanggans'));
     }
 
     /**

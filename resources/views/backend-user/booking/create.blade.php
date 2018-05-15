@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create Booking')
+@section('title', 'Booking Service')
 
 @section('content')
 <div class="col-md-9">
@@ -187,16 +187,22 @@
         range: 4,
         domainGutter: 20,
         displayLegend: false,
-        highlight: scheduleHighlight,
         data: bookData,
         afterLoadData: afterLoadData,
         start: currentDate,
         onClick: function(date, nb) {
             if (nb !== null) {
-                getDate(date)
-                $("#detail-schedule").html("Anda memilih pada <b>" +
-                    moment(date).format('MMMM Do YYYY') + "</b>"
-                );
+                if (!moment(date).isBefore(moment(), "day")) {
+                    getDate(date)
+                    $("#detail-schedule").html("Anda memilih pada <b>" +
+                        moment(date).format('MMMM Do YYYY') + "</b>"
+                    );
+                } else {
+                    getDate(null)
+                    $("#detail-schedule").html("Anda memilih tanggal yang sudah lewat pada <b>" +
+                        moment(date).format('MMMM Do YYYY') + "</b>"
+                    );
+                }
             } else {
                 $("#detail-schedule").empty();
                 getDate(null)
