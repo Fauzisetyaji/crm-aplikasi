@@ -7,12 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\JadwalOperasional;
+use App\Models\Operasional;
 use App\Models\Service;
 use App\Models\Booking;
 use App\Models\Keluhan;
 
 class BookingController extends Controller
 {
+    /**
+     * The Operasional instance.
+     *
+     * @var App\Models\Operasional
+     */
+    public $operasional;
+
     /**
      * The JadwalOperasional instance.
      *
@@ -51,7 +59,7 @@ class BookingController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct(JadwalOperasional $jadwalOperasional, Booking $booking, Service $service, Keluhan $keluhan)
+    public function __construct(Operasional $operasional, JadwalOperasional $jadwalOperasional, Booking $booking, Service $service, Keluhan $keluhan)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -61,6 +69,7 @@ class BookingController extends Controller
 
         $this->middleware('auth');
 
+        $this->operasional = $operasional;
         $this->jadwalOperasional = $jadwalOperasional;
         $this->booking = $booking;
         $this->service = $service;
@@ -100,6 +109,13 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        $jadwal = $this->jadwalOperasional->where('id', $request->id_schedule)->get();
+        $operasional = $this->operasional->where('id', $jadwal[0]->operasional_id)->get();
+        
+        if (Carbon::parse($request->time)->toDateTimeString() > $operasional[0]->close_on) {
+            return back()->withErrors(['time' => ['Melebihi batas jam operasional']]);
+        }
+
         $this->booking->create([
             'date' => Carbon::parse($request->date),
             'time' => Carbon::parse($request->time)->toDateTimeString(),
