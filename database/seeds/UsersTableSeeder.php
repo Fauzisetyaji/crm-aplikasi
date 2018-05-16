@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         	[
                 'id' => Uuid::generate()->string,
                 'email' => 'user@mail.com',
-                'username' => 'User',
+                'username' => 'user',
                 'password' => Hash::make('password'),
                 'roles' => 'pelanggan',
                 'verified' => true,
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             [
                 'id' => Uuid::generate()->string,
                 'email' => 'staff@mail.com',
-                'username' => 'Staff',
+                'username' => 'staff',
                 'password' => Hash::make('password'),
                 'roles' => 'staff',
                 'verified' => true,
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             [
                 'id' => Uuid::generate()->string,
                 'email' => 'kepala-cabang@mail.com',
-                'username' => 'Manager',
+                'username' => 'kepala-cabang',
                 'password' => Hash::make('password'),
                 'roles' => 'kepala-cabang',
                 'verified' => true,

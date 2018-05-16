@@ -50,7 +50,12 @@
                         <td>{{ date('h:i:s', strtotime($booking->time)) }}</td>
                         <td>{{ ($booking->status) ? 'Diterima' : ($booking->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
                         <td>{{ $booking->jenis_service }}</td>
-                        <td>{{ $booking->easyService }}</td>
+                        <td>
+                            @if($item->easyService === 'send') Pick-Up My Car
+                            @elseif($item->easyService === 'pickup') Send-Up My Car
+                            @elseif($item->easyService === 'both') Pick-Up & Send-Up My Car
+                            @endif
+                        </td>
                         <td>{!! strip_tags(str_limit($booking->keterangan, 80)) !!}</td>
                     </tr>
                 </tbody>

@@ -36,7 +36,7 @@
                         <td>
                             @if($item->easyService === 'send') Pick-Up My Car
                             @elseif($item->easyService === 'pickup') Send-Up My Car
-                            @elseif($item->easyService === 'both') Pick-Up My Car & Send-Up My Car
+                            @elseif($item->easyService === 'both') Pick-Up & Send-Up My Car
                             @endif
                         </td>
                         <td>{!! strip_tags(str_limit($item->keterangan, 80)) !!}</td>
