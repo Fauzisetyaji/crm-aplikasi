@@ -34,8 +34,8 @@
                         <td>{{ ($item->status) ? 'Diterima' : ($item->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
                         <td>{{ $item->jenis_service }}</td>
                         <td>
-                            @if($item->easyService === 'send') Pick-Up My Car
-                            @elseif($item->easyService === 'pickup') Send-Up My Car
+                            @if($item->easyService === 'pickup') Pick-Up My Car
+                            @elseif($item->easyService === 'send') Send-Up My Car
                             @elseif($item->easyService === 'both') Pick-Up & Send-Up My Car
                             @endif
                         </td>
