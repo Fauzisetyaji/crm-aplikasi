@@ -109,12 +109,18 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $jadwal = $this->jadwalOperasional->where('id', $request->id_schedule)->get();
-        $operasional = $this->operasional->where('id', $jadwal[0]->operasional_id)->get();
+        $jadwal = $this->jadwalOperasional->find($request->id_schedule);
+        $operasional = $this->operasional->find($jadwal->operasional_id);
+        $service = $this->service->find($request->service);
         
-        if (Carbon::parse($request->time)->toDateTimeString() > $operasional[0]->close_on) {
+        if (Carbon::parse($request->time)->toDateTimeString() > $operasional->close_on) {
             return back()->withErrors(['time' => ['Melebihi batas jam operasional']]);
         }
+
+        dump($jadwal);
+        dump($operasional);
+        dump($service);
+        dd('stop');
 
         $this->booking->create([
             'date' => Carbon::parse($request->date),
@@ -126,7 +132,12 @@ class BookingController extends Controller
             'pelanggan_id' => $this->user->pelanggan->id,
             'service_id' => $request->service,
             'jadwal_operasional_id' => $request->id_schedule,
-            
+        ]);
+
+        $poin = $this->user->pelanggan->jml_poin;
+
+        $this->user->pelanggan->update([
+            'jml_poin' => (int)$poin + (int)$service->poin
         ]);
 
         return redirect()->route('my-booking.index');
@@ -143,6 +154,8 @@ class BookingController extends Controller
         $booking = $this->booking->find($id);
         $services = $booking->service()->get();
         $pelanggans = $booking->pelanggan()->get();
+
+        dd($booking);
         
         return view('backend-user.booking.show', compact('booking', 'services', 'pelanggans'));
     }

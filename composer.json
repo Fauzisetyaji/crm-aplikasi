@@ -10,7 +10,9 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "nesbot/carbon": "^1.27",
-        "webpatser/laravel-uuid": "2.*"
+        "webpatser/laravel-uuid": "2.*",
+        "flipbox/image-controller": "dev-develop",
+        "intervention/image": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

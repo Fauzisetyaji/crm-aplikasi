@@ -38,7 +38,7 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 	});
 
 	
-	Route::prefix('user')->namespace('User')->group(function () {
+	Route::prefix('user')->namespace('User')->middleware('pelanggan')->group(function () {
 		Route::get('/dashboard', 'DashboardController@index')->name('auth-home-user');
 		Route::resource('my-booking', 'BookingController', ['except' => ['destroy']]);
 		Route::name('my-booking.cancel')->put('my-booking/cancel/{id}', 'BookingController@cancel');

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Uuids;
 
-class Reward extends Model
+class KepalaCabang extends Model
 {
 	use Uuids;
 
@@ -22,6 +22,17 @@ class Reward extends Model
      * @var array
      */
     protected $fillable = [
-        'nm_reward', 'poin', 'status_reward'
+		'nm_kepala_cabang', 'no_tlp', 'user_id'
     ];
+
+    /**
+     * Get Auth User
+     *
+     * @return data type
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRewardsTable extends Migration
+class CreateKepalaCabangsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateRewardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rewards', function (Blueprint $table) {
+        Schema::create('kepala_cabangs', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->string('nm_reward');
-            $table->integer('poin');
-            $table->string('status_reward');
+            $table->string('nm_kepala_cabang');
+            $table->string('no_tlp');
+            $table->uuid('user_id');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateRewardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rewards');
+        Schema::dropIfExists('kepala_cabangs');
     }
 }

@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Flipbox\ImageController\ImageControllerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'ImageController' => Flipbox\ImageController\Facade::class,
 
     ],
 
