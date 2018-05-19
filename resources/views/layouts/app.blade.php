@@ -127,7 +127,7 @@
                     <li><a href="{{ route('my-booking.index') }}">Booking Service</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
-                    <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li>
+                    <!-- <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li> -->
                     <li><a href="{{ route('my-profile.index') }}">My Profile</a></li>
                   </ul>
                 </div>
