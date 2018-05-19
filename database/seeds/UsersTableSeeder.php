@@ -65,7 +65,7 @@ class UsersTableSeeder extends Seeder
                     'id_number' => null,
                     'alamat' => 'Jakarta',
                     'no_tlp' => '1234'+$key,
-                    'jml_poin' => null,
+                    'jml_poin' => 0,
                     'user_id' => $user->id,
                 ]);
             }

@@ -10,7 +10,8 @@
             <li class="active">@yield('title')</li>
         </ol>
         <div class="panel-body">
-            <form role="form" action="{{ route('reward.store') }}" method="post" class="form-horizontal">
+            <form role="form" action="{{ route('reward.store') }}" method="post" class="form-horizontal"
+                enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('nm_reward') ? ' has-error' : '' }}">
@@ -37,27 +38,44 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" name="status_reward" {{ old('status_reward') === 'on' ? 'checked' : '' }} required> Status
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                <div class="form-group{{ $errors->has('service') ? ' has-error' : '' }}">
-                    <label for="service" class="col-md-2 control-label">service</label>
+                <div class="form-group{{ $errors->has('gambar') ? ' has-error' : '' }}">
+                    <label for="gambar" class="col-md-2 control-label">Gambar</label>
                     <div class="col-md-4">
-                        <select
-                            name="service" value="{{ old('service') }}" class="form-control" required>
-                            <option value="" disabled selected>Pilih service</option>
+                        <input type="file"
+                            accept="image/*"
+                            name="gambar"
+                            class="form-control"
+                            value="{{ old('gambar') }}"
+                            required>
+                        @if ($errors->has('gambar'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('gambar') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
 
-                            @foreach($services as $key => $item)
-                                <option {{ old('service') == $item->id ? "selected" : "" }} value="{{ $item->id }}">{{ $item->nm_service }}</option>
-                            @endforeach
-                        </select>
+                <div class="form-group{{ $errors->has('count') ? ' has-error' : '' }}">
+                    <label for="count" class="col-md-2 control-label">Jumlah</label>
+                    <div class="col-md-4">
+                        <input type="number" name="count" class="form-control" value="{{ old('count') }}" required>
+                        @if ($errors->has('count'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('count') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                    <label for="date" class="col-md-2 control-label">Tanggal berakhir</label>
+                    <div class="col-md-6">
+                        <input type="text" name="date" class="form-control date" value="{{ old('date') }}" required>
+                        @if ($errors->has('date'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('date') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
 
@@ -68,4 +86,16 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.date').datetimepicker({
+            format: 'YYYY-MM-DD',
+            useCurrent: false,
+            minDate: moment()// moment().add(diffDays, 'days')
+        });
+    });
+</script>
 @endsection

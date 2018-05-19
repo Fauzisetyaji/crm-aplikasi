@@ -16,7 +16,7 @@ class CreateClaimsTable extends Migration
         Schema::create('claims', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
-            $table->string('no_claim');
+            $table->string('no_claim')->nullable()->default(null);
             $table->date('tgl_claim');
             $table->integer('point_potong');
             $table->boolean('status')->default(0);

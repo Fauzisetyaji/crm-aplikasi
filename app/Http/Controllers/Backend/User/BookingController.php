@@ -117,11 +117,6 @@ class BookingController extends Controller
             return back()->withErrors(['time' => ['Melebihi batas jam operasional']]);
         }
 
-        dump($jadwal);
-        dump($operasional);
-        dump($service);
-        dd('stop');
-
         $this->booking->create([
             'date' => Carbon::parse($request->date),
             'time' => Carbon::parse($request->time)->toDateTimeString(),
@@ -134,11 +129,11 @@ class BookingController extends Controller
             'jadwal_operasional_id' => $request->id_schedule,
         ]);
 
-        $poin = $this->user->pelanggan->jml_poin;
+        // $poin = $this->user->pelanggan->jml_poin;
 
-        $this->user->pelanggan->update([
-            'jml_poin' => (int)$poin + (int)$service->poin
-        ]);
+        // $this->user->pelanggan->update([
+        //     'jml_poin' => (int)$poin + (int)$service->poin
+        // ]);
 
         return redirect()->route('my-booking.index');
     }
@@ -154,8 +149,6 @@ class BookingController extends Controller
         $booking = $this->booking->find($id);
         $services = $booking->service()->get();
         $pelanggans = $booking->pelanggan()->get();
-
-        dd($booking);
         
         return view('backend-user.booking.show', compact('booking', 'services', 'pelanggans'));
     }

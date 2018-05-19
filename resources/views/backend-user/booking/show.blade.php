@@ -31,9 +31,9 @@
                         <td>{{ ($booking->status) ? 'Diterima' : ($booking->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
                         <td>{{ $booking->jenis_service }}</td>
                         <td>
-                            @if($item->easyService === 'send') Pick-Up My Car
-                            @elseif($item->easyService === 'pickup') Send-Up My Car
-                            @elseif($item->easyService === 'both') Pick-Up & Send-Up My Car
+                            @if($booking->easyService === 'send') Pick-Up My Car
+                            @elseif($booking->easyService === 'pickup') Send-Up My Car
+                            @elseif($booking->easyService === 'both') Pick-Up & Send-Up My Car
                             @endif
                         </td>
 

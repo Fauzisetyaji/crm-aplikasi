@@ -43,6 +43,8 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::resource('my-booking', 'BookingController', ['except' => ['destroy']]);
 		Route::name('my-booking.cancel')->put('my-booking/cancel/{id}', 'BookingController@cancel');
 		Route::resource('my-keluhan', 'KeluhanController');
+		Route::resource('my-profile', 'ProfileController');
+		Route::name('reward.claim')->put('reward/claim/{id}', 'ProfileController@claim');
 	});
 
 	Route::prefix('kepala-cabang')->group(function () {

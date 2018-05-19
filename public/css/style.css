@@ -5,3 +5,67 @@
 .dropdown-container > .nav > li > a {
 	padding-left: 30px !important;
 }
+
+.card {
+	word-wrap: break-word;
+    border-radius: 6px;
+    box-shadow: 0 2px 2px hsla(38,16%,76%,.5);
+    background-color: #fff;
+    color: #252422;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    border: none;
+}
+
+.card .card-body {
+    padding: 15px 15px 10px;
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card .icon-big {
+    font-size: 3em;
+    min-height: 64px;
+}
+
+.icon-warning {
+    color: #f3bb45;
+}
+
+.icon-danger {
+    color: #eb5e28;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.card .numbers {
+    font-size: 1.8em;
+    text-align: right;
+}
+
+.card .stats {
+    color: #a9a9a9;
+    font-weight: 300;
+}
+
+.card .numbers p {
+    margin: 0;
+}
+
+[class^="fa fa-"] {
+    font-family: themify;
+    speak: none;
+    font-style: normal;
+    font-weight: 700;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
