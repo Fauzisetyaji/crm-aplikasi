@@ -47,9 +47,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $services = $this->service->get();
-
-        return view('backend.index', [ 'services' => $services ]);
+        return view('backend-user.index');
     }
 
     /**

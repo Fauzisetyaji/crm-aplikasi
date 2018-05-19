@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Models\Pelanggan;
 
 class DashboardController extends Controller
 {
@@ -15,6 +16,13 @@ class DashboardController extends Controller
      * @var \App\Models\Service
      */
     protected $service;
+
+    /**
+     * The Pelanggan instance.
+     *
+     * @var \App\Models\Pelanggan
+     */
+    protected $pelanggan;
 
     /**
      * The User instance.
@@ -27,7 +35,7 @@ class DashboardController extends Controller
      * constructor
      *
      */
-    public function __construct(Service $service)
+    public function __construct(Service $service, Pelanggan $pelanggan)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -38,6 +46,7 @@ class DashboardController extends Controller
         $this->middleware('auth');
 
         $this->service = $service;
+        $this->pelanggan = $pelanggan;
     }
 
     /**
@@ -48,8 +57,9 @@ class DashboardController extends Controller
     public function index()
     {
         $services = $this->service->get();
+        $pelanggans = $this->pelanggan->get();
 
-        return view('backend.index', [ 'services' => $services ]);
+        return view('backend.index', compact('services', 'pelanggans'));
     }
 
     /**

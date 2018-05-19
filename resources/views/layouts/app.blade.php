@@ -109,7 +109,7 @@
                     <li><a class="dropdown-btn">Laporan</a></li>
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
-                            <li><a href="">Booking Service</a></li>
+                            <li><a href="{{ route('laporan.booking') }}">Booking Service</a></li>
                             <li><a href="">Top Service</a></li>
                             <li><a href="">Top Pelanggan</a></li>
                         </ul>
@@ -127,7 +127,7 @@
                     <li><a href="{{ route('my-booking.index') }}">Booking Service</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
-                    <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li>
+                    <!-- <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li> -->
                     <li><a href="{{ route('my-profile.index') }}">My Profile</a></li>
                   </ul>
                 </div>
