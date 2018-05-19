@@ -44,4 +44,24 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pelanggan::class, 'user_id');
     }
+
+    /**
+     * Get data user
+     *
+     * @return data type
+     */
+    public function staff()
+    {
+        return $this->hasOne(Staff::class, 'user_id');
+    }
+
+    /**
+     * Get data user
+     *
+     * @return data type
+     */
+    public function kepalaCabang()
+    {
+        return $this->hasOne(KepalaCabang::class, 'user_id');
+    }
 }

@@ -7,12 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\JadwalOperasional;
+use App\Models\Operasional;
 use App\Models\Service;
 use App\Models\Booking;
 use App\Models\Keluhan;
 
 class BookingController extends Controller
 {
+    /**
+     * The Operasional instance.
+     *
+     * @var App\Models\Operasional
+     */
+    public $operasional;
+
     /**
      * The JadwalOperasional instance.
      *
@@ -51,7 +59,7 @@ class BookingController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct(JadwalOperasional $jadwalOperasional, Booking $booking, Service $service, Keluhan $keluhan)
+    public function __construct(Operasional $operasional, JadwalOperasional $jadwalOperasional, Booking $booking, Service $service, Keluhan $keluhan)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -61,6 +69,7 @@ class BookingController extends Controller
 
         $this->middleware('auth');
 
+        $this->operasional = $operasional;
         $this->jadwalOperasional = $jadwalOperasional;
         $this->booking = $booking;
         $this->service = $service;
@@ -100,6 +109,19 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        $jadwal = $this->jadwalOperasional->find($request->id_schedule);
+        $operasional = $this->operasional->find($jadwal->operasional_id);
+        $service = $this->service->find($request->service);
+        
+        if (Carbon::parse($request->time)->toDateTimeString() > $operasional->close_on) {
+            return back()->withErrors(['time' => ['Melebihi batas jam operasional']]);
+        }
+
+        dump($jadwal);
+        dump($operasional);
+        dump($service);
+        dd('stop');
+
         $this->booking->create([
             'date' => Carbon::parse($request->date),
             'time' => Carbon::parse($request->time)->toDateTimeString(),
@@ -110,7 +132,12 @@ class BookingController extends Controller
             'pelanggan_id' => $this->user->pelanggan->id,
             'service_id' => $request->service,
             'jadwal_operasional_id' => $request->id_schedule,
-            
+        ]);
+
+        $poin = $this->user->pelanggan->jml_poin;
+
+        $this->user->pelanggan->update([
+            'jml_poin' => (int)$poin + (int)$service->poin
         ]);
 
         return redirect()->route('my-booking.index');
@@ -124,7 +151,13 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        //
+        $booking = $this->booking->find($id);
+        $services = $booking->service()->get();
+        $pelanggans = $booking->pelanggan()->get();
+
+        dd($booking);
+        
+        return view('backend-user.booking.show', compact('booking', 'services', 'pelanggans'));
     }
 
     /**

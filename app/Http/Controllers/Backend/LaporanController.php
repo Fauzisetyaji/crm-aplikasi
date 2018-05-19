@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -81,5 +82,63 @@ class LaporanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * get laporan booking
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getLaporanBooking(Request $request, $id)
+    {
+        $shipment = parent::getShipment($request, $id);
+
+        if (is_null($shipment)) {
+            return $this->response->errorNotFound('Booking not found');
+        }
+
+        $view = view('shipment.shipment-customer-box')->with([
+            'shipment' => $shipment
+        ])->render();
+
+        return $this->sendResponse($request, $view);
+    }
+
+    /**
+     * send response
+     *
+     * @param Request $request
+     * @param string $view
+     * @return Response
+     */
+    protected function sendResponse(Request $request, $view)
+    {
+        if ($request->has('return')) {
+            if ($request->return === 'pdf') {
+                return $this->generatePdf($view);
+            }
+
+            if ($request->return === 'print') {
+                $view .= '<script>window.print()</script>';
+            }
+        }
+
+        return $view;
+    }
+
+    /**
+     * generate pdf
+     *
+     * @param string $view
+     * @return pdf
+     */
+    protected function generatePdf($view)
+    {
+        $pdf = PDF::loadHTML($view);
+
+        $pdf->setPaper('A4');
+
+        return $pdf->stream();
     }
 }

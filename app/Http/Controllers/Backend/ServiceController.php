@@ -57,7 +57,7 @@ class ServiceController extends Controller
             'nm_service' => $request->nm_service,
             'jenis_service' => $request->jenis_service,
             'description' => $request->description,
-            'price' => $request->price,
+            'poin' => $request->poin,
         ]);
 
         return redirect()->route('service.index');

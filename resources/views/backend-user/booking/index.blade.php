@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
                     @foreach($list as $key => $item)
-                    <tr class="{{ ($item->cancellation) ? 'danger' : '' }}" title="{{ ($item->cancellation) ? 'Dibatalkan' : '' }}">
+                    <tr class="{{ ($item->cancellation) ? 'danger' : ($item->status ? 'info' : '') }}" title="{{ ($item->cancellation) ? 'Dibatalkan' : '' }}">
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>
                             <a href="{{ route('my-booking.show', $item->id) }}">{{ date('d-m-Y', strtotime($item->date)) }}</a>
@@ -33,7 +33,12 @@
                         <td>{{ date('h:i:s', strtotime($item->time)) }}</td>
                         <td>{{ ($item->status) ? 'Diterima' : ($item->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
                         <td>{{ $item->jenis_service }}</td>
-                        <td>{{ $item->easyService }}</td>
+                        <td>
+                            @if($item->easyService === 'pickup') Pick-Up My Car
+                            @elseif($item->easyService === 'send') Send-Up My Car
+                            @elseif($item->easyService === 'both') Pick-Up & Send-Up My Car
+                            @endif
+                        </td>
                         <td>{!! strip_tags(str_limit($item->keterangan, 80)) !!}</td>
                         <td>
                             @if (!$item->cancellation)

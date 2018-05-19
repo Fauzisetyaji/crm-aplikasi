@@ -19,7 +19,6 @@ class CreateRewardsTable extends Migration
             $table->string('nm_reward');
             $table->integer('poin');
             $table->string('status_reward');
-            $table->uuid('service_id');
             $table->timestamps();
         });
     }

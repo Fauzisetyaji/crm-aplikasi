@@ -102,9 +102,10 @@
                   </ul>
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('service.index') }}">Service</a></li>
-                    <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>
+                    <li><a href="{{ route('booking.index') }}">Booking</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
+                    <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>
                     <li><a href="{{ route('testimoni.index') }}">Testimoni</a></li>
                     <li><a class="dropdown-btn">Laporan</a></li>
                     <div class="dropdown-container">
@@ -138,6 +139,23 @@
                   </ul>
                 </div>
                 @endif
+
+                @if (Auth::user()->roles === 'kepala-cabang')
+                <div class="col-sm-3 col-md-2 sidebar">
+                  <ul class="nav nav-sidebar">
+                    <li><a href="{{ route('auth-home-user') }}">Dashboard</a></li>
+                  </ul>
+                  <ul class="nav nav-sidebar">
+                    <li><a class="dropdown-btn">Laporan</a></li>
+                    <div class="dropdown-container">
+                        <ul class="nav nav-sidebar">
+                            <li><a href="">Laporan Booking Service</a></li>
+                            <li><a href="">Laporan Pelanggan</a></li>
+                        </ul>
+                    </div>
+                  </ul>
+                </div>
+                @endif   
             @endif
                 @yield('content')
             </div>

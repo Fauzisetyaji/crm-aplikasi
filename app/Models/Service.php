@@ -26,16 +26,6 @@ class Service extends Model
     ];
 
     /**
-     * Punya banyak Rewards
-     *
-     * @return data type
-     */
-    public function rewards($param)
-    {
-        return $this->hasMany(Reward::class, 'service_id');
-    }
-
-    /**
      * Punya banyak Operasional
      *
      * @return data type

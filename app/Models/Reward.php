@@ -22,16 +22,6 @@ class Reward extends Model
      * @var array
      */
     protected $fillable = [
-        'nm_reward', 'poin', 'status_reward', 'service_id'
+        'nm_reward', 'poin', 'status_reward'
     ];
-
-    /**
-     * Get Service
-     *
-     * @return data type
-     */
-    public function service()
-    {
-        return $this->belongsTo(Service::class, 'service_id');
-    }
 }
