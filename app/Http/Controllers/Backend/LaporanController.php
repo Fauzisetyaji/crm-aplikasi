@@ -67,7 +67,7 @@ class LaporanController extends Controller
     public function getLaporanBooking(Request $request)
     {
         $bookings = $this->booking->where('status', true)->with('pelanggan')->get();
-        // dd($bookings);
+        
         $view = view('laporan.booking')->with([
             'bookings' => $bookings
         ])->render();
@@ -118,17 +118,9 @@ class LaporanController extends Controller
      */
     protected function sendResponse(Request $request, $view)
     {
-        if ($request->has('return')) {
-            if ($request->return === 'pdf') {
-                return $this->generatePdf($view);
-            }
-
-            if ($request->return === 'print') {
-                $view .= '<script>window.print()</script>';
-            }
-        }
-
-        return $view;
+        
+        return $this->generatePdf($view);
+        
     }
 
     /**
