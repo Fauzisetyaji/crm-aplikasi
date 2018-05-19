@@ -22,6 +22,6 @@ class Reward extends Model
      * @var array
      */
     protected $fillable = [
-        'nm_reward', 'poin', 'status_reward'
+        'nm_reward', 'poin', 'status_reward', 'gambar'
     ];
 }

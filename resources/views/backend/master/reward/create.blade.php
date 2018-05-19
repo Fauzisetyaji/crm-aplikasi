@@ -10,7 +10,8 @@
             <li class="active">@yield('title')</li>
         </ol>
         <div class="panel-body">
-            <form role="form" action="{{ route('reward.store') }}" method="post" class="form-horizontal">
+            <form role="form" action="{{ route('reward.store') }}" method="post" class="form-horizontal"
+                enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('nm_reward') ? ' has-error' : '' }}">
@@ -39,27 +40,30 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" name="status_reward" {{ old('status_reward') === 'on' ? 'checked' : '' }} required> Status
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                <div class="form-group{{ $errors->has('service') ? ' has-error' : '' }}">
-                    <label for="service" class="col-md-2 control-label">service</label>
-                    <div class="col-md-4">
-                        <select
-                            name="service" value="{{ old('service') }}" class="form-control" required>
-                            <option value="" disabled selected>Pilih service</option>
-
-                            @foreach($services as $key => $item)
-                                <option {{ old('service') == $item->id ? "selected" : "" }} value="{{ $item->id }}">{{ $item->nm_service }}</option>
-                            @endforeach
-                        </select>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="status_reward" {{ old('status_reward') === 'on' ? 'checked' : '' }} required> Status
+                            </label>
+                        </div>
                     </div>
                 </div>
+
+                <div class="form-group{{ $errors->has('gambar') ? ' has-error' : '' }}">
+                    <label for="gambar" class="col-md-2 control-label">Gambar</label>
+                    <div class="col-md-4">
+                        <input type="file"
+                            accept="image/*"
+                            name="gambar"
+                            class="form-control"
+                            value="{{ old('gambar') }}"
+                            required>
+                        @if ($errors->has('gambar'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('gambar') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>    
 
                 <button type="submit" class="btn btn-info">Submit</button>
                 <button type="reset" class="btn btn-danger">Hapus</button>

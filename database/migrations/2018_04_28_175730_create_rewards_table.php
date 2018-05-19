@@ -19,6 +19,7 @@ class CreateRewardsTable extends Migration
             $table->string('nm_reward');
             $table->integer('poin');
             $table->string('status_reward');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

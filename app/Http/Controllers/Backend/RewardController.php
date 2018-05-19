@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers\Backend;
 
+use ImageController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Reward;
-use App\Models\Service;
 
 class RewardController extends Controller
 {
+    /**
+     * static page image storages.
+     *
+     * @var string
+     */
+    protected $imageFileStorage = 'rewards';
+
     /**
      * The Reward instance.
      *
@@ -17,19 +24,11 @@ class RewardController extends Controller
     protected $reward;
 
     /**
-     * The Service instance.
-     *
-     * @var \App\Models\Service
-     */
-    protected $service;
-
-    /**
      * Create a new controller instance.
      */
-    public function __construct(Reward $reward, Service $service)
+    public function __construct(Reward $reward)
     {
         $this->reward = $reward;
-        $this->service = $service;
     }
 
     /**
@@ -39,7 +38,7 @@ class RewardController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->reward->with('service')->get();
+        $list = $this->reward->get();
 
         return view('backend.master.reward.index', [ 'list' => $list ]);
     }
@@ -51,9 +50,7 @@ class RewardController extends Controller
      */
     public function create()
     {
-        $services = $this->service->get();
-
-        return view('backend.master.reward.create', ['services' => $services]);
+        return view('backend.master.reward.create');
     }
 
     /**
@@ -64,11 +61,14 @@ class RewardController extends Controller
      */
     public function store(Request $request)
     {
+        $image = $request->file("gambar");
+        $gambar = ($image) ? $this->uploadPagePicture($image) : null;
+
         $this->reward->create([
             'nm_reward' => $request->nm_reward,
             'poin' => $request->poin,
             'status_reward' => isset($request->status_reward) ? ($request->status_reward === "on" ? 1 : 0) : 0,
-            'service_id' => $request->service
+            'gambar' => $gambar
         ]);
 
         return redirect()->route('reward.index');
@@ -96,9 +96,8 @@ class RewardController extends Controller
     public function edit(Request $request, $id)
     {
         $reward = $this->reward->find($id);
-        $services = $this->service->get();
 
-        return view('backend.master.reward.edit', [ 'reward' => $reward, 'services' => $services ]);
+        return view('backend.master.reward.edit', [ 'reward' => $reward]);
     }
 
     /**
@@ -113,7 +112,15 @@ class RewardController extends Controller
         $reward = $this->reward->find($id);
 
         $request->merge(['status_reward' => isset($request->status_reward) ? ($request->status_reward === "on" ? 1 : 0) : 0]);
-        $reward->update($request->all());
+        $image = $request->file("gambar");
+        $gambar = ($image) ? $this->uploadPagePicture($image) : null;
+        
+        $reward->update([
+            'nm_reward' => $request->nm_reward,
+            'poin' => $request->poin,
+            'status_reward' => isset($request->status_reward) ? ($request->status_reward === "on" ? 1 : 0) : 0,
+            'gambar' => $gambar
+        ]);
 
         return redirect(route('reward.index'))->with('success', __('Reward has been successfully updated'));      
     }
@@ -131,5 +138,19 @@ class RewardController extends Controller
         $reward->delete();
 
         return redirect(route('reward.index'))->with('success', __('Reward has been successfully deleted'));
+    }
+
+    /**
+     * upload picture page.
+     *
+     * @param mixed $file
+     *
+     * @return string
+     */
+    protected function uploadPagePicture($file = null)
+    {
+        if (!is_null($file)) {
+            return ImageController::upload($file, $this->imageFileStorage);
+        }
     }
 }

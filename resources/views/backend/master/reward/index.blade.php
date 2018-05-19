@@ -17,7 +17,7 @@
                         <th>Nama</th>
                         <th>Poin</th>
                         <th>Status</th>
-                        <th>Service</th>
+                        <th>Gambar</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -28,7 +28,11 @@
                         <td>{{ $item->nm_reward }}</td>
                         <td>{{ $item->poin }}</td>
                         <td>{{ $item->status_reward ? 'active': 'tidak aktif' }}</td>
-                        <td>{{ isset($item->service) ? $item->service->nm_service : '-' }}</td>
+                        <td style="width: 50px;">
+                            <div class="cell">
+                                <img src="{{ asset('storage/images/'.$item->gambar) }}">
+                            </div>
+                        </td>
                         <td>
                             <a href="{{ route('reward.edit', $item->id) }}" title="Ubah">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

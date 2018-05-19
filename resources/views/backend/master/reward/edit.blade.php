@@ -10,7 +10,8 @@
             <li class="active">@yield('title')</li>
         </ol>
         <div class="panel-body">
-            <form role="form" action="{{ route('reward.update', $reward->id) }}" method="post" class="form-horizontal">
+            <form role="form" action="{{ route('reward.update', $reward->id) }}" method="post" class="form-horizontal"
+                enctype="multipart/form-data">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
 
@@ -48,17 +49,18 @@
                     </div>
                   </div>
 
-                <div class="form-group{{ $errors->has('service') ? ' has-error' : '' }}">
-                    <label for="service" class="col-md-2 control-label">service</label>
+                <div class="form-group{{ $errors->has('gambar') ? ' has-error' : '' }}">
+                    <label for="gambar" class="col-md-2 control-label">Gambar</label>
                     <div class="col-md-4">
-                        <select
-                            name="service" value="{{ old('service') }}" class="form-control" required>
-                            <option value="" disabled {{ $reward->service ? '': 'selected' }} >Pilih service</option>
-
-                            @foreach($services as $key => $item)
-                                <option {{ $reward->service_id === $item->id ? "selected" : "" }} value="{{ $item->id }}">{{ $item->nm_service }}</option>
-                            @endforeach
-                        </select>
+                        <input type="file"
+                            accept="image/*"
+                            name="gambar"
+                            class="form-control">
+                        @if ($errors->has('gambar'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('gambar') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
 
