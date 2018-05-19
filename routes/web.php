@@ -34,7 +34,7 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::resource('service', 'ServiceController');
 		Route::resource('keluhan', 'KeluhanController');
 		Route::resource('testimoni', 'TestimoniController');
-		Route::resource('laporan', 'LaporanController');
+		Route::name('laporan.booking')->get('laporan/booking', 'LaporanController@getLaporanBooking');
 	});
 
 	

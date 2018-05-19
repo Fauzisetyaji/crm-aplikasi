@@ -109,7 +109,7 @@
                     <li><a class="dropdown-btn">Laporan</a></li>
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
-                            <li><a href="">Booking Service</a></li>
+                            <li><a href="{{ route('laporan.booking') }}">Booking Service</a></li>
                             <li><a href="">Top Service</a></li>
                             <li><a href="">Top Pelanggan</a></li>
                         </ul>

@@ -3,103 +3,73 @@
 namespace App\Http\Controllers\Backend;
 
 use PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
+use App\Models\Service;
+use App\Models\Pelanggan;
 
 class LaporanController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * The Booking instance.
      *
-     * @return \Illuminate\Http\Response
+     * @var \App\Models\Booking
      */
-    public function index()
-    {
-        //
-    }
+    protected $booking;
 
     /**
-     * Show the form for creating a new resource.
+     * The Service instance.
      *
-     * @return \Illuminate\Http\Response
+     * @var \App\Models\Service
      */
-    public function create()
-    {
-        //
-    }
+    protected $service;
 
     /**
-     * Store a newly created resource in storage.
+     * The User instance.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @var \Illuminate\Support\Facades\Auth;
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    protected $user;
 
     /**
-     * Display the specified resource.
+     * The Pelanggan instance.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @var \App\Models\Pelanggan
      */
-    public function show($id)
-    {
-        //
-    }
+    protected $pelanggan;
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Create a new controller instance.
      */
-    public function edit($id)
+    public function __construct(Booking $booking, Service $service)
     {
-        //
-    }
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+            return $next($request);
+        });
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+        $this->middleware('auth');
 
+        $this->booking = $booking;
+        $this->service = $service;
+    }
+    
     /**
      * get laporan booking
      *
      * @param Request $request
      * @return mixed
      */
-    public function getLaporanBooking(Request $request, $id)
+    public function getLaporanBooking(Request $request)
     {
-        $shipment = parent::getShipment($request, $id);
+        $bookings = $this->booking->get();
 
-        if (is_null($shipment)) {
-            return $this->response->errorNotFound('Booking not found');
-        }
-
-        $view = view('shipment.shipment-customer-box')->with([
-            'shipment' => $shipment
+        $view = view('laporan.booking')->with([
+            'bookings' => $bookings
         ])->render();
 
         return $this->sendResponse($request, $view);
