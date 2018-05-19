@@ -41,10 +41,7 @@
                         </td>
                         <td>{!! strip_tags(str_limit($item->keterangan, 80)) !!}</td>
                         <td>
-                            @if (!$item->cancellation)
-                                <a href="{{ route('my-booking.edit', $item->id) }}" title="Ubah">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </a>
+                            @if ((!$item->status AND !$item->cancellation) AND !$item->cancellation)
                                 <a href="{{ route('my-booking.cancel', $item->id) }}" title="Batalkan"
                                    onclick="event.preventDefault(); document.getElementById('cancel-form-{{$item->id}}').submit();"
                                    style="color: red; margin-left: 15px;">

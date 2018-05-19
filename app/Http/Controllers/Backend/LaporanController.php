@@ -66,7 +66,41 @@ class LaporanController extends Controller
      */
     public function getLaporanBooking(Request $request)
     {
-        $bookings = $this->booking->where('status', true)->get();
+        $bookings = $this->booking->where('status', true)->with('pelanggan')->get();
+        // dd($bookings);
+        $view = view('laporan.booking')->with([
+            'bookings' => $bookings
+        ])->render();
+
+        return $this->sendResponse($request, $view);
+    }
+
+    /**
+     * get laporan service
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getLaporanService(Request $request)
+    {
+        $bookings = $this->booking->where('status', true)->with('pelanggan')->get();
+        
+        $view = view('laporan.booking')->with([
+            'bookings' => $bookings
+        ])->render();
+
+        return $this->sendResponse($request, $view);
+    }
+
+    /**
+     * get laporan pelanggan
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getLaporanPelanggan(Request $request)
+    {
+        $bookings = $this->booking->where('status', true)->with('pelanggan')->get();
         
         $view = view('laporan.booking')->with([
             'bookings' => $bookings
@@ -107,7 +141,7 @@ class LaporanController extends Controller
     {
         $pdf = PDF::loadHTML($view);
 
-        $pdf->setPaper('A4');
+        $pdf->setPaper('A4', 'portrait');
 
         return $pdf->stream();
     }
