@@ -68,7 +68,9 @@ class RewardController extends Controller
             'nm_reward' => $request->nm_reward,
             'poin' => $request->poin,
             'status_reward' => isset($request->status_reward) ? ($request->status_reward === "on" ? 1 : 0) : 0,
-            'gambar' => $gambar
+            'gambar' => $gambar,
+            'count' => $request->count,
+            'date' => $request->date
         ]);
 
         return redirect()->route('reward.index');
@@ -110,17 +112,22 @@ class RewardController extends Controller
     public function update(Request $request, $id)
     {
         $reward = $this->reward->find($id);
-
         $request->merge(['status_reward' => isset($request->status_reward) ? ($request->status_reward === "on" ? 1 : 0) : 0]);
         $image = $request->file("gambar");
         $gambar = ($image) ? $this->uploadPagePicture($image) : null;
-        
-        $reward->update([
-            'nm_reward' => $request->nm_reward,
-            'poin' => $request->poin,
-            'status_reward' => isset($request->status_reward) ? ($request->status_reward === "on" ? 1 : 0) : 0,
-            'gambar' => $gambar
-        ]);
+
+        if (!is_null($gambar)) {
+            $reward->update([
+                'nm_reward' => $request->nm_reward,
+                'poin' => $request->poin,
+                'status_reward' => $request->status_reward,
+                'gambar' => $gambar,
+                'count' => $request->count,
+                'date' => $request->date
+            ]);
+        }else{
+            $reward->update($request->all());
+        }
 
         return redirect(route('reward.index'))->with('success', __('Reward has been successfully updated'));      
     }

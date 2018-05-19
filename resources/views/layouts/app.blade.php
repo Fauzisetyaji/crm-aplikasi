@@ -106,7 +106,6 @@
                   </ul>
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>
-                    <li><a href="{{ route('testimoni.index') }}">Testimoni</a></li>
                     <li><a class="dropdown-btn">Laporan</a></li>
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
@@ -129,13 +128,7 @@
                   </ul>
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li>
-                    <li><a class="dropdown-btn">Profile</a></li>
-                    <div class="dropdown-container">
-                        <ul class="nav nav-sidebar">
-                            <li><a href="">My Point</a></li>
-                            <li><a href="">My Reward</a></li>
-                        </ul>
-                    </div>
+                    <li><a href="{{ route('my-profile.index') }}">My Profile</a></li>
                   </ul>
                 </div>
                 @endif

@@ -38,16 +38,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="status_reward" {{ old('status_reward') === 'on' ? 'checked' : '' }} required> Status
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="form-group{{ $errors->has('gambar') ? ' has-error' : '' }}">
                     <label for="gambar" class="col-md-2 control-label">Gambar</label>
                     <div class="col-md-4">
@@ -63,7 +53,31 @@
                             </span>
                         @endif
                     </div>
-                </div>    
+                </div>
+
+                <div class="form-group{{ $errors->has('count') ? ' has-error' : '' }}">
+                    <label for="count" class="col-md-2 control-label">Jumlah</label>
+                    <div class="col-md-4">
+                        <input type="number" name="count" class="form-control" value="{{ old('count') }}" required>
+                        @if ($errors->has('count'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('count') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                    <label for="date" class="col-md-2 control-label">Tanggal berakhir</label>
+                    <div class="col-md-6">
+                        <input type="text" name="date" class="form-control date" value="{{ old('date') }}" required>
+                        @if ($errors->has('date'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('date') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
 
                 <button type="submit" class="btn btn-info">Submit</button>
                 <button type="reset" class="btn btn-danger">Hapus</button>
@@ -72,4 +86,16 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.date').datetimepicker({
+            format: 'YYYY-MM-DD',
+            useCurrent: false,
+            minDate: moment()// moment().add(diffDays, 'days')
+        });
+    });
+</script>
 @endsection

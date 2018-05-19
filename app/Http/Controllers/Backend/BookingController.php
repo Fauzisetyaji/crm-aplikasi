@@ -10,6 +10,7 @@ use App\Models\JadwalOperasional;
 use App\Models\Service;
 use App\Models\Booking;
 use App\Models\Keluhan;
+use App\Models\Pelanggan;
 
 class BookingController extends Controller
 {
@@ -47,6 +48,13 @@ class BookingController extends Controller
      * @var \Illuminate\Support\Facades\Auth;
      */
     protected $user;
+
+    /**
+     * The Pelanggan instance.
+     *
+     * @var \App\Models\Pelanggan
+     */
+    protected $pelanggan;
 
     /**
      * Create a new controller instance.
@@ -147,8 +155,17 @@ class BookingController extends Controller
     public function confirm(Request $request, $id)
     {
         $booking = $this->booking->find($id);
+        $service = $this->service->find($booking->service_id);
+        
         $booking->status = true;
         $booking->save();
+
+        $pelanggan = $booking->pelanggan()->first();
+        $poin = $pelanggan->jml_poin;
+
+        $pelanggan->update([
+            'jml_poin' => (int)$poin + (int)$service->poin
+        ]);
 
         return redirect(route('booking.index'))->with('success', __('Booking has been successfully confirm'));
     }

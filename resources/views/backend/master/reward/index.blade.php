@@ -16,8 +16,9 @@
                         <th>#</th>
                         <th>Nama</th>
                         <th>Poin</th>
-                        <th>Status</th>
                         <th>Gambar</th>
+                        <th>Jumlah</th>
+                        <th>Berakhir</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -27,12 +28,13 @@
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $item->nm_reward }}</td>
                         <td>{{ $item->poin }}</td>
-                        <td>{{ $item->status_reward ? 'active': 'tidak aktif' }}</td>
-                        <td style="width: 50px;">
+                        <td>
                             <div class="cell">
-                                <img src="{{ asset('storage/images/'.$item->gambar) }}">
+                                <img src="{{ asset('storage/images/'.$item->gambar) }}" style="width: 50px;">
                             </div>
                         </td>
+                        <td>{{ $item->count }}</td>
+                        <td>{{ $item->date }}</td>
                         <td>
                             <a href="{{ route('reward.edit', $item->id) }}" title="Ubah">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
