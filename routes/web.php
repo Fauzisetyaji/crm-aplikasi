@@ -32,6 +32,12 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::resource('operasional', 'OperasionalController');
 		Route::resource('jadwal-operasional', 'JadwalOperasionalController');
 		Route::resource('promo', 'PromoController');
+		Route::name('promo-non-pelanggan.index')->get('promo-non-pelanggan', 'PromoNonPelangganController@index');
+		Route::name('promo-non-pelanggan.create')->get('promo-non-pelanggan/create', 'PromoNonPelangganController@create');
+		Route::name('promo-non-pelanggan.store')->post('promo-non-pelanggan/store', 'PromoNonPelangganController@store');
+		Route::name('promo-non-pelanggan.edit')->get('promo-non-pelanggan/edit/{id}', 'PromoNonPelangganController@edit');
+		Route::name('promo-non-pelanggan.update')->put('promo-non-pelanggan/update/{id}', 'PromoNonPelangganController@update');
+		Route::name('promo-non-pelanggan.destroy')->delete('promo-non-pelanggan/destroy/{id}', 'PromoNonPelangganController@destroy');
 		Route::resource('service', 'ServiceController');
 		Route::resource('keluhan', 'KeluhanController');
 		Route::resource('testimoni', 'TestimoniController');

@@ -95,7 +95,7 @@
                     <li><a class="dropdown-btn">Promo</a></li>
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
-                            <li><a href="{{ route('promo.index') }}">Promo Non Pelanggan</a></li>
+                            <li><a href="{{ route('promo-non-pelanggan.index') }}">Promo Non Pelanggan</a></li>
                             <li><a href="{{ route('promo.index') }}">Promo Pelanggan</a></li>
                         </ul>
                     </div>

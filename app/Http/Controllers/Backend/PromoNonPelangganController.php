@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Notifications\PromoPelanggan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Promo;
-use App\Models\Service;
-use App\Models\Pelanggan;
 
-class PromoController extends Controller
+class PromoNonPelangganController extends Controller
 {
-    /**
+	    /**
      * The Promo instance.
      *
      * @var \App\Models\Promo
@@ -19,27 +16,11 @@ class PromoController extends Controller
     protected $promo;
 
     /**
-     * The Service instance.
-     *
-     * @var \App\Models\Service
-     */
-    protected $service;
-
-    /**
-     * The Pelanggan instance.
-     *
-     * @var \App\Models\Pelanggan
-     */
-    protected $pelanggan;
-
-    /**
      * Create a new controller instance.
      */
-    public function __construct(Promo $promo, Service $service, Pelanggan $pelanggan)
+    public function __construct(Promo $promo)
     {
         $this->promo = $promo;
-        $this->service = $service;
-        $this->pelanggan = $pelanggan;
     }
 
     /**
@@ -49,9 +30,9 @@ class PromoController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->promo->where('type', 'pelanggan')->get();
+        $list = $this->promo->where('type', 'non-pelanggan')->get();
 
-        return view('backend.promo.index', compact('list'));
+        return view('backend.promo-non.index', compact('list'));
     }
 
     /**
@@ -61,10 +42,7 @@ class PromoController extends Controller
      */
     public function create()
     {
-        $services = $this->service->get();
-        $pelanggans = $this->pelanggan->get();
-
-        return view('backend.promo.create', compact('services', 'pelanggans'));
+        return view('backend.promo-non.create');
     }
 
     /**
@@ -75,15 +53,11 @@ class PromoController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $this->pelanggan->findOrFail($request->pelanggan_id)->user;
-        
-        $promo = $this->promo->create($request->all());
+        $request->merge(['type' => 'non-pelanggan']);
 
-        if ($promo) {
-            $user->notify(new PromoPelanggan($user));
-        }
+        $this->promo->create($request->all());
 
-        return redirect()->route('promo.index')->with('success', __('Promo berhasil ditambahkan'));
+        return redirect()->route('promo-non-pelanggan.index')->with('success', __('Promo Non Pelanggan berhasil ditambahkan'));
     }
     
     /**
@@ -94,11 +68,9 @@ class PromoController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $services = $this->service->get();
-        $pelanggans = $this->pelanggan->get();
         $promo = $this->promo->find($id);
 
-        return view('backend.promo.edit', compact('services', 'pelanggans', 'promo'));
+        return view('backend.promo-non.edit', compact('promo'));
     }
 
     /**
@@ -110,16 +82,10 @@ class PromoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = $this->pelanggan->findOrFail($request->pelanggan_id)->user;
-
         $promo = $this->promo->find($id);
         $promo->update($request->all());
 
-        if ($promo) {
-            $user->notify(new PromoPelanggan($user));
-        }
-
-        return redirect(route('promo.index'))->with('success', __('Promo berhasil diupdate'));
+        return redirect(route('promo-non-pelanggan.index'))->with('success', __('Promo Non Pelanggan berhasil diupdate'));
     }
 
     /**
@@ -134,6 +100,6 @@ class PromoController extends Controller
 
         $promo->delete();
 
-        return redirect(route('promo.index'))->with('success', __('Promo berhasil dihapus'));
+        return redirect(route('promo-non-pelanggan.index'))->with('success', __('Promo Non Pelanggan berhasil dihapus'));
     }
 }
