@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
         foreach (User::get() as $key => $user) {
             if ($user->roles === 'pelanggan') {
                 $user->pelanggan()->create([
-                    'kode_pelanggan' => null,
+                    'kode_pelanggan' => "000000000" . ($key+1),
                     'nm_pelanggan' => $user->username,
                     'id_type' => 'KTP',
                     'id_number' => null,

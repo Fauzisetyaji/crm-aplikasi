@@ -25,6 +25,13 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
+     * The Pelanggan instance.
+     *
+     * @var \App\Models\Pelanggan
+     */
+    protected $pelanggan;
+
+    /**
      * Where to redirect users after registration.
      *
      * @var string
@@ -36,9 +43,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Pelanggan $pelanggan)
     {
         $this->middleware('guest');
+        $this->pelanggan = $pelanggan;
     }
 
     /**
@@ -85,7 +93,12 @@ class RegisterController extends Controller
      */
     public function createOwner($user, $data)
     {
+        $pelanggans = $this->pelanggan->get();
+
+        $code = str_pad(1+count($pelanggans), 10, '0', STR_PAD_LEFT);
+
         $pelanggan = $this->createPelanggan([
+            'kode_pelanggan' => $code,
             'nm_pelanggan' => $data['nm_pelanggan'],
             'alamat' => $data['alamat'],
             'no_tlp' => $data['no_tlp'],

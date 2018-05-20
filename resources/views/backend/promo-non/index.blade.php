@@ -12,7 +12,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             @yield('title')
-            <div class="pull-right"><a href="{{ route('promo-non-pelanggan.create') }}" class="btn btn-info" style="margin-top: -7px;" role="button">Tambah Promo Baru</a></div>
+            <div class="pull-right"><a href="{{ route('promo-non-pelanggan.create') }}" class="btn btn-info" style="margin-top: -7px;" role="button">Tambah Promo Non Pelanggan Baru</a></div>
         </div>
         <div class="panel-body">
             <table class="table table-bordered">

@@ -32,7 +32,11 @@
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $item->nm_promo }}</td>
-                        <td>{{ $item->service->nm_service }}</td>
+                        <td>
+                            <a href="{{ route('service.show', $item->service->id) }}">
+                                {{ $item->service->nm_service }}
+                            </a>
+                        </td>
                         <td>{{ $item->pelanggan->nm_pelanggan }}</td>
                         <td>{{ $item->starts_on . ' || ' . $item->ends_on }}</td>
                         <td>{{ $item->keterangan }}</td>
