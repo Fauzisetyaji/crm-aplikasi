@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'View Keluhan')
+@section('title', 'View Promo Pelanggan')
 
 @section('content')
 <div class="col-md-9">
@@ -12,18 +12,18 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             @yield('title')
+            <div class="pull-right"><a href="{{ route('promo.create') }}" class="btn btn-info" style="margin-top: -7px;" role="button">Tambah Promo Baru</a></div>
         </div>
         <div class="panel-body">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Detail</th>
-                        <th>Jenis</th>
-                        <th>Status</th>
-                        <th>User</th>
-                        <th>Staff</th>
-                        <th>Waktu dibuat</th>
+                        <th>Promo</th>
+                        <th>Service</th>
+                        <th>Pelanggan</th>
+                        <th>Periode</th>
+                        <th>Keterangan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -31,19 +31,21 @@
                     @foreach($list as $key => $item)
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ $item->detail }}</td>
-                        <td>{{ $item->jenis }}</td>
-                        <td>{{ ($item->status) ? 'Aktif' : 'Tidak' }}</td>
-                        <td>{{ $item->pelanggan }}</td>
-                        <td>{{ $item->staff }}</td>
-                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->nm_promo }}</td>
+                        <td>{{ $item->service->nm_service }}</td>
+                        <td>{{ $item->pelanggan->nm_pelanggan }}</td>
+                        <td>{{ $item->starts_on . ' || ' . $item->ends_on }}</td>
+                        <td>{{ $item->keterangan }}</td>
                         <td>
-                            <a href="{{ route('keluhan.destroy', $item->id) }}" title="Hapus"
+                            <a href="{{ route('promo.edit', $item->id) }}" title="Ubah">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </a>
+                            <a href="{{ route('promo.destroy', $item->id) }}" title="Hapus"
                                onclick="event.preventDefault(); document.getElementById('delete-form-{{$item->id}}').submit();"
                                style="color: red; margin-left: 15px;">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                             </a>
-                            <form id="delete-form-{{$item->id}}" action="{{ route('keluhan.destroy', $item->id) }}" method="POST" style="display: none;">
+                            <form id="delete-form-{{$item->id}}" action="{{ route('promo.destroy', $item->id) }}" method="POST" style="display: none;">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                             </form>

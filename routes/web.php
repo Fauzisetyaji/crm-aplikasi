@@ -31,6 +31,7 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::name('booking.cancel')->put('booking/cancel/{id}', 'BookingController@cancel');
 		Route::resource('operasional', 'OperasionalController');
 		Route::resource('jadwal-operasional', 'JadwalOperasionalController');
+		Route::resource('promo', 'PromoController');
 		Route::resource('service', 'ServiceController');
 		Route::resource('keluhan', 'KeluhanController');
 		Route::resource('testimoni', 'TestimoniController');
@@ -51,6 +52,9 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 
 	Route::prefix('kepala-cabang')->group(function () {
 		Route::get('/dashboard', 'DashboardController@index')->name('auth-home-branch');
+		Route::name('laporan.booking')->get('laporan/booking', 'LaporanController@getLaporanBooking');
+		Route::name('laporan.service')->get('laporan/service', 'LaporanController@getLaporanService');
+		Route::name('laporan.pelanggan')->get('laporan/pelanggan', 'LaporanController@getLaporanPelanggan');
 	});
 });
 
