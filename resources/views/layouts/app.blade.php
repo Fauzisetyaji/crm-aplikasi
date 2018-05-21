@@ -57,7 +57,11 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @if(Auth::user()->roles ==='staff')
+                                    <li><a href="{{ route('profile.ubah') }}">Ubah Profile</a></li>
+                                    @elseif(Auth::user()->roles ==='pelanggan')
                                     <li><a href="{{ route('ubah-profile.ubah') }}">Ubah Profile</a></li>
+                                    @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -129,7 +133,7 @@
                   </ul>
                   <ul class="nav nav-sidebar">
                     <!-- <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li> -->
-                    <li><a href="{{ route('my-profile.index') }}">My Profile</a></li>
+                    <li><a href="{{ route('my-profile.index') }}">My Reward</a></li>
                   </ul>
                 </div>
                 @endif

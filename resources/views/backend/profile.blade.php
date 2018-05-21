@@ -13,7 +13,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">@yield('title')</div>
         <div class="panel-body">
-            <form role="form" action="{{ route('ubah-profile.update', $user->id) }}" method="post" class="form-horizontal">
+            <form role="form" action="{{ route('profile.update', $user->id) }}" method="post" class="form-horizontal">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
 
@@ -40,48 +40,6 @@
                         @if ($errors->has('email'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('nm_pelanggan') ? ' has-error' : '' }}">
-                    <label for="nm_pelanggan" class="col-md-4 control-label">Nama Anda</label>
-
-                    <div class="col-md-6">
-                        <input id="nm_pelanggan" type="text" class="form-control" name="nm_pelanggan" value="{{ old('nm_pelanggan', $user->pelanggan->nm_pelanggan) }}" required autofocus>
-
-                        @if ($errors->has('nm_pelanggan'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('nm_pelanggan') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('no_tlp') ? ' has-error' : '' }}">
-                    <label for="no_tlp" class="col-md-4 control-label">Nomor Telp.</label>
-
-                    <div class="col-md-6">
-                        <input id="no_tlp" type="text" class="form-control" name="no_tlp" value="{{ old('no_tlp', $user->pelanggan->no_tlp) }}" required autofocus>
-
-                        @if ($errors->has('no_tlp'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('no_tlp') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
-                    <label for="alamat" class="col-md-4 control-label">Alamat</label>
-
-                    <div class="col-md-6">
-                        <textarea id="alamat" type="text" class="form-control" name="alamat" required>{{ old('alamat', $user->pelanggan->alamat) }}</textarea>
-
-                        @if ($errors->has('alamat'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('alamat') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -114,7 +72,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">Ubah Password</div>
         <div class="panel-body">
-            <form role="form" action="{{ route('ubah-profile.updatePassword', $user->id) }}" method="post" class="form-horizontal">
+            <form role="form" action="{{ route('profile.updatePassword', $user->id) }}" method="post" class="form-horizontal">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
 

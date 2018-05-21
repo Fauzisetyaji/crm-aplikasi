@@ -44,6 +44,9 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::name('laporan.booking')->get('laporan/booking', 'LaporanController@getLaporanBooking');
 		Route::name('laporan.service')->get('laporan/service', 'LaporanController@getLaporanService');
 		Route::name('laporan.pelanggan')->get('laporan/pelanggan', 'LaporanController@getLaporanPelanggan');
+		Route::name('profile.ubah')->get('profile', 'ProfileController@ubah');
+		Route::name('profile.update')->put('profile/{id}', 'ProfileController@update');
+		Route::name('profile.updatePassword')->put('profile-password/{id}', 'ProfileController@updatePassword');
 	});
 
 	
