@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\User;
 
 use Carbon\Carbon;
+use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -101,9 +102,11 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function ubah(Request $request)
     {
-        //
+        $user = $this->user;
+        
+        return view('backend-user.profile', ['user' => $user]);
     }
 
     /**
@@ -115,7 +118,38 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->user->update([
+            'username' => $request->username,
+            'email' => $request->email
+        ]);
+
+        $this->user->pelanggan->update([
+            'nm_pelanggan' => $request->nm_pelanggan,
+            'no_tlp' => $request->no_tlp,
+            'alamat' => $request->alamat
+        ]);
+
+        return redirect(route('ubah-profile.ubah'))->with('success', __('Profile Anda berhasil di ubah'));
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
+        $this->user->update([
+            'password' => bcrypt($request->password),
+        ]);        
+
+        return redirect(route('ubah-profile.ubah'))->with('success-2', __('Password Anda berhasil di ubah'));
     }
 
     /**

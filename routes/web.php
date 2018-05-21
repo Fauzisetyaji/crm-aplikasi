@@ -54,6 +54,9 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::resource('my-keluhan', 'KeluhanController');
 		Route::resource('my-profile', 'ProfileController');
 		Route::name('reward.claim')->put('reward/claim/{id}', 'ProfileController@claim');
+		Route::name('ubah-profile.ubah')->get('ubah-profile', 'ProfileController@ubah');
+		Route::name('ubah-profile.update')->put('ubah-profile/{id}', 'ProfileController@update');
+		Route::name('ubah-profile.updatePassword')->put('ubah-password/{id}', 'ProfileController@updatePassword');
 	});
 
 	Route::prefix('kepala-cabang')->group(function () {
@@ -62,6 +65,7 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::name('laporan.service')->get('laporan/service', 'LaporanController@getLaporanService');
 		Route::name('laporan.pelanggan')->get('laporan/pelanggan', 'LaporanController@getLaporanPelanggan');
 	});
+
 });
 
 Route::get('verify-account', 'WebAuthController@verify');
