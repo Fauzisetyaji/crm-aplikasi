@@ -73,6 +73,20 @@
                     </div>
                 </div>
 
+                <div class="form-group{{ $errors->has('id_number') ? ' has-error' : '' }}">
+                    <label for="id_number" class="col-md-4 control-label">No. Id</label>
+
+                    <div class="col-md-6">
+                        <input id="id_number" type="text" class="form-control" name="id_number" value="{{ old('id_number', $user->pelanggan->id_number) }}" required autofocus>
+
+                        @if ($errors->has('id_number'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('id_number') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
                 <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
                     <label for="alamat" class="col-md-4 control-label">Alamat</label>
 

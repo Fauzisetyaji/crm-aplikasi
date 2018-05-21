@@ -126,6 +126,7 @@ class ProfileController extends Controller
         $this->user->pelanggan->update([
             'nm_pelanggan' => $request->nm_pelanggan,
             'no_tlp' => $request->no_tlp,
+            'id_number' => $request->id_number,
             'alamat' => $request->alamat
         ]);
 
