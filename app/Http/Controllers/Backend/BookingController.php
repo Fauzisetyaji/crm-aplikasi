@@ -82,7 +82,7 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->booking->get();
+        $list = $this->booking->orderBy('created_at', 'asc')->get();
         
         return view('backend.booking.index', [ 'list' => $list ]);
     }

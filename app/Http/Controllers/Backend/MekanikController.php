@@ -30,8 +30,8 @@ class MekanikController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->mekanik->get();
-
+        $list = $this->mekanik->orderBy('created_at', 'asc')->get();
+        
         return view('backend.master.mekanik.index', [ 'list' => $list ]);
     }
 

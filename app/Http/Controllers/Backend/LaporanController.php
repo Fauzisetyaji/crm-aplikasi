@@ -66,7 +66,7 @@ class LaporanController extends Controller
      */
     public function getLaporanBooking(Request $request)
     {
-        $bookings = $this->booking->where('status', true)->with('pelanggan')->get();
+        $bookings = $this->booking->where('status', true)->with('pelanggan')->orderBy('created_at', 'asc')->get();
         
         $view = view('laporan.booking')->with([
             'bookings' => $bookings

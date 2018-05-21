@@ -32,7 +32,7 @@ class PelangganController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->pelanggan->with('user')->get();
+        $list = $this->pelanggan->with('user')->orderBy('created_at', 'asc')->get();
 
         return view('backend.master.pelanggan.index', [ 'list' => $list ]);
     }

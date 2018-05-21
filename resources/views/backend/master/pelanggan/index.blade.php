@@ -18,9 +18,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Kode Pelanggan</th>
                         <th>Nama</th>
-                        <th>ID Pelanggan</th>
+                        <th>No. ID Pelanggan</th>
                         <th>Alamat</th>
                         <th>No.Telp</th>
                         <th>Poin</th>
@@ -31,7 +30,6 @@
                     @foreach($list as $key => $item)
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ ($item->kode_pelanggan) ? $item->kode_pelanggan : '-' }}</td>
                         <td>{{ $item->nm_pelanggan }}</td>
                         <td>{{ ($item->id_number) ? $item->id_number : '-' }}</td>
                         <td>{{ $item->alamat }}</td>

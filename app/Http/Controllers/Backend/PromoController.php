@@ -49,7 +49,7 @@ class PromoController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->promo->where('type', 'pelanggan')->get();
+        $list = $this->promo->where('type', 'pelanggan')->orderBy('created_at', 'asc')->get();
 
         return view('backend.promo.index', compact('list'));
     }

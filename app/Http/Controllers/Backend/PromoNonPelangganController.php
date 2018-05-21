@@ -30,7 +30,7 @@ class PromoNonPelangganController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->promo->where('type', 'non-pelanggan')->get();
+        $list = $this->promo->where('type', 'non-pelanggan')->orderBy('created_at', 'asc')->get();
 
         return view('backend.promo-non.index', compact('list'));
     }

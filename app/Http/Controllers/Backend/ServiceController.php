@@ -30,7 +30,7 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->service->get();
+        $list = $this->service->orderBy('created_at', 'asc')->get();
 
         return view('backend.service.index', [ 'list' => $list ]);
     }

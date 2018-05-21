@@ -30,7 +30,7 @@ class TestimoniController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->testimoni->get();
+        $list = $this->testimoni->orderBy('created_at', 'asc')->get();
 
         return view('backend.testimoni.index', [ 'list' => $list ]);
     }

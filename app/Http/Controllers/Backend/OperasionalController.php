@@ -58,8 +58,8 @@ class OperasionalController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->operasional->get();
-        $jadwalOperasional = $this->jadwalOperasional->get();
+        $list = $this->operasional->orderBy('created_at', 'asc')->get();
+        $jadwalOperasional = $this->jadwalOperasional->orderBy('created_at', 'asc')->get();
 
         return view('backend.master.operasional.index', compact('list', 'jadwalOperasional'));
     }
