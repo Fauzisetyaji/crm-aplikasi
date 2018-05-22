@@ -120,6 +120,7 @@ class BookingController extends Controller
         $this->booking->create([
             'date' => Carbon::parse($request->date),
             'time' => Carbon::parse($request->time)->toDateTimeString(),
+            'no_polisi' => $request->no_polisi,
             'status' => 0,
             'jenis_service' => $request->jenis_service,
             'easyService' => $request->easyService,

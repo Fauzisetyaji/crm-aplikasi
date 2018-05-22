@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->primary('id');
             $table->date('date')->nullable()->default(null);
             $table->datetime('time')->nullable()->default(null);
+            $table->string('no_polisi')->nullable()->default(null);
             $table->datetime('cancellation')->nullable()->default(null);
             $table->boolean('status')->default(0);
             $table->enum('jenis_service', ['workshop', 'tms'])->default('workshop');
