@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="col-md-9">
-    <h4>Operasional aktivitas di tahun terkahir</h4>
+    <h4>Selamat Datang, untuk melakukan booking silahkan pilih tanggal terlebih dahulu.</h4>
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
