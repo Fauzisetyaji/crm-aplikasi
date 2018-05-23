@@ -113,7 +113,7 @@ class BookingController extends Controller
         $operasional = $this->operasional->find($jadwal->operasional_id);
         $service = $this->service->find($request->service);
         
-        if (Carbon::parse($request->time)->toDateTimeString() > $operasional->close_on) {
+        if (Carbon::parse($request->time)->toTimeString() > Carbon::parse($operasional->close_on)->toTimeString()) {
             return back()->withErrors(['time' => ['Melebihi batas jam operasional']]);
         }
 

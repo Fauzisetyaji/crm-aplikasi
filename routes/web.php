@@ -56,6 +56,8 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::name('my-booking.cancel')->put('my-booking/cancel/{id}', 'BookingController@cancel');
 		Route::resource('my-keluhan', 'KeluhanController');
 		Route::resource('my-profile', 'ProfileController');
+		Route::resource('my-history', 'HistoryController');
+		Route::name('my-history.cetak')->get('my-history/cetak/{id}', 'HistoryController@cetak');
 		Route::name('reward.claim')->put('reward/claim/{id}', 'ProfileController@claim');
 		Route::name('ubah-profile.ubah')->get('ubah-profile', 'ProfileController@ubah');
 		Route::name('ubah-profile.update')->put('ubah-profile/{id}', 'ProfileController@update');
