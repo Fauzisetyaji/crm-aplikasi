@@ -56,7 +56,7 @@ class PromoPelanggan extends Notification implements ShouldQueue
         return (new MailMessage)
                     ->subject('Penawaran Promo Untuk Anda')
                     ->greeting('Hallo '.($notifiable->pelanggan->nm_pelanggan).',')
-                    ->line(__('Anda menerima email ini karena anda baru saja terpilih menerima promo service dari Astrido Toyota.'))
+                    ->line(__('Selamat Anda terpilih menerima promo service dari Astrido Toyota Pondok Cabe, Info lebih lanjut silahkan kujungi website.'))
                     ->action(__('Kunjungi Website'), $link)
                     ->line(__('Jika Anda tidak pernah melakukan registrasi atau transaksi ini, tidak ada tindakan lebih lanjut yang diperlukan.'));
     }

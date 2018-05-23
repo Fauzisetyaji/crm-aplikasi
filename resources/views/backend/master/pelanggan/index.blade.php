@@ -19,7 +19,7 @@
                     <tr>
                         <th>#</th>
                         <th>Nama</th>
-                        <th>No. ID Pelanggan</th>
+                        <th>NPWP</th>
                         <th>Alamat</th>
                         <th>No.Telp</th>
                         <th>Poin</th>

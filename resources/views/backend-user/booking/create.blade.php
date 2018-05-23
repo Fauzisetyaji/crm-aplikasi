@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="col-md-9">
-    <h4>Operasional aktivitas di tahun terkahir</h4>
+    <h4>Selamat Datang, untuk melakukan booking silahkan pilih tanggal terlebih dahulu.</h4>
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
-                    <label for="keterangan" class="col-md-2 control-label">Keterang</label>
+                    <label for="keterangan" class="col-md-2 control-label">Keterangan</label>
                     <div class="col-md-8">
                         <textarea class="form-control" name="keterangan" required>{{ old('keterangan') }}</textarea>
                     </div>

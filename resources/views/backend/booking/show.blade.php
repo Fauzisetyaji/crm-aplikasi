@@ -98,7 +98,7 @@
                         <th>#id</th>
                         <th>Kode Pelanggan</th>
                         <th>Nama</th>
-                        <th>ID Pelanggan</th>
+                        <th>NPWP</th>
                         <th>Alamat</th>
                         <th>No.Telp</th>
                         <th>Poin</th>
