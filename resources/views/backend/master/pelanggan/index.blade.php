@@ -17,7 +17,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>NPWP</th>
                         <th>Alamat</th>

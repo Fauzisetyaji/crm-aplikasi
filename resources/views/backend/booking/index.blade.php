@@ -17,7 +17,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
                         <th>No. Polisi</th>

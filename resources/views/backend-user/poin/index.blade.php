@@ -22,7 +22,7 @@
                 <div>
                     <hr>
                     <div class="stats">
-                        <i class="ti-reload"></i> Updated now
+                        <i class="ti-reload"></i> Tingkatkan terus poinmu 
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Nama Reward</th>
                         <th>Potongan Poin</th>
                         <th>Gambar</th>
@@ -80,7 +80,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Nama Reward</th>
                         <th>Poin</th>
                         <th>Gambar</th>
@@ -103,7 +103,7 @@
                         <td>{{ $item->date }}</td>
                         <td>
                             @if($item->count !== '0')
-                                <a href="{{ route('reward.claim', $item->id) }}" title="Batalkan"
+                                <a href="{{ route('reward.claim', $item->id) }}" title="Claim"
                                    onclick="event.preventDefault(); document.getElementById('claim-form-{{$item->id}}').submit();"
                                    class="btn btn-info" role="button">
                                    Claim
