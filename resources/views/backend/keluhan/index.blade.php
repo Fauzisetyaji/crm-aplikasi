@@ -18,7 +18,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Detail</th>
+                        <th>Keluhan</th>
                         <th>Jenis</th>
                         <th>Status</th>
                         <th>User</th>

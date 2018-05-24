@@ -18,7 +18,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Promo</th>
                         <th>Periode</th>
                         <th>Keterangan</th>

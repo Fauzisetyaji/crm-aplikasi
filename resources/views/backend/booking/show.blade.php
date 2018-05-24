@@ -34,7 +34,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#id</th>
+                        <th>Id Booking</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
                         <th>No. Polisi</th>
@@ -69,7 +69,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Id Service</th>
                         <th>Nama</th>
                         <th>Jenis</th>
                         <th>Poin</th>
@@ -95,8 +95,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#id</th>
-                        <th>Kode Pelanggan</th>
+                        <th>Id Pelanggan</th>
+
                         <th>Nama</th>
                         <th>NPWP</th>
                         <th>Alamat</th>
@@ -108,7 +108,7 @@
                     @foreach($pelanggans as $key => $pelanggan)
                     <tr>
                         <th scope="row">{{ $pelanggan->id }}</th>
-                        <td>{{ ($pelanggan->kode_pelanggan) ? $pelanggan->kode_pelanggan : '-' }}</td>
+                        
                         <td>{{ $pelanggan->nm_pelanggan }}</td>
                         <td>{{ ($pelanggan->id_number) ? $pelanggan->id_number : '-' }}</td>
                         <td>{{ $pelanggan->alamat }}</td>
