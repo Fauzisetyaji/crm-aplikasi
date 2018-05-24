@@ -18,7 +18,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Alamat</th>

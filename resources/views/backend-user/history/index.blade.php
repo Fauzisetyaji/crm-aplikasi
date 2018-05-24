@@ -15,7 +15,7 @@
                     <tr>
                         <th>No SPP</th>
                         <th>Tgl SPP</th>
-                        <th>Jenis Service</th>
+                        <th>Jenis Pelayanan</th>
                         <th>Suku Cadang</th>
                         <th>Keluhan</th>
                         <th>Saran Perbaikan</th>
