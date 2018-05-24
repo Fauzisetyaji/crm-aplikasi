@@ -17,8 +17,9 @@
                         <th>#id</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
+                        <th>No. Polisi</th>
                         <th>Status</th>
-                        <th>Jenis Service</th>
+                        <th>Jenis Pelayanan</th>
                         <th>Easy Service</th>
                         <th>Keterangan</th>
                     </tr>
@@ -28,6 +29,7 @@
                         <th scope="row">{{ $booking->id }}</th>
                         <td>{{ date('d-m-Y', strtotime($booking->date)) }}</td>
                         <td>{{ date('h:i:s', strtotime($booking->time)) }}</td>
+                        <td>{{ $booking->no_polisi }}</td>
                         <td>{{ ($booking->status) ? 'Diterima' : ($booking->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
                         <td>{{ $booking->jenis_service }}</td>
                         <td>
@@ -75,9 +77,8 @@
                 <thead>
                     <tr>
                         <th>#id</th>
-                        <th>Kode Pelanggan</th>
                         <th>Nama</th>
-                        <th>ID Pelanggan</th>
+                        <th>NPWP</th>
                         <th>Alamat</th>
                         <th>No.Telp</th>
                         <th>Poin</th>
@@ -87,7 +88,6 @@
                     @foreach($pelanggans as $key => $pelanggan)
                     <tr>
                         <th scope="row">{{ $pelanggan->id }}</th>
-                        <td>{{ ($pelanggan->kode_pelanggan) ? $pelanggan->kode_pelanggan : '-' }}</td>
                         <td>{{ $pelanggan->nm_pelanggan }}</td>
                         <td>{{ ($pelanggan->id_number) ? $pelanggan->id_number : '-' }}</td>
                         <td>{{ $pelanggan->alamat }}</td>
@@ -128,17 +128,17 @@
 @section('scripts')
 <style type="text/css">
 .cal-heatmap-container rect.highlight {
-    stroke: #444;
-    stroke-width: 1;
-}
-
-.cal-heatmap-container rect.now {
     stroke: red;
     stroke-width: 2;
 }
 
+.cal-heatmap-container rect.now {
+    stroke: #444;
+    stroke-width: 2;
+}
+
 .cal-heatmap-container text.now {
-    fill: red;
+    fill: #444;
     font-weight: 600;
 }
 

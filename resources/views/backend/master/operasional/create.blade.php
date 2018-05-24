@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create Operasional')
+@section('title', 'Entry Operasional')
 
 @section('content')
 <div class="col-md-9">

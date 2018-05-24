@@ -26,12 +26,12 @@ class Testimoni extends Model
     ];
 
     /**
-     * Get Pelamggan
+     * Get Pelanggan
      *
      * @return data type
      */
     public function pelanggan()
     {
-        return $this->belongsTo(Pelamggan::class, 'pelanggan_id');
+        return $this->belongsTo(Pelanggan::class, 'pelanggan_id');
     }
 }

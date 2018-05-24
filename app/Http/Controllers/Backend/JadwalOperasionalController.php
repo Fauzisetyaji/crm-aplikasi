@@ -57,7 +57,7 @@ class JadwalOperasionalController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->jadwalOperasional->get();
+        $list = $this->jadwalOperasional->orderBy('created_at', 'asc')->get();
 
         return view('backend.master.jadwal-operasional.index', [ 'list' => $list ]);
     }

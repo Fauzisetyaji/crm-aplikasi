@@ -38,7 +38,7 @@ class RewardController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->reward->get();
+        $list = $this->reward->orderBy('created_at', 'asc')->get();
 
         return view('backend.master.reward.index', [ 'list' => $list ]);
     }

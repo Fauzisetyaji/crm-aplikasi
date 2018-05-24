@@ -56,7 +56,7 @@ class Registered extends Notification implements ShouldQueue
         return (new MailMessage)
                     ->subject('Verifikasi Akun')
                     ->greeting('Hallo '.($notifiable->username ?: $notifiable->pelanggan->nm_pelanggan).',')
-                    ->line(__('Anda menerima email ini karena kami menerima permintaan Verifikasi akun Anda untuk kemudahan bertransaksi. ' . $this->user->username))
+                    ->line(__('Silahkan Anda melakukan verifikasi akun yang telah anda daftarkan dengan meng klik tombol dibawah ini. ' . $this->user->username))
                     ->action(__('Verifikasi Akun'), $link)
                     ->line(__('Jika Anda tidak pernah melakukan registrasi ini, tidak ada tindakan lebih lanjut yang diperlukan.'));
     }

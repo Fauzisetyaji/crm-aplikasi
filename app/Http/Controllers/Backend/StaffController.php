@@ -33,7 +33,7 @@ class StaffController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->staff->with('user')->get();
+        $list = $this->staff->with('user')->orderBy('created_at', 'asc')->get();
 
         return view('backend.master.staff.index', [ 'list' => $list ]);
     }

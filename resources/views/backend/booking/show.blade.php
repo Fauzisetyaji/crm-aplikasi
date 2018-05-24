@@ -37,6 +37,7 @@
                         <th>#id</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
+                        <th>No. Polisi</th>
                         <th>Status</th>
                         <th>Jenis Service</th>
                         <th>Easy Service</th>
@@ -48,6 +49,7 @@
                         <th scope="row">{{ $booking->id }}</th>
                         <td>{{ date('d-m-Y', strtotime($booking->date)) }}</td>
                         <td>{{ date('h:i:s', strtotime($booking->time)) }}</td>
+                        <td>{{ $booking->no_polisi }}</td>
                         <td>{{ ($booking->status) ? 'Diterima' : ($booking->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
                         <td>{{ $booking->jenis_service }}</td>
                         <td>
@@ -96,7 +98,7 @@
                         <th>#id</th>
                         <th>Kode Pelanggan</th>
                         <th>Nama</th>
-                        <th>ID Pelanggan</th>
+                        <th>NPWP</th>
                         <th>Alamat</th>
                         <th>No.Telp</th>
                         <th>Poin</th>

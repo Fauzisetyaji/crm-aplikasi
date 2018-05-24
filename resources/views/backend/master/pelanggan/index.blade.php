@@ -4,6 +4,11 @@
 
 @section('content')
 <div class="col-md-9">
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="panel panel-default">
         <div class="panel-heading">
             @yield('title')
@@ -12,10 +17,9 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Kode Pelanggan</th>
+                        <th>No</th>
                         <th>Nama</th>
-                        <th>ID Pelanggan</th>
+                        <th>NPWP</th>
                         <th>Alamat</th>
                         <th>No.Telp</th>
                         <th>Poin</th>
@@ -26,7 +30,6 @@
                     @foreach($list as $key => $item)
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ ($item->kode_pelanggan) ? $item->kode_pelanggan : '-' }}</td>
                         <td>{{ $item->nm_pelanggan }}</td>
                         <td>{{ ($item->id_number) ? $item->id_number : '-' }}</td>
                         <td>{{ $item->alamat }}</td>

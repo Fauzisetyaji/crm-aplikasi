@@ -16,9 +16,13 @@ class CreatePromosTable extends Migration
         Schema::create('promos', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
+            $table->enum('type', ['pelanggan', 'non-pelanggan'])->default('pelanggan');
             $table->string('nm_promo');
             $table->date('starts_on')->nullable()->default(null);
             $table->date('ends_on')->nullable()->default(null);
+            $table->longText('keterangan')->nullable()->default(null);
+            $table->uuid('pelanggan_id')->nullable()->default(null);
+            $table->uuid('service_id')->nullable()->default(null);
             $table->timestamps();
         });
     }

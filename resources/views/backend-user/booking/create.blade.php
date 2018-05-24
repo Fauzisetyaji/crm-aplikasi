@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="col-md-9">
-    <h4>Operasional aktivitas di tahun terkahir</h4>
+    <h4>Selamat Datang, untuk melakukan booking silahkan pilih tanggal terlebih dahulu.</h4>
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="row">
@@ -55,6 +55,33 @@
                     </div>
                 </div>
 
+                <div class="form-group{{ $errors->has('no_polisi') ? ' has-error' : '' }}">
+                    <label for="no_polisi" class="col-md-2 control-label">No. Polisi</label>
+                    <div class="col-md-4">
+                        <input type="text" name="no_polisi" class="form-control" value="" required>
+                        @if ($errors->has('no_polisi'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('no_polisi') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('jenis_service') ? ' has-error' : '' }}">
+                    <label for="jenis_service" class="col-md-2 control-label">Type Kendaraan</label>
+                    <div class="col-md-4">
+                        <select
+                            name="type_kendaraan" value="{{ old('jenis_service') }}" class="form-control" required>
+                            <option value="" disabled selected>Pilih type kendaraan</option>
+                            <option value="Avanza">Avanza</option>
+                            <option value="Agya">Agya</option>
+                            <option value="Calya">Calya</option>
+                            <option value="Rush">Rush</option>
+                            <option value="Yaris">Yaris</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group{{ $errors->has('service') ? ' has-error' : '' }}">
                     <label for="service" class="col-md-2 control-label">service</label>
                     <div class="col-md-4">
@@ -70,11 +97,11 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('jenis_service') ? ' has-error' : '' }}">
-                    <label for="jenis_service" class="col-md-2 control-label">Jenis Service</label>
+                    <label for="jenis_service" class="col-md-2 control-label">Jenis Pelayanan</label>
                     <div class="col-md-4">
                         <select
                             name="jenis_service" value="{{ old('jenis_service') }}" class="form-control" required>
-                            <option value="" disabled selected>Pilih jenis service</option>
+                            <option value="" disabled selected>Pilih jenis pelayanan</option>
                             <option value="workshop">To workshop</option>
                             <option value="tms">Toyota Mobile Service</option>
                         </select>
@@ -95,7 +122,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('keterangan') ? ' has-error' : '' }}">
-                    <label for="keterangan" class="col-md-2 control-label">Detail Service</label>
+                    <label for="keterangan" class="col-md-2 control-label">Keterangan</label>
                     <div class="col-md-8">
                         <textarea class="form-control" name="keterangan" required>{{ old('keterangan') }}</textarea>
                     </div>

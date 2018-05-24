@@ -113,27 +113,23 @@ class BookingController extends Controller
         $operasional = $this->operasional->find($jadwal->operasional_id);
         $service = $this->service->find($request->service);
         
-        if (Carbon::parse($request->time)->toDateTimeString() > $operasional->close_on) {
+        if (Carbon::parse($request->time)->toTimeString() > Carbon::parse($operasional->close_on)->toTimeString()) {
             return back()->withErrors(['time' => ['Melebihi batas jam operasional']]);
         }
 
         $this->booking->create([
             'date' => Carbon::parse($request->date),
             'time' => Carbon::parse($request->time)->toDateTimeString(),
+            'no_polisi' => $request->no_polisi,
             'status' => 0,
             'jenis_service' => $request->jenis_service,
             'easyService' => $request->easyService,
+            'type_kendaraan' => $request->type_kendaraan,
             'keterangan' => $request->keterangan,
             'pelanggan_id' => $this->user->pelanggan->id,
             'service_id' => $request->service,
             'jadwal_operasional_id' => $request->id_schedule,
         ]);
-
-        // $poin = $this->user->pelanggan->jml_poin;
-
-        // $this->user->pelanggan->update([
-        //     'jml_poin' => (int)$poin + (int)$service->poin
-        // ]);
 
         return redirect()->route('my-booking.index');
     }

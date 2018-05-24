@@ -57,6 +57,11 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @if(Auth::user()->roles ==='staff')
+                                    <li><a href="{{ route('profile.ubah') }}">Ubah Profile</a></li>
+                                    @elseif(Auth::user()->roles ==='pelanggan')
+                                    <li><a href="{{ route('ubah-profile.ubah') }}">Ubah Profile</a></li>
+                                    @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -95,14 +100,15 @@
                     <li><a class="dropdown-btn">Promo</a></li>
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
-                            <li><a href="">Promo Non Pelanggan</a></li>
-                            <li><a href="">Promo Pelanggan</a></li>
+                            <li><a href="{{ route('promo-non-pelanggan.index') }}">Promo Non Pelanggan</a></li>
+                            <li><a href="{{ route('promo.index') }}">Promo Pelanggan</a></li>
                         </ul>
                     </div>
                   </ul>
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('service.index') }}">Service</a></li>
                     <li><a href="{{ route('booking.index') }}">Booking</a></li>
+                    <li><a href="{{ route('artikel.index') }}">Artikel</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>
@@ -127,8 +133,10 @@
                     <li><a href="{{ route('my-booking.index') }}">Booking Service</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
-                    <!-- <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li> -->
-                    <li><a href="{{ route('my-profile.index') }}">My Profile</a></li>
+                    <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li>
+                    <li><a href="{{ route('my-testimoni.index') }}">Testimoni</a></li>
+                    <li><a href="{{ route('my-profile.index') }}">My Reward</a></li>
+                    <li><a href="{{ route('my-history.index') }}">History Service</a></li>
                   </ul>
                 </div>
                 @endif
@@ -142,8 +150,9 @@
                     <li><a class="dropdown-btn">Laporan</a></li>
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
-                            <li><a href="">Laporan Booking Service</a></li>
-                            <li><a href="">Laporan Pelanggan</a></li>
+                            <li><a href="{{ route('laporan.booking') }}">Booking Service</a></li>
+                            <li><a href="">Top Service</a></li>
+                            <li><a href="">Top Pelanggan</a></li>
                         </ul>
                     </div>
                   </ul>

@@ -4,6 +4,11 @@
 
 @section('content')
 <div class="col-md-9">
+    @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="panel panel-default">
         <div class="panel-heading">
             @yield('title')
@@ -13,7 +18,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Alamat</th>

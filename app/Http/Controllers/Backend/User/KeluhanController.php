@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Keluhan;
 
@@ -16,10 +17,25 @@ class KeluhanController extends Controller
     protected $keluhan;
 
     /**
+     * The User instance.
+     *
+     * @var \Illuminate\Support\Facades\Auth;
+     */
+    protected $user;
+
+    /**
      * Create a new controller instance.
      */
     public function __construct(Keluhan $keluhan)
     {
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+
+            return $next($request);
+        });
+
+        $this->middleware('auth');
+
         $this->keluhan = $keluhan;
     }
 
@@ -30,9 +46,9 @@ class KeluhanController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->keluhan->get();
+        $list = $this->keluhan->orderBy('created_at', 'asc')->get();
 
-        return view('backend.keluhan.index', [ 'list' => $list ]);
+        return view('backend-user.keluhan.index', [ 'list' => $list ]);
     }
 
     /**
@@ -42,7 +58,7 @@ class KeluhanController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend-user.keluhan.create');
     }
 
     /**
@@ -53,41 +69,14 @@ class KeluhanController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->keluhan->create([
+            'detail' => $request->detail,
+            'status' => false,
+            'pelanggan_id' => $this->user->pelanggan->id,
+            'tanggapan' => null
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return redirect(route('my-keluhan.index'))->with('success', __('Keluhan berhasil dibuat'));
     }
 
     /**
@@ -102,6 +91,6 @@ class KeluhanController extends Controller
 
         $keluhan->delete();
 
-        return redirect(route('keluhan.index'))->with('success', __('Keluhan has been successfully deleted'));
+        return redirect(route('my-keluhan.index'))->with('success', __('Keluhan berhasil dihapus'));
     }
 }

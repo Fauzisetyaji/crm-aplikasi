@@ -17,10 +17,9 @@ class CreateKeluhansTable extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->longText('detail');
-            $table->string('jenis');
             $table->boolean('status')->default(0);
             $table->uuid('pelanggan_id');
-            $table->uuid('staff_id');
+            $table->longText('tanggapan')->nullable()->default(null);
             $table->timestamps();
         });
     }

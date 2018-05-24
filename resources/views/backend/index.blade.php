@@ -16,32 +16,30 @@
                 </div>
             @endif
 
-            @if(Auth::user()->roles === 'staff')
-                <div class="col-md-9">
-                    <h5>Pelanggan Baru</h5>
-                    <canvas id="lineChartPelanggan" width="200" height="200"></canvas>
-                </div>
+            <div class="col-md-9">
+                <h5>Pelanggan Baru</h5>
+                <canvas id="lineChartPelanggan" width="200" height="200"></canvas>
+            </div>
 
-                <div class="col-md-6">
-                    <h5>Booking Service</h5>
-                    <canvas id="barChartBooking" width="200" height="200"></canvas>
-                </div>
+            <div class="col-md-6">
+                <h5>Booking Service</h5>
+                <canvas id="barChartBooking" width="200" height="200"></canvas>
+            </div>
 
-                <div class="col-md-6">
-                    <h5>Top Poin</h5>
-                    <canvas id="radarChartPoin" width="200" height="200"></canvas>
-                </div>
+            <div class="col-md-6">
+                <h5>Top Poin</h5>
+                <canvas id="radarChartPoin" width="200" height="200"></canvas>
+            </div>
 
-                <div class="col-md-6">
-                    <h5>Top Pelanggan</h5>
-                    <canvas id="barChartPelanggan" width="200" height="200"></canvas>
-                </div>
+            <div class="col-md-6">
+                <h5>Top Pelanggan</h5>
+                <canvas id="barChartPelanggan" width="200" height="200"></canvas>
+            </div>
 
-                <div class="col-md-6">
-                    <h5>Top Service</h5>
-                    <canvas id="pieChartService" width="200" height="200"></canvas>
-                </div>
-            @endif
+            <div class="col-md-6">
+                <h5>Top Service</h5>
+                <canvas id="pieChartService" width="200" height="200"></canvas>
+            </div>
 
         </div>
     </div>
@@ -59,8 +57,11 @@
     var pelanggans = {!! $pelanggans !!}
     var lblServices = [];
     var lblPelanggan = [];
+    var dataBooking = [];
+    var dataPoin = [];
     if (services.length > 0) {
         services.forEach((item) => {
+            dataBooking.push(item.booked)
             lblServices.push(item.nm_service)
         })
     }
@@ -68,6 +69,7 @@
     if (pelanggans.length > 0) {
         pelanggans.forEach((item) => {
             lblPelanggan.push(item.nm_pelanggan)
+            dataPoin.push(item.jml_poin)
         })
     }
 
@@ -129,7 +131,7 @@
             labels: lblPelanggan,
             datasets: [{
                 label: 'Pelanggan',
-                data: [4, 7, 3, 5, 8, 3 ,10, 4]
+                data: dataPoin
             }]
         },
         options: {
@@ -149,7 +151,7 @@
             labels: lblServices,
             datasets: [{
                 label: 'Booking',
-                data: [12, 19, 3, 5, 8, 3 ,10]
+                data: dataBooking
             }]
         },
         options: {
