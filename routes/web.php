@@ -26,6 +26,7 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::resource('pelanggan', 'PelangganController');
 		Route::resource('mekanik', 'MekanikController');
 		Route::resource('reward', 'RewardController');
+		Route::resource('artikel', 'ArtikelController');
 		Route::resource('booking', 'BookingController', ['except' => ['destroy']]);
 		Route::name('booking.confirm')->put('booking/confirm/{id}', 'BookingController@confirm');
 		Route::name('booking.cancel')->put('booking/cancel/{id}', 'BookingController@cancel');

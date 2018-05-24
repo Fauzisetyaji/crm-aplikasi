@@ -108,6 +108,7 @@
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('service.index') }}">Service</a></li>
                     <li><a href="{{ route('booking.index') }}">Booking</a></li>
+                    <li><a href="{{ route('artikel.index') }}">Artikel</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
                     <li><a href="{{ route('keluhan.index') }}">Keluhan</a></li>

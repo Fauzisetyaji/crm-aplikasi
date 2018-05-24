@@ -46,7 +46,7 @@ class KeluhanController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->keluhan->get();
+        $list = $this->keluhan->orderBy('created_at', 'asc')->get();
 
         return view('backend-user.keluhan.index', [ 'list' => $list ]);
     }
