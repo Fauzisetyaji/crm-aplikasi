@@ -55,6 +55,7 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::resource('my-booking', 'BookingController', ['except' => ['destroy']]);
 		Route::name('my-booking.cancel')->put('my-booking/cancel/{id}', 'BookingController@cancel');
 		Route::resource('my-keluhan', 'KeluhanController');
+		Route::resource('my-testimoni', 'TestimoniController');
 		Route::resource('my-profile', 'ProfileController');
 		Route::resource('my-history', 'HistoryController');
 		Route::name('my-history.cetak')->get('my-history/cetak/{id}', 'HistoryController@cetak');

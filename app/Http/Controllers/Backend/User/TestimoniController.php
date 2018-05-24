@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Backend\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Models\Keluhan;
+use App\Models\Testimoni;
 
-class KeluhanController extends Controller
+class TestimoniController extends Controller
 {
     /**
-     * The Keluhan instance.
+     * The Testimoni instance.
      *
-     * @var \App\Models\Keluhan
+     * @var \App\Models\Testimoni
      */
-    protected $keluhan;
+    protected $testimoni;
 
     /**
      * The User instance.
@@ -26,7 +26,7 @@ class KeluhanController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct(Keluhan $keluhan)
+    public function __construct(Testimoni $testimoni)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -36,7 +36,7 @@ class KeluhanController extends Controller
 
         $this->middleware('auth');
 
-        $this->keluhan = $keluhan;
+        $this->testimoni = $testimoni;
     }
 
     /**
@@ -46,9 +46,9 @@ class KeluhanController extends Controller
      */
     public function index(Request $request)
     {
-        $list = $this->keluhan->get();
+        $list = $this->testimoni->orderBy('created_at', 'asc')->get();
 
-        return view('backend-user.keluhan.index', [ 'list' => $list ]);
+        return view('backend-user.testimoni.index', [ 'list' => $list ]);
     }
 
     /**
@@ -58,7 +58,7 @@ class KeluhanController extends Controller
      */
     public function create()
     {
-        return view('backend-user.keluhan.create');
+        return view('backend-user.testimoni.create');
     }
 
     /**
@@ -69,14 +69,12 @@ class KeluhanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->keluhan->create([
+        $this->testimoni->create([
             'detail' => $request->detail,
-            'status' => false,
-            'pelanggan_id' => $this->user->pelanggan->id,
-            'tanggapan' => null
+            'pelanggan_id' => $this->user->pelanggan->id
         ]);
 
-        return redirect(route('my-keluhan.index'))->with('success', __('Keluhan berhasil dibuat'));
+        return redirect()->route('my-testimoni.index');
     }
 
     /**
@@ -85,12 +83,12 @@ class KeluhanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        $keluhan = $this->keluhan->find($id);
+        $testimoni = $this->testimoni->find($id);
 
-        $keluhan->delete();
+        $testimoni->delete();
 
-        return redirect(route('my-keluhan.index'))->with('success', __('Keluhan berhasil dihapus'));
+        return redirect(route('my-testimoni.index'))->with('success', __('Testimoni berhasil dihapus'));
     }
 }

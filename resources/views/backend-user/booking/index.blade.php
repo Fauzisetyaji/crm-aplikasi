@@ -17,6 +17,7 @@
                         <th>Tanggal</th>
                         <th>Jam</th>
                         <th>No. Polisi</th>
+                        <th>Type Kendaraan</th>
                         <th>Status</th>
                         <th>Jenis Pelayanan</th>
                         <th>Easy Service</th>
@@ -33,6 +34,7 @@
                         </td>
                         <td>{{ date('h:i:s', strtotime($item->time)) }}</td>
                         <td>{{ $item->no_polisi }}</td>
+                        <td>{{ $item->type_kendaraan }}</td>
                         <td>{{ ($item->status) ? 'Diterima' : ($item->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
                         <td>{{ $item->jenis_service }}</td>
                         <td>

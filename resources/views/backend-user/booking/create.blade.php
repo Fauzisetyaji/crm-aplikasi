@@ -67,6 +67,21 @@
                     </div>
                 </div>
 
+                <div class="form-group{{ $errors->has('jenis_service') ? ' has-error' : '' }}">
+                    <label for="jenis_service" class="col-md-2 control-label">Type Kendaraan</label>
+                    <div class="col-md-4">
+                        <select
+                            name="type_kendaraan" value="{{ old('jenis_service') }}" class="form-control" required>
+                            <option value="" disabled selected>Pilih type kendaraan</option>
+                            <option value="Avanza">Avanza</option>
+                            <option value="Agya">Agya</option>
+                            <option value="Calya">Calya</option>
+                            <option value="Rush">Rush</option>
+                            <option value="Yaris">Yaris</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group{{ $errors->has('service') ? ' has-error' : '' }}">
                     <label for="service" class="col-md-2 control-label">service</label>
                     <div class="col-md-4">

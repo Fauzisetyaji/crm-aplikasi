@@ -133,7 +133,7 @@
                                         
     									<tr style="border: 2px solid black; border-spacing: 5px;">
                                             <td style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ str_pad(1 + count($booking), 10, '0', STR_PAD_LEFT) }}</p>
+                                                <p style="text-align: center;">{{ str_pad(1 , 10, '0', STR_PAD_LEFT) }}</p>
                                             </td>
                                             <td style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
                                                 <p style="text-align: center;">{{ $booking->date }}</p>

@@ -57,8 +57,11 @@
     var pelanggans = {!! $pelanggans !!}
     var lblServices = [];
     var lblPelanggan = [];
+    var dataBooking = [];
+    var dataPoin = [];
     if (services.length > 0) {
         services.forEach((item) => {
+            dataBooking.push(item.booked)
             lblServices.push(item.nm_service)
         })
     }
@@ -66,6 +69,7 @@
     if (pelanggans.length > 0) {
         pelanggans.forEach((item) => {
             lblPelanggan.push(item.nm_pelanggan)
+            dataPoin.push(item.jml_poin)
         })
     }
 
@@ -127,7 +131,7 @@
             labels: lblPelanggan,
             datasets: [{
                 label: 'Pelanggan',
-                data: [4, 7, 3, 5, 8, 3 ,10, 4]
+                data: dataPoin
             }]
         },
         options: {
@@ -147,7 +151,7 @@
             labels: lblServices,
             datasets: [{
                 label: 'Booking',
-                data: [12, 19, 3, 5, 8, 3 ,10]
+                data: dataBooking
             }]
         },
         options: {

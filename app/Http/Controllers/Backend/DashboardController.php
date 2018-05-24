@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Models\Booking;
 use App\Models\Pelanggan;
 
 class DashboardController extends Controller
@@ -16,6 +17,13 @@ class DashboardController extends Controller
      * @var \App\Models\Service
      */
     protected $service;
+
+    /**
+     * The Booking instance.
+     *
+     * @var \App\Models\Booking
+     */
+    protected $booking;
 
     /**
      * The Pelanggan instance.
@@ -58,7 +66,10 @@ class DashboardController extends Controller
     {
         $services = $this->service->get();
         $pelanggans = $this->pelanggan->get();
-
+        foreach ($services as $key => $value) {
+            $value->booked = count($value->bookings);
+        }
+        
         return view('backend.index', compact('services', 'pelanggans'));
     }
 

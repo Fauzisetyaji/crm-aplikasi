@@ -132,7 +132,8 @@
                     <li><a href="{{ route('my-booking.index') }}">Booking Service</a></li>
                   </ul>
                   <ul class="nav nav-sidebar">
-                    <!-- <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li> -->
+                    <li><a href="{{ route('my-keluhan.index') }}">Keluhan</a></li>
+                    <li><a href="{{ route('my-testimoni.index') }}">Testimoni</a></li>
                     <li><a href="{{ route('my-profile.index') }}">My Reward</a></li>
                     <li><a href="{{ route('my-history.index') }}">History Service</a></li>
                   </ul>
