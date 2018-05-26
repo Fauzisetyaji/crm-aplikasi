@@ -19,8 +19,8 @@
                     <tr>
                         <th>#</th>
                         <th>Keluhan</th>
-                        <th>Jenis</th>
-                        <th>Status</th>
+                        
+                        
                         <th>User</th>
                         <th>Staff</th>
                         <th>Waktu dibuat</th>
@@ -32,9 +32,9 @@
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $item->detail }}</td>
-                        <td>{{ $item->jenis }}</td>
-                        <td>{{ ($item->status) ? 'Aktif' : 'Tidak' }}</td>
-                        <td>{{ $item->pelanggan }}</td>
+                        
+                        
+                        <td>{{ $item->user_id }}</td>
                         <td>{{ $item->staff }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td>
