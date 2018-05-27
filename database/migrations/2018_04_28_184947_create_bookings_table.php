@@ -16,6 +16,7 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
+            $table->string('booking_number')->nullable()->default(0);
             $table->date('date')->nullable()->default(null);
             $table->datetime('time')->nullable()->default(null);
             $table->string('no_polisi')->nullable()->default(null);
