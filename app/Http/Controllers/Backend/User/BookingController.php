@@ -116,8 +116,17 @@ class BookingController extends Controller
         if (Carbon::parse($request->time)->toTimeString() > Carbon::parse($operasional->close_on)->toTimeString()) {
             return back()->withErrors(['time' => ['Melebihi batas jam operasional']]);
         }
+        $bookings = $this->booking->get();
+        $booking = count($bookings);
+
+        if (is_null($booking) OR $booking === 0) {
+            $booking = 1;
+        }
+
+        $code = str_pad(0 + $booking, 7, '0', STR_PAD_LEFT);
 
         $this->booking->create([
+            'booking_number' => $code,
             'date' => Carbon::parse($request->date),
             'time' => Carbon::parse($request->time)->toDateTimeString(),
             'no_polisi' => $request->no_polisi,

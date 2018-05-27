@@ -73,9 +73,11 @@ class KeluhanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $keluhan = $this->keluhan->find($id);
+
+        return view('backend.keluhan.response', compact('keluhan'));
     }
 
     /**
@@ -87,7 +89,13 @@ class KeluhanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $keluhan = $this->keluhan->find($id);
+
+        $keluhan->update([
+            'tanggapan' => $request->tanggapan,
+        ]);
+
+        return redirect(route('keluhan.index'))->with('success', __('Keluhan berhasil ditanggapi'));
     }
 
     /**
