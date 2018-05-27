@@ -22,7 +22,6 @@
                         
                         
                         <th>User</th>
-                        <th>Staff</th>
                         <th>Waktu dibuat</th>
                         <th>Action</th>
                     </tr>
@@ -31,22 +30,31 @@
                     @foreach($list as $key => $item)
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ $item->detail }}</td>
+                        <td>
+                            @if(is_null($item->tanggapan))
+                                <a href="{{ route('keluhan.edit', $item->id) }}">
+                                    {{ $item->detail }}
+                                </a>
+                            @else
+                                {{ $item->detail }}
+                            @endif
+                        </td>
                         
                         
-                        <td>{{ $item->user_id }}</td>
-                        <td>{{ $item->staff }}</td>
+                        <td>{{ $item->pelanggan->nm_pelanggan }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td>
-                            <a href="{{ route('keluhan.destroy', $item->id) }}" title="Hapus"
-                               onclick="event.preventDefault(); document.getElementById('delete-form-{{$item->id}}').submit();"
-                               style="color: red; margin-left: 15px;">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
-                            <form id="delete-form-{{$item->id}}" action="{{ route('keluhan.destroy', $item->id) }}" method="POST" style="display: none;">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                            </form>
+                            @if(is_null($item->tanggapan))
+                                <a href="{{ route('keluhan.destroy', $item->id) }}" title="Hapus"
+                                   onclick="event.preventDefault(); document.getElementById('delete-form-{{$item->id}}').submit();"
+                                   style="color: red; margin-left: 15px;">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
+                                <form id="delete-form-{{$item->id}}" action="{{ route('keluhan.destroy', $item->id) }}" method="POST" style="display: none;">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

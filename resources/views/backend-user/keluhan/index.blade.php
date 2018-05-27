@@ -20,6 +20,7 @@
                     <tr>
                         <th>#</th>
                         <th>Isi Keluhan</th>
+                        <th>Tanggapan</th>
                         <th>Waktu dibuat</th>
                         <th>Action</th>
                     </tr>
@@ -29,6 +30,7 @@
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $item->detail }}</td>
+                        <td>{{ ($item->tanggapan) ? $item->tanggapan : 'Belum di tanggapi' }}</td>
                         <td>{{ $item->created_at->format('Y-m-d') }}</td>
                         <td>
                             <a href="{{ route('my-keluhan.destroy', $item->id) }}" title="Hapus"
