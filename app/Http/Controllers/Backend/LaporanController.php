@@ -74,7 +74,7 @@ class LaporanController extends Controller
 
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
-            $data[] = $this->booking->whereMonth('created_at', $date->month)->where('status', true)->with('pelanggan')->orderBy('created_at', 'asc')->get();
+            $data[] = $this->booking->whereMonth('date', $date->month)->where('status', true)->get();
         }
         
         $view = view('laporan.booking')->with([
