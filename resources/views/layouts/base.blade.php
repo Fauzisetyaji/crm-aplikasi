@@ -30,7 +30,7 @@
             <div class="container">
                 <a id="branding" href="index.html">
                     <img src="{{ asset('frontend-assets/images/logo.png') }}" alt="Company Logo" class="logo">
-                    <h1 class="site-title">Astrido<span> Toyota</span></h1>
+                    <h1 class="site-title">Astrido Toyota <span> Pondok Cabe</span></h1>
                 </a>
 
                 <nav class="main-navigation">

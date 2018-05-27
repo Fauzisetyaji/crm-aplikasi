@@ -34,7 +34,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Astrido Toyota
+                        Astrido Toyota Pondok Cabe
                     </a>
                 </div>
 

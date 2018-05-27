@@ -4,7 +4,7 @@
 <main class="main-content">
     <div class="fullwidth-block content">
         <div class="container">
-            <h2 class="entry-title">Natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto</h2>
+            <h2 class="entry-title">Lebih dekat dengan Astrido Toyota Pondok Cabe</h2>
 
             <div class="text-center">
                 <div class="filter-links filterable-nav">
@@ -12,13 +12,13 @@
                         <option value="*">Show all</option>
                         <option value=".cars">Cars</option>
                         <option value=".interior">Interior</option>
-                        <option value=".race">Race</option>
+                        <option value=".race">Mekanik</option>
                         <option value=".other">Other</option>
                     </select>
                     <a href="#" class="current wow fadeInRight" data-filter="*">Show all</a>
                     <a href="#" class="wow fadeInRight" data-wow-delay=".2s" data-filter=".cars">Cars</a>
                     <a href="#" class="wow fadeInRight" data-wow-delay=".4s" data-filter=".interior">Interior</a>
-                    <a href="#" class="wow fadeInRight" data-wow-delay=".6s" data-filter=".race">Race</a>
+                    <a href="#" class="wow fadeInRight" data-wow-delay=".6s" data-filter=".race">Mekanik</a>
                     <a href="#" class="wow fadeInRight" data-wow-delay=".8s" data-filter=".other">Other</a>
                 </div>
             </div>
