@@ -66,10 +66,20 @@ class LaporanController extends Controller
      */
     public function getLaporanBooking(Request $request)
     {
-        $bookings = $this->booking->where('status', true)->with('pelanggan')->orderBy('created_at', 'asc')->get();
+        $periodes = [];
+        $data = [];
+
+        $dateStart = \Carbon\Carbon::parse('2018-01-31');
+        $dateEnd = \Carbon\Carbon::parse('2018-12-31');
+
+        for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
+            $periodes[] = $date->format('F');
+            $data[] = $this->booking->whereMonth('created_at', $date->month)->where('status', true)->with('pelanggan')->orderBy('created_at', 'asc')->get();
+        }
         
         $view = view('laporan.booking')->with([
-            'bookings' => $bookings
+            'data' => $data,
+            'periodes' => $periodes
         ])->render();
 
         return $this->sendResponse($request, $view);

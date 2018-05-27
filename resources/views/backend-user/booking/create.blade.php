@@ -118,6 +118,7 @@
                             <option value="pickup">Pickup My - Car</option>
                             <option value="send">Send My - Car</option>
                             <option value="both">Pickup & Send My-Car</option>
+                            <option value="self">Self Service</option>
                         </select>
                     </div>
                 </div>

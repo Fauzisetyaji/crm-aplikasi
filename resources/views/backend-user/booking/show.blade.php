@@ -36,6 +36,7 @@
                             @if($booking->easyService === 'send') Pick-Up My Car
                             @elseif($booking->easyService === 'pickup') Send-Up My Car
                             @elseif($booking->easyService === 'both') Pick-Up & Send-Up My Car
+                            @elseif($booking->easyService === 'self') Selfe Service
                             @endif
                         </td>
 

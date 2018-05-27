@@ -33,6 +33,27 @@
             text-align: center;
             line-height: 35px;
         }
+        .red {
+            background-color: red;
+            opacity: 0.4;
+        }
+
+        .yellow {
+            background-color: yellow;
+            opacity: 0.3;
+        }
+
+        .blue {
+            background-color: blue;
+            opacity: 0.3;
+        }
+
+        .green {
+            background-color: green;
+            opacity: 0.3;
+        }
+
+
     </style>
     <body>
     <header>
@@ -103,58 +124,58 @@
                                 <table cellpadding="3" cellspacing="2" width="100%">
     								<thead>
     									<tr style="background-color: #eee;">
-    										<td height="20" style="border-right: 1px solid #000; width: 80px; text-align: center;">
-    											<p style="text-align: center; font-size: 9px; font-weight: 800;">Tanggal</p>
+    										<td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+    											<p style="text-align: center; font-size: 12px; font-weight: 800;">Periode</p>
     										</td>
-    										<td height="20" style="border-right: 1px solid #000; width: 80px; text-align: center;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 800;">Jam</p>
+    										<td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Total</p>
                                             </td>
-                                            <td height="20" style="border-right: 1px solid #000; width: 80px; text-align: center;">
-    											<p style="text-align: center; font-size: 9px; font-weight: 800;">No. Polisi</p>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">TMS</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Workshop</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Pick My Car</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Send My Car</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+    											<p style="text-align: center; font-size: 12px; font-weight: 800;">Pick & Send</p>
     										</td>
-    										<td height="20" style="border-right: 1px solid #000; width: 80px; text-align: center;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 800;">Service</p>
+    										<td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Self Service</p>
                                             </td>
-                                            <td height="20" style="border-right: 1px solid #000; width: 80px; text-align: center;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 800;">Easy Service</p>
-                                            </td>
-                                            <td height="20" style="border-right: 1px solid #000; width: 80px; text-align: center;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 800;">Keterangan</p>
-                                            </td>
-                                            <td height="20" style="width: 80px; text-align: center;">
-    											<p style="text-align: center; font-size: 9px; font-weight: 800;">Pelanggan</p>
-    										</td>
     									</tr>
     								</thead>
     								<tbody>
-                                        @foreach($bookings as $key => $item)
+                                        @foreach($data as $key => $item)
     									<tr style="border: 2px solid black; border-spacing: 5px;">
-                                            <td style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ $item->date }}</p>
+                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $periodes[$key] }}</p>
                                             </td>
-                                            <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ date('h:i:s', strtotime($item->time)) }}</p>
+                                            <td class="{{ (count($item) > 0) ? 'yellow' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
                                             </td>
-                                            <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ $item->no_polisi }}</p>
+                                            <td class="{{ (count($item->where('jenis_service', 'tms')) > 0) ? 'blue' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_service', 'tms')) }}</p>
                                             </td>
-                                            <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ $item->jenis_service }}</p>
+                                            <td class="{{ (count($item->where('jenis_service', 'workshop')) > 0) ? 'blue' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_service', 'workshop')) }}</p>
                                             </td>
-                                            <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">
-                                                @if($item->easyService === 'send') Pick-Up My Car
-                                                @elseif($item->easyService === 'pickup') Send-Up My Car
-                                                @elseif($item->easyService === 'both') Pick-Up & Send-Up My Car
-                                                @endif
-                                                </p>
+                                            <td class="{{ (count($item->where('easyService', 'pickup')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'pickup')) }}</p>
                                             </td>
-                                            <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ $item->keterangan }}</p>
+                                            <td class="{{ (count($item->where('easyService', 'send')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'send')) }}</p>
                                             </td>
-                                            <td style="border-top: 1px solid #000; width: 80px; text-align: center;">
-                                                <p style="text-align: center;">{{ $item->pelanggan->nm_pelanggan }}</p>
+                                            <td class="{{ (count($item->where('easyService', 'both')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'both')) }}</p>
                                             </td>
+                                            <td class="{{ (count($item->where('easyService', 'self')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'self')) }}</p>
     									</tr>
                                         @endforeach
     								</tbody>
