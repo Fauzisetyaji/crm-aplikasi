@@ -64,7 +64,7 @@ class HistoryController extends Controller
         $this->booking = $booking;
         $this->service = $service;
         $this->mekanik = $mekanik;
-        $this->saran = ['Service General', 'Service Berkala Internal', 'Service Berkala Eksternal'];
+        $this->saran = ['Tidak ada saran perbaikan', 'Service Berkala Internal', 'Service Berkala Eksternal'];
     }
 
     /**
