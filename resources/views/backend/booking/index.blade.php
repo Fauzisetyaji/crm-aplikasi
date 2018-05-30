@@ -17,7 +17,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>No. Booking</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
                         <th>No. Polisi</th>
@@ -31,7 +31,7 @@
                 <tbody>
                     @foreach($list as $key => $item)
                     <tr class="{{ ($item->cancellation) ? 'danger' : ($item->status ? 'info' : '') }}" title="{{ ($item->cancellation) ? 'Dibatalkan' : '' }}">
-                        <th scope="row">{{ $key + 1 }}</th>
+                        <th scope="row">{{ $item->booking_number }}</th>
                         <td>
                             <a href="{{ route('booking.show', $item->id) }}">{{ date('d-m-Y', strtotime($item->date)) }}</a>
                         </td>

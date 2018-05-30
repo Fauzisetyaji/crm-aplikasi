@@ -93,10 +93,23 @@ class LaporanController extends Controller
      */
     public function getLaporanService(Request $request)
     {
-        $bookings = $this->booking->where('status', true)->with('pelanggan')->get();
+        $periodes = [];
+        $data = [];
+
+        $dateStart = \Carbon\Carbon::parse('2018-01-31');
+        $dateEnd = \Carbon\Carbon::parse('2018-12-31');
+
+        $services = $this->service->with('bookings')->get();
+
+        for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
+            $periodes[] = $date->format('F');
+            $data[] = $services = $this->service->with('bookings')->get();
+        }
         
-        $view = view('laporan.booking')->with([
-            'bookings' => $bookings
+        $view = view('laporan.pelanggan')->with([
+            'data' => $data,
+            'services' => $services,
+            'periodes' => $periodes
         ])->render();
 
         return $this->sendResponse($request, $view);
@@ -110,12 +123,25 @@ class LaporanController extends Controller
      */
     public function getLaporanPelanggan(Request $request)
     {
-        $bookings = $this->booking->where('status', true)->with('pelanggan')->get();
-        
-        $view = view('laporan.booking')->with([
-            'bookings' => $bookings
-        ])->render();
+        $periodes = [];
+        $data = [];
 
+        $dateStart = \Carbon\Carbon::parse('2018-01-31');
+        $dateEnd = \Carbon\Carbon::parse('2018-12-31');
+
+        $services = $this->service->with('bookings')->get();
+
+        for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
+            $periodes[] = $date->format('F');
+            $data[] = $services = $this->service->with('bookings')->get();
+        }
+        
+        $view = view('laporan.pelanggan')->with([
+            'data' => $data,
+            'services' => $services,
+            'periodes' => $periodes
+        ])->render();
+        dd($data);
         return $this->sendResponse($request, $view);
     }
 
