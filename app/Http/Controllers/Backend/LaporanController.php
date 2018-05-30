@@ -95,6 +95,7 @@ class LaporanController extends Controller
     {
         $periodes = [];
         $data = [];
+        $dataBooking = [];
 
         $dateStart = \Carbon\Carbon::parse('2018-01-31');
         $dateEnd = \Carbon\Carbon::parse('2018-12-31');
@@ -104,10 +105,12 @@ class LaporanController extends Controller
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
             $data[] = $services = $this->service->with('bookings')->get();
+            $dataBooking[] = $this->booking->whereMonth('date', $date->month)->where('status', true)->with('service')->get();
         }
         
-        $view = view('laporan.pelanggan')->with([
+        $view = view('laporan.service')->with([
             'data' => $data,
+            'dataBooking' => $dataBooking,
             'services' => $services,
             'periodes' => $periodes
         ])->render();

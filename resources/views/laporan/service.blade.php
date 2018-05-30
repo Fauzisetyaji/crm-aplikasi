@@ -141,11 +141,11 @@
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $periodes[$key] }}</p>
                                             </td>
                                             @foreach($services as $k => $val)
-                                                @if ($k === $key)
+                                                
                                                 <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                     <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($val->bookings) }}</p>
                                                 </td>
-                                                @endif
+                                                
                                             @endforeach
                                         </tr>
                                         @endforeach
