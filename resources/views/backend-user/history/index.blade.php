@@ -26,7 +26,7 @@
                 <tbody>
                     @foreach($list as $key => $item)
                     <tr class="{{ ($item->cancellation) ? 'danger' : ($item->status ? 'info' : '') }}" title="{{ ($item->cancellation) ? 'Dibatalkan' : '' }}">
-                        <td scope="row">{{ str_pad($key + count($list), 10, '0', STR_PAD_LEFT) }}</td>
+                        <td scope="row">{{ str_pad($key + count($list), 7, '0', STR_PAD_LEFT) }}</td>
                         <td>
                             <a href="{{ route('my-booking.show', $item->id) }}">{{ date('d-m-Y', strtotime($item->date)) }}</a>
                         </td>
