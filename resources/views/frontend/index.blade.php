@@ -20,7 +20,7 @@
                 <div class="container">
                     <h2 class="slide-title">Promo khsus pelanggan baru</h2>
                     <p class="slide-desc">Dapatkan diskon service sampai dengan 70%!! <br> Silahkan daftarkan akun anda dan service kendaraan ada di Astrido Toyota pondok Cabe.</p>
-                    <a href="#" class="button">Read more</a>
+                    <a href="http://localhost:8000/register" class="button">Register</a>
                 </div>
             </li>
             <li data-bg-image="{{ asset('frontend-assets/dummy/slide-3.jpg') }}">
