@@ -29,7 +29,7 @@
         <header class="site-header">
             <div class="container">
                 <a id="branding" href="index.html">
-                    <img src="{{ asset('frontend-assets/images/logo.png') }}" alt="Company Logo" class="logo">
+                    <img src="{{ asset('img/logo-astrido.png') }}" alt="Company Logo" class="logo">
                     <h1 class="site-title">Astrido Toyota <span> Pondok Cabe</span></h1>
                 </a>
 
@@ -70,7 +70,7 @@
                     <a href="#"><i class="fa fa-pinterest"></i></a>
                 </div>
                 <div class="copy">
-                    <p>Copyright 2018 {{ config('app.name', 'Laravel') }}. All rights reserved.</p>
+                    <p>FauziSetyaji Copyright 2018  {{ config('app.name', 'Laravel') }}. Universitas Budi Luhur.</p>
                 </div>
             </div>
         </footer> <!-- .site-footer -->

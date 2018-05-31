@@ -4,25 +4,38 @@
 <main class="main-content">
     <div class="hero hero-slider">
         <ul class="slides">
-            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-1.jpg') }}">
+            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-3.jpg') }}">
                 <div class="container">
-                    <h2 class="slide-title">Place the header here</h2>
-                    <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
-                    <a href="#" class="button">Read more</a>
+                    <h1 class="slide-title">Booking service online</h1>
+                    <p class="slide-desc">
+
+<br>Siapa bilang servis kendaraan harus antri? Ya!!! Booking Service Solusinya.
+<br>Anda dapat melakukan booking service online di website 
+<br> Astrido Toyota Pondok Cabe 
+</p>
+                    <a href="http://localhost:8000/user/my-booking/create" class="button">Booking now</a>
                 </div>
             </li>
             <li data-bg-image="{{ asset('frontend-assets/dummy/slide-2.jpg') }}">
                 <div class="container">
-                    <h2 class="slide-title">Place the slide 2 header here</h2>
-                    <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
+                    <h2 class="slide-title">Promo khsus pelanggan baru</h2>
+                    <p class="slide-desc">Dapatkan diskon service sampai dengan 70%!! <br> Silahkan daftarkan akun anda dan service kendaraan ada di Astrido Toyota pondok Cabe.</p>
                     <a href="#" class="button">Read more</a>
                 </div>
             </li>
             <li data-bg-image="{{ asset('frontend-assets/dummy/slide-3.jpg') }}">
                 <div class="container">
-                    <h2 class="slide-title">Place third slide header here</h2>
+                    <h2 class="slide-title">Mekanik handal</h2>
                     <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
                     <a href="#" class="button">Read more</a>
+                </div>
+            </li>
+            </li>
+            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-2.jpg') }}">
+                <div class="container">
+                    <h2 class="slide-title">Reward </h2>
+                    <p class="slide-desc">Agar terciptanya loyalitas, <br> Kami akan memberikan reward kepada anda yang sering melakukan service kendaraan anda di Astrido Toyota Pondok Cabe!</p>
+                    <a href="http://localhost:8000/user/my-profile" class="button">Claim Now</a>
                 </div>
             </li>
         </ul>
@@ -30,36 +43,35 @@
 
     <div class="fullwidth-block">
         <div class="container">
-            <h2 class="section-title">Welcome to our website</h2>
-            <p class="section-desc">Occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-
+            <h2 class="section-title">Welcome to Astrido Toyota Pondok Cabe</h2>
+            <p class="section-desc">Kami sudah berpengalaman di dunia otomotif khususnya roda empat.</p>
             <div class="row">
                 
                 <div class="counter">
                     <img src="{{ asset('frontend-assets/images/icon-car.png') }}" class="counter-icon">
-                    <h3 class="counter-num">1500</h3>
-                    <small class="counter-label">car repaired</small>
+                    <h3 class="counter-num">>10000</h3>
+                    <small class="counter-label">Unit kendaraan kami service</small>
                 </div>
                 
                 
                 <div class="counter">
                     <img src="{{ asset('frontend-assets/images/icon-wrench.png') }}" class="counter-icon">
-                    <h3 class="counter-num">5000</h3>
-                    <small class="counter-label">diagnoses</small>
+                    <h3 class="counter-num">>5000</h3>
+                    <small class="counter-label">Diagnosa ditangani dengan baik </small>
                 </div>
                 
                 
                 <div class="counter">
                     <img src="{{ asset('frontend-assets/images/icon-gears.png') }}" class="counter-icon">
-                    <h3 class="counter-num">6000</h3>
-                    <small class="counter-label">gears changed</small>
+                    <h3 class="counter-num">>6000</h3>
+                    <small class="counter-label">Penggantian suku cadang</small>
                 </div>
                 
                 
                 <div class="counter last">
                     <img src="{{ asset('frontend-assets/images/icon-oil.png') }}" class="counter-icon">
-                    <h3 class="counter-num">1200</h3>
-                    <small class="counter-label">oil litres used</small>
+                    <h3 class="counter-num">>1200</h3>
+                    <small class="counter-label">Oil liter terpakai</small>
                 </div>
                 
             </div>
@@ -71,23 +83,23 @@
             <h2 class="section-title">Testimoni</h2>
             <div class="row">
                 <div class="hero hero-slider">
-                    <ul class="slides cut-slide">
+                    <ul class="slides cut-slide ">
                         <li>
                             <div class="container">
-                                <h4 class="slide-title">Place the header here</h2>
-                                <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
+                                <h4 class="slide-title">Bpk.Fauzi </h2>
+                                <p class="slide-desc">Layanan booking service online,  sangat berguna.</p>
                             </div>
                         </li>
                         <li>
                             <div class="container">
-                                <h4 class="slide-title">Place the header here</h2>
-                                <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
+                                <h4 class="slide-title">Kop Telkomsel</h2>
+                                <p class="slide-desc">Kami sudah pelanggan tetap sini, fasilitas yang ditawarkan sangat bagus.</p>
                             </div>
                         </li>
                         <li>
                             <div class="container">
-                                <h4 class="slide-title">Place the header here</h2>
-                                <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
+                                <h4 class="slide-title">Ibu.Rumah tangga</h2>
+                                <p class="slide-desc">Fasilitas dari easy service sangat bagus, karena memudahkan untuk ibu rumah tangga seperti saya.</p>
                             </div>
                         </li>
                     </ul>
@@ -98,15 +110,15 @@
 
     <div class="fullwidth-block">
         <div class="container">
-            <h2 class="section-title">Why choose us?</h2>
+            <h2 class="section-title">Kenapa Astrido Toyota Pondok Cabe?</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="feature">
                         <div class="feature-icon">
                             <img src="{{ asset('frontend-assets/images/icon-wheel-white.png') }}">
                         </div>
-                        <h3 class="feature-title">Sed ut perspiciatis unde omnis</h3>
-                        <p>Iste natus error sit voluptatem accusantium laudantium totam rem aperiam eaque ipsa quae dolor inventore dolor sit.</p>
+                        <h3 class="feature-title">Astrido Toyota Pondok Cabe</h3>
+                        <p>Kami sudah berpengalaman di dunia otomotif sejak 2011.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -114,8 +126,8 @@
                         <div class="feature-icon">
                             <img src="{{ asset('frontend-assets/images/icon-wrench-white.png') }}">
                         </div>
-                        <h3 class="feature-title">Nemo enim ipsam voluptatem</h3>
-                        <p>Iste natus error sit voluptatem accusantium laudantium totam rem aperiam eaque ipsa quae dolor inventore dolor sit.</p>
+                        <h3 class="feature-title">Service berkala</h3>
+                        <p>Silahkan lakukan service berkala kendaraan ada di Astrido Toyota Pondok Cabe.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -123,29 +135,29 @@
                         <div class="feature-icon">
                             <img src="{{ asset('frontend-assets/images/icon-key-white.png') }}">
                         </div>
-                        <h3 class="feature-title">Temporibus autem quibusdam</h3>
-                        <p>Iste natus error sit voluptatem accusantium laudantium totam rem aperiam eaque ipsa quae dolor inventore dolor sit.</p>
+                        <h3 class="feature-title">Pengamanan ketat</h3>
+                        <p>Pengamanan kendaraan saat masuk dan keluar akan di periksa.</p>
                     </div>
                 </div>
             </div> <!-- .row -->
         </div> <!-- .container -->
     </div> <!-- .fullwidth-block -->
 
-    <div class="fullwidth-block dark-bg" data-bg-color="#f63f3f">
+    <div class="fullwidth-block dark-bg" data-bg-color="#C43232">
         <div class="container">
-            <h2 class="section-title">Blog news</h2>
+            <h2 class="section-title">Berita - Artikel</h2>
             <ul class="news">
                 <li>
-                    <div class="entry-date"><span class="date">3</span><span class="month">July</span></div>
-                    <div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit alias nihil cumque ratione soluta ut laborum quod architecto vitae, eum magnam totam cupiditate accusantium. Perspiciatis iusto ex perferendis reprehenderit fugiat!</div>
+                    <div class="entry-date"><span class="date">1</span><span class="month">Februari</span></div>
+                    <div class="entry-summary">Layanan booking service online<br> layanan booking service online sudah dapat digunakan diwebsite ini, silahkan daftar untuk melakukan booking online.<br><a href="http://localhost:8000/user/my-booking/create" class="button">Read more</a></div>
                 </li>
                 <li>
-                    <div class="entry-date"><span class="date">30</span><span class="month">June</span></div>
-                    <div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit autem quasi nisi iure. Asperiores placeat enim id excepturi quas delectus error aliquam. Sed quo magnam dolor ratione voluptatum facere, nihil.</div>
+                    <div class="entry-date"><span class="date">19</span><span class="month">April</span></div>
+                    <div class="entry-summary">Rewad baru<br> silahkan lihat reward terbaru, claim sebelum kehabisan.<br><a href="http://localhost:8000/user/my-booking/create" class="button">Read more</a></div>
                 </li>
                 <li>
                     <div class="entry-date"><span class="date">28</span><span class="month">June</span></div>
-                    <div class="entry-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente eaque culpa optio voluptas rem, iusto soluta at temporibus commodi repellat dicta facilis sequi, quisquam a quia animi ad mollitia ab.</div>
+                    <div class="entry-summary">Cara mengatasi aki rusak atau soak!<br> Cara memulihkan aki yang telah ngedrop, rusak maupun soak dapat diterapkan dengan trik yang begitu ringan dan tentunya tak usah mengeluarkan banyak uang alias hemat. Aki motor maupun aki mobil pada dasarnya lama kelamaan pastinya akan terjadi kerusakan.<br><a href="#" class="button">Read more</a></div>
                 </li>
             </ul>
             <div class="text-center">
