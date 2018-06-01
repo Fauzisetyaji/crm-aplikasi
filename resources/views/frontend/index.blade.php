@@ -1,40 +1,42 @@
 @extends('layouts.base')
 
 @section('content')
+
 <main class="main-content">
+
     <div class="hero hero-slider">
         <ul class="slides">
-            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-3.jpg') }}">
+            <li data-bg-image="{{ asset('frontend-assets/dummy/new-foto.png') }}">
                 <div class="container">
-                    <h1 class="slide-title">Booking service online</h1>
+                    <h1 class="slide-title"><b>Booking service online</h1>
                     <p class="slide-desc">
 
 <br>Siapa bilang servis kendaraan harus antri? Ya!!! Booking Service Solusinya.
 <br>Anda dapat melakukan booking service online di website 
-<br> Astrido Toyota Pondok Cabe 
+<br> Astrido Toyota Pondok Cabe </b>
 </p>
                     <a href="http://localhost:8000/user/my-booking/create" class="button">Booking now</a>
                 </div>
             </li>
-            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-2.jpg') }}">
+            <li data-bg-image="{{ asset('frontend-assets/dummy/promo.png') }}">
                 <div class="container">
-                    <h2 class="slide-title">Promo khsus pelanggan baru</h2>
-                    <p class="slide-desc">Dapatkan diskon service sampai dengan 70%!! <br> Silahkan daftarkan akun anda dan service kendaraan ada di Astrido Toyota pondok Cabe.</p>
-                    <a href="http://localhost:8000/register" class="button">Register</a>
+                    <h2 class="slide-title"><b>Promo khsus pelanggan baru</h2>
+                    <p class="slide-desc">Dapatkan diskon service sampai dengan 70%!! <br> Silahkan daftarkan akun anda dan service kendaraan ada di Astrido Toyota pondok Cabe.</p></b>
+                    <a href="http://localhost:8000/register" class="button">Registers</a>
                 </div>
             </li>
             <li data-bg-image="{{ asset('frontend-assets/dummy/slide-3.jpg') }}">
                 <div class="container">
-                    <h2 class="slide-title">Mekanik handal</h2>
-                    <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p>
+                    <h2 class="slide-title"><b>Mekanik handal</h2>
+                    <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p></b>
                     <a href="#" class="button">Read more</a>
                 </div>
             </li>
             </li>
             <li data-bg-image="{{ asset('frontend-assets/dummy/slide-2.jpg') }}">
                 <div class="container">
-                    <h2 class="slide-title">Reward </h2>
-                    <p class="slide-desc">Agar terciptanya loyalitas, <br> Kami akan memberikan reward kepada anda yang sering melakukan service kendaraan anda di Astrido Toyota Pondok Cabe!</p>
+                    <h2 class="slide-title"><b>Reward </h2>
+                    <p class="slide-desc">Agar terciptanya loyalitas, <br> Kami akan memberikan reward kepada anda yang sering melakukan service kendaraan anda di Astrido Toyota Pondok Cabe!</p></b>
                     <a href="http://localhost:8000/user/my-profile" class="button">Claim Now</a>
                 </div>
             </li>
@@ -86,6 +88,7 @@
                     <ul class="slides cut-slide ">
                         <li>
                             <div class="container">
+
                                 <h4 class="slide-title">Bpk.Fauzi </h2>
                                 <p class="slide-desc">Layanan booking service online,  sangat berguna.</p>
                             </div>

@@ -64,14 +64,16 @@
         <footer class="site-footer">
             <div class="container">
                 <div class="social-links">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.twitter.com"><i  class=>share twitter</a>></i>
+                    <a href="https://www.facebook.com"><i  class=>share facebook</a>></i>
+                    <a href="#"><i class=twitter></i></a>
                     <a href="#"><i class="fa fa-google-plus"></i></a>
                     <a href="#"><i class="fa fa-pinterest"></i></a>
                 </div>
                 <div class="copy">
-                    <p>FauziSetyaji Copyright 2018  {{ config('app.name', 'Laravel') }}. Universitas Budi Luhur.</p>
+                    <p>FauziSetyaji Copyright 2018  {{ config('app.name', 'Laravel') }}. <a href="https://www.budiluhur.ac.id"><i  class=>Universitas Budi Luhur</a>></i>.</p>
                 </div>
+
             </div>
         </footer> <!-- .site-footer -->
 
