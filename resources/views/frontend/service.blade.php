@@ -7,7 +7,7 @@
             <h2 class="entry-title">Lakukan service berkla di Astrido Toyota Pondok Cabe</h2>
 
             <figure class="block">
-                <img src="{{ asset('frontend-assets/dummy/figure.jpg') }}" alt="">
+                <img src="{{ asset('frontend-assets/dummy/SHOWROOM TOYOTA.jpg') }}" alt="">
             </figure>  
             <h2>Apa manfaat dari Servis Berkala?</h2> 
             <p>• Servis Berkala secara RUTIN sangat penting untuk menjaga kendaraan TOYOTA Anda tetap dalam kondisi PRIMA
@@ -36,38 +36,38 @@
 
             <p>Astrido Toyota Pondok Cabe.  Telp : 021-7421888<br>
             <p>Demi meningkatkan kepuasan pelanggan, Astrido Toyota Pondok Cabe berkomitmen untuk terus meningkatkan kualitas pelayanan.
-            Untuk mendapatkan layanan ini, Anda bisa menghubungi booking servis bengkel Astrido Toyota Pondok Cabe.</p>
+            Untuk mendapatkan layanan ini, Anda bisa lakukan booking service online bengkel Astrido Toyota Pondok Cabe.</p>
 
             <div class="feature-grid">
                 <div class="feature">
                     <figure class="feature-image"><img src="{{ asset('frontend-assets/images/icon-cpu.png') }}" alt=""></figure>
-                    <h2 class="feature-title">CPU Diagnostics</h2>
-                    <p>Detect problems long before they cause a breakdown. Diagnostic tools can also check a cars computer system.</p>
+                    <h2 class="feature-title">Diagnostik CPU</h2>
+                    <p>Mendeteksi masalah jauh sebelum menyebabkan kerusakan. Alat diagnostik dapat memeriksa sistem.</p>
                 </div>
                 <div class="feature">
                     <figure class="feature-image"><img src="{{ asset('frontend-assets/images/icon-suspension.png') }}" alt=""></figure>
-                    <h2 class="feature-title">Suspension</h2>
-                    <p>Makes it possible to control the vehicle while driving. Car suspension works by absorbing the shock.</p>
+                    <h2 class="feature-title">Suspensi</h2>
+                    <p>Memungkinkan untuk mengendalikan kendaraan saat mengemudi. Suspensi menjaga kenyamanan saat berkendara. </p>
                 </div>
                 <div class="feature">
                     <figure class="feature-image"><img src="{{ asset('frontend-assets/images/icon-engine.png') }}" alt=""></figure>
-                    <h2 class="feature-title">Engine</h2>
-                    <p>Repair and tune-up to an engine overhaul, Repco Authorised Service have all the skills and expertise.</p>
+                    <h2 class="feature-title">Mesin</h2>
+                    <p>Perbaikan dan penyetelan perbaikan mesin, Service memiliki semua keahlian dan keahlian.</p>
                 </div>
                 <div class="feature">
                     <figure class="feature-image"><img src="{{ asset('frontend-assets/images/icon-brake.png') }}" alt=""></figure>
-                    <h2 class="feature-title">Brakes</h2>
-                    <p>Quick brake repair and replacement services for domestic and import vehicles.</p>
+                    <h2 class="feature-title">Rem</h2>
+                    <p>Layanan perbaikan dan penggantian rem cepat untuk kendaraan domestik dan impor.</p>
                 </div>
                 <div class="feature">
                     <figure class="feature-image"><img src="{{ asset('frontend-assets/images/icon-steering.png') }}" alt=""></figure>
-                    <h2 class="feature-title">Steering</h2>
-                    <p>The system usually contains a power steering pump, steering gear & linkages, drive belts, bearings, valves.</p>
+                    <h2 class="feature-title">Pengemudi</h2>
+                    <p>Sistem ini biasanya berisi pompa power steering, steering gear & linkages, drive belts, bearing, valves.</p>
                 </div>
                 <div class="feature">
                     <figure class="feature-image"><img src="{{ asset('frontend-assets/images/icon-exhaust.png') }}" alt=""></figure>
-                    <h2 class="feature-title">Exhaust System</h2>
-                    <p>We offer Competitive Precision Exhaust Systems and Repairs including Performance Exhaust Systems.</p>
+                    <h2 class="feature-title">Pembuangan</h2>
+                    <p>Kami menawarkan Sistem dan Perbaikan Kompetitif termasuk Sistem Knalpot Kinerja</p>
                 </div>
             </div>
         </div>

@@ -8,36 +8,38 @@
         <ul class="slides">
             <li data-bg-image="{{ asset('frontend-assets/dummy/new-foto.png') }}">
                 <div class="container">
-                    <h1 class="slide-title"><b>Booking service online</h1>
+
+                   <h1 class="slide-title"><b>Booking service online</h1>
                     <p class="slide-desc">
 
-<br>Siapa bilang servis kendaraan harus antri? Ya!!! Booking Service Solusinya.
-<br>Anda dapat melakukan booking service online di website 
+
 <br> Astrido Toyota Pondok Cabe </b>
 </p>
                     <a href="http://localhost:8000/user/my-booking/create" class="button">Booking now</a>
                 </div>
             </li>
-            <li data-bg-image="{{ asset('frontend-assets/dummy/promo.png') }}">
+            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-2.jpg') }}"> 
                 <div class="container">
                     <h2 class="slide-title"><b>Promo khsus pelanggan baru</h2>
                     <p class="slide-desc">Dapatkan diskon service sampai dengan 70%!! <br> Silahkan daftarkan akun anda dan service kendaraan ada di Astrido Toyota pondok Cabe.</p></b>
-                    <a href="http://localhost:8000/register" class="button">Registers</a>
+                    <a href="http://localhost:8000/register" class="button">Register</a>
+                   
                 </div>
             </li>
-            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-3.jpg') }}">
+            <li data-bg-image="{{ asset('frontend-assets/dummy/mekanik.png') }}">
                 <div class="container">
-                    <h2 class="slide-title"><b>Mekanik handal</h2>
+                    <!--<h2 class="slide-title"><b>Mekanik handal</h2>
                     <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p></b>
                     <a href="#" class="button">Read more</a>
-                </div>
+                </div>-->
             </li>
             </li>
             <li data-bg-image="{{ asset('frontend-assets/dummy/slide-2.jpg') }}">
                 <div class="container">
-                    <h2 class="slide-title"><b>Reward </h2>
-                    <p class="slide-desc">Agar terciptanya loyalitas, <br> Kami akan memberikan reward kepada anda yang sering melakukan service kendaraan anda di Astrido Toyota Pondok Cabe!</p></b>
+                    <h2 class="slide-title"><b>My Reward </h2>
+                    <p class="slide-desc">Kumpulkan poin, <br> Claim rewad sekarang juga!</p></b>
                     <a href="http://localhost:8000/user/my-profile" class="button">Claim Now</a>
+
                 </div>
             </li>
         </ul>
@@ -161,6 +163,7 @@
                 <li>
                     <div class="entry-date"><span class="date">28</span><span class="month">June</span></div>
                     <div class="entry-summary">Cara mengatasi aki rusak atau soak!<br> Cara memulihkan aki yang telah ngedrop, rusak maupun soak dapat diterapkan dengan trik yang begitu ringan dan tentunya tak usah mengeluarkan banyak uang alias hemat. Aki motor maupun aki mobil pada dasarnya lama kelamaan pastinya akan terjadi kerusakan.<br><a href="#" class="button">Read more</a></div>
+
                 </li>
             </ul>
             <div class="text-center">
