@@ -34,7 +34,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Id Booking</th>
+                        <th>No. Booking</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
                         <th>No. Polisi</th>
@@ -46,7 +46,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">{{ $booking->id }}</th>
+                        <th scope="row">{{ $booking->booking_number }}</th>
                         <td>{{ date('d-m-Y', strtotime($booking->date)) }}</td>
                         <td>{{ date('h:i:s', strtotime($booking->time)) }}</td>
                         <td>{{ $booking->no_polisi }}</td>
