@@ -119,10 +119,6 @@ class BookingController extends Controller
         $bookings = $this->booking->get();
         $booking = count($bookings);
 
-        if (is_null($booking) OR $booking === 0) {
-            $booking = 1;
-        }
-
         $code = str_pad(0 + ($booking + 1), 7, '0', STR_PAD_LEFT);
 
         $this->booking->create([
