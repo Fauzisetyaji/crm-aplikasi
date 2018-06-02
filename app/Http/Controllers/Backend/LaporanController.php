@@ -70,12 +70,21 @@ class LaporanController extends Controller
         $periodes = [];
         $data = [];
 
-        $dateStart = \Carbon\Carbon::parse('2018-01-31');
-        $dateEnd = \Carbon\Carbon::parse('2018-12-31');
+        if (is_null($request->year)) {
+            $year = Carbon::now()->setTimezone('Asia/Bangkok');
+        } else {
+            $year = Carbon::parse($request->year);
+        }
+
+        $dateStart = Carbon::parse('2018-01-31');
+        $dateEnd = Carbon::parse('2018-12-31');
 
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
-            $data[] = $this->booking->whereMonth('date', $date->month)->where('status', true)->get();
+            $data[] = $this->booking->where('status', true)
+                                    ->whereMonth('date', $date->month)
+                                    ->whereYear('date', $year->year)
+                                    ->get();
         }
         
         $view = view('laporan.booking')->with([
@@ -98,15 +107,24 @@ class LaporanController extends Controller
         $data = [];
         $dataBooking = [];
 
-        $dateStart = \Carbon\Carbon::parse('2018-01-31');
-        $dateEnd = \Carbon\Carbon::parse('2018-12-31');
+        if (is_null($request->year)) {
+            $year = Carbon::now()->setTimezone('Asia/Bangkok');
+        } else {
+            $year = Carbon::parse($request->year);
+        }
+
+        $dateStart = Carbon::parse('2018-01-31');
+        $dateEnd = Carbon::parse('2018-12-31');
 
         $services = $this->service->with('bookings')->get();
 
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
             $data[] = $services = $this->service->with('bookings')->get();
-            $dataBooking[] = $this->booking->whereMonth('date', $date->month)->where('status', true)->with('service')->get();
+            $dataBooking[] = $this->booking->where('status', true)
+                                            ->whereMonth('date', $date->month)
+                                            ->whereYear('date', $year->year)
+                                            ->with('service')->get();
         }
         
         $view = view('laporan.service')->with([
@@ -131,12 +149,21 @@ class LaporanController extends Controller
         $data = [];
         $pelanggans = [];
 
-        $dateStart = \Carbon\Carbon::parse('2018-01-31');
-        $dateEnd = \Carbon\Carbon::parse('2018-12-31');
+        if (is_null($request->year)) {
+            $year = Carbon::now()->setTimezone('Asia/Bangkok');
+        } else {
+            $year = Carbon::parse($request->year);
+        }
+
+        $dateStart = Carbon::parse('2018-01-31');
+        $dateEnd = Carbon::parse('2018-12-31');
 
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
-            $data[] = $this->booking->whereMonth('date', $date->month)->where('status', true)->with('pelanggan')->get();
+            $data[] = $this->booking->where('status', true)
+                                    ->whereMonth('date', $date->month)
+                                    ->whereYear('date', $year->year)
+                                    ->with('pelanggan')->get();
         }
 
         $pelanggans = $this->pelanggan->get();
@@ -156,6 +183,41 @@ class LaporanController extends Controller
             }
             
         }
+
+        return $this->sendResponse($request, $view);
+    }
+
+    /**
+     * Get laporan pelanggan Baru
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getLaporanPelangganBaru(Request $request)
+    {
+        $periodes = [];
+        $data = [];
+
+        if (is_null($request->year)) {
+            $year = Carbon::now()->setTimezone('Asia/Bangkok');
+        } else {
+            $year = Carbon::parse($request->year);
+        }
+
+        $dateStart = Carbon::parse('2018-01-31');
+        $dateEnd = Carbon::parse('2018-12-31');
+
+        for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
+            $periodes[] = $date->format('F');
+            $data[] = $this->pelanggan->whereMonth('created_at', $date->month)
+                                        ->whereYear('created_at', $year->year)
+                                        ->get();
+        }
+        
+        $view = view('laporan.pelanggan-baru')->with([
+            'data' => $data,
+            'periodes' => $periodes,
+        ])->render();
 
         return $this->sendResponse($request, $view);
     }

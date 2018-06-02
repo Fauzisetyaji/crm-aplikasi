@@ -42,12 +42,14 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::resource('service', 'ServiceController');
 		Route::resource('keluhan', 'KeluhanController');
 		Route::resource('testimoni', 'TestimoniController');
-		Route::name('laporan.booking')->get('laporan/booking', 'LaporanController@getLaporanBooking');
-		Route::name('laporan.service')->get('laporan/service', 'LaporanController@getLaporanService');
-		Route::name('laporan.pelanggan')->get('laporan/pelanggan', 'LaporanController@getLaporanPelanggan');
 		Route::name('profile.ubah')->get('profile', 'ProfileController@ubah');
 		Route::name('profile.update')->put('profile/{id}', 'ProfileController@update');
 		Route::name('profile.updatePassword')->put('profile-password/{id}', 'ProfileController@updatePassword');
+
+		Route::name('laporan.booking')->get('laporan/booking', 'LaporanController@getLaporanBooking');
+		Route::name('laporan.service')->get('laporan/service', 'LaporanController@getLaporanService');
+		Route::name('laporan.pelanggan')->get('laporan/pelanggan', 'LaporanController@getLaporanPelanggan');
+		Route::name('laporan.pelanggan-baru')->get('laporan/pelanggan-baru', 'LaporanController@getLaporanPelangganBaru');
 	});
 
 	
@@ -68,9 +70,11 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 
 	Route::prefix('kepala-cabang')->group(function () {
 		Route::get('/dashboard', 'DashboardController@index')->name('auth-home-branch');
+
 		Route::name('laporan.booking')->get('laporan/booking', 'LaporanController@getLaporanBooking');
 		Route::name('laporan.service')->get('laporan/service', 'LaporanController@getLaporanService');
 		Route::name('laporan.pelanggan')->get('laporan/pelanggan', 'LaporanController@getLaporanPelanggan');
+		Route::name('laporan.pelanggan-baru')->get('laporan/pelanggan-baru', 'LaporanController@getLaporanPelangganBaru');
 	});
 
 });

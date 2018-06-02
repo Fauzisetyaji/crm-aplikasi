@@ -119,8 +119,11 @@
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
                             <li><a href="{{ route('laporan.booking') }}">Booking Service</a></li>
-                            <li><a href="{{ route('laporan.service') }}">Top Service</a></li>
+                            <li><a href="{{ route('laporan.pelanggan') }}">Top Poin</a></li>
                             <li><a href="{{ route('laporan.pelanggan') }}">Top Pelanggan</a></li>
+                            <li><a href="{{ route('laporan.pelanggan') }}">Keluahan</a></li>
+                            <li><a href="{{ route('laporan.service') }}">Top Service</a></li>
+                            <li><a href="{{ route('laporan.pelanggan-baru') }}">Pelanggan Baru</a></li>
                         </ul>
                     </div>
                   </ul>
@@ -154,8 +157,11 @@
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
                             <li><a href="{{ route('laporan.booking') }}">Booking Service</a></li>
-                            <li><a href="">Top Service</a></li>
-                            <li><a href="">Top Pelanggan</a></li>
+                            <li><a href="{{ route('laporan.pelanggan') }}">Top Poin</a></li>
+                            <li><a href="{{ route('laporan.pelanggan') }}">Top Pelanggan</a></li>
+                            <li><a href="{{ route('laporan.pelanggan') }}">Keluahan</a></li>
+                            <li><a href="{{ route('laporan.service') }}">Top Service</a></li>
+                            <li><a href="{{ route('laporan.pelanggan-baru') }}">Pelanggan Baru</a></li>
                         </ul>
                     </div>
                   </ul>
