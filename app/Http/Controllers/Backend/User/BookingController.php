@@ -123,7 +123,7 @@ class BookingController extends Controller
             $booking = 1;
         }
 
-        $code = str_pad(0 + $booking, 7, '0', STR_PAD_LEFT);
+        $code = str_pad(0 + ($booking + 1), 7, '0', STR_PAD_LEFT);
 
         $this->booking->create([
             'booking_number' => $code,

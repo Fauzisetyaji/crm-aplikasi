@@ -44,7 +44,7 @@ class LaporanController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct(Booking $booking, Service $service)
+    public function __construct(Booking $booking, Service $service, Pelanggan $pelanggan)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -56,6 +56,7 @@ class LaporanController extends Controller
 
         $this->booking = $booking;
         $this->service = $service;
+        $this->pelanggan = $pelanggan;
     }
     
     /**
@@ -128,23 +129,34 @@ class LaporanController extends Controller
     {
         $periodes = [];
         $data = [];
+        $pelanggans = [];
 
         $dateStart = \Carbon\Carbon::parse('2018-01-31');
         $dateEnd = \Carbon\Carbon::parse('2018-12-31');
 
-        $services = $this->service->with('bookings')->get();
-
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
-            $data[] = $services = $this->service->with('bookings')->get();
+            $data[] = $this->booking->whereMonth('date', $date->month)->where('status', true)->with('pelanggan')->get();
         }
+
+        $pelanggans = $this->pelanggan->get();
         
         $view = view('laporan.pelanggan')->with([
             'data' => $data,
-            'services' => $services,
-            'periodes' => $periodes
+            'periodes' => $periodes,
+            'pelanggans' => $pelanggans
         ])->render();
-        dd($data);
+
+        for ($i=0; $i < count($data); $i++) { 
+                // dump($data[$i]);
+            for ($j=0; $j <= $i; $j++) {
+                if (isset($data[$i][$j])) {
+                    $data[$i][$j]->pelanggans = $this->pelanggan->find($data[$i][$j]->pelanggan->id);
+                }
+            }
+            
+        }
+
         return $this->sendResponse($request, $view);
     }
 
