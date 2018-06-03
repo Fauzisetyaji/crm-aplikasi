@@ -6,27 +6,27 @@
 
     <div class="hero hero-slider">
         <ul class="slides">
-            <li data-bg-image="{{ asset('frontend-assets/dummy/new-foto.png') }}">
+            <li data-bg-image="{{ asset('frontend-assets/dummy/banner1.png') }}">
                 <div class="container">
 
-                   <h1 class="slide-title"><b>Booking service online</h1>
+                   <h1 class="slide-title"><b> </h1>
                     <p class="slide-desc">
-
-
-<br> Astrido Toyota Pondok Cabe </b>
+<br>   </b>
 </p>
+<br><br><br><br><br><br><br><br>
                     <a href="http://localhost:8000/user/my-booking/create" class="button">Booking now</a>
                 </div>
             </li>
-            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-2.jpg') }}"> 
+            <li data-bg-image="{{ asset('frontend-assets/dummy/banner4.png') }}"> 
                 <div class="container">
-                    <h2 class="slide-title"><b>Promo khsus pelanggan baru</h2>
-                    <p class="slide-desc">Dapatkan diskon service sampai dengan 70%!! <br> Silahkan daftarkan akun anda dan service kendaraan ada di Astrido Toyota pondok Cabe.</p></b>
-                    <a href="http://localhost:8000/register" class="button">Register</a>
+                    <h2 class="slide-title"><b></h2>
+                    <p class="slide-desc"> </p></b>
+                    <br><br><br><br><br><br><br><br><br><br><br>
+                    <a href="http://localhost:8000/register" class="button">Registasi Sekarang!</a>
                    
                 </div>
             </li>
-            <li data-bg-image="{{ asset('frontend-assets/dummy/mekanik.png') }}">
+            <li data-bg-image="{{ asset('frontend-assets/dummy/banner2.png') }}">
                 <div class="container">
                     <!--<h2 class="slide-title"><b>Mekanik handal</h2>
                     <p class="slide-desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, <br> totam rem aperiam eaque ipsa quae ab illo inventore veritatis.</p></b>
@@ -34,10 +34,11 @@
                 </div>-->
             </li>
             </li>
-            <li data-bg-image="{{ asset('frontend-assets/dummy/slide-2.jpg') }}">
+            <li data-bg-image="{{ asset('frontend-assets/dummy/banner3.png') }}">
                 <div class="container">
-                    <h2 class="slide-title"><b>My Reward </h2>
-                    <p class="slide-desc">Kumpulkan poin, <br> Claim rewad sekarang juga!</p></b>
+                    
+                    <br><br><br><br><h2 class="slide-title"><font color=”#000000″><b>My Reward</font></h2>
+                    <p class="slide-desc"> </p></b>
                     <a href="http://localhost:8000/user/my-profile" class="button">Claim Now</a>
 
                 </div>

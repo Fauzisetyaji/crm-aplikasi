@@ -81,7 +81,7 @@
                     <a href="#"><i class="fa fa-pinterest"></i></a>
                 </div>
                 <div class="copy">
-                    <p>Fauzi Setyaji Copyright 2018  {{ config('app.name', 'Laravel') }}. <a href="https://www.budiluhur.ac.id"><i  class=>Universitas Budi Luhur</a>></i>.</p>
+                    <p>Fauzi Setyaji Copyright 2018  {{ config('app.name', 'Laravel') }}. <a href="https://www.budiluhur.ac.id"><i  class=>Universitas Budi Luhur</a></i>.</p>
                 </div>
 
             </div>
