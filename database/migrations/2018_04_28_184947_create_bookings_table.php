@@ -22,7 +22,7 @@ class CreateBookingsTable extends Migration
             $table->string('no_polisi')->nullable()->default(null);
             $table->datetime('cancellation')->nullable()->default(null);
             $table->boolean('status')->default(0);
-            $table->enum('jenis_service', ['workshop', 'tms'])->default('workshop');
+            $table->enum('jenis_pelayanan', ['workshop', 'tms'])->default('workshop');
             $table->enum('easyService', ['pickup', 'send', 'both', 'self'])->default('pickup');
             $table->enum('type_kendaraan', ['Avanza', 'Agya', 'Calya', 'Rush', 'Yaris']);
             $table->longText('keterangan')->nullable()->default(null);

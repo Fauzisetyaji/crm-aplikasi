@@ -58,6 +58,17 @@ class LaporanController extends Controller
         $this->service = $service;
         $this->pelanggan = $pelanggan;
     }
+
+    /**
+     * view pilih periode tahun
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function index(Request $request)
+    {
+        
+    }
     
     /**
      * get laporan booking
@@ -70,15 +81,16 @@ class LaporanController extends Controller
         $periodes = [];
         $data = [];
 
-        if (is_null($request->year)) {
-            $year = Carbon::now()->setTimezone('Asia/Bangkok');
-        } else {
-            $year = Carbon::parse($request->year);
+        $year = Carbon::now()->setTimezone('Asia/Bangkok');
+
+        $dateStart = Carbon::now()->startOfYear();
+        $dateEnd = Carbon::now()->endOfYear();
+        if ($request->has('periode')) {
+            $year = Carbon::create($request->periode);
+            $dateStart = Carbon::create($request->periode)->startOfYear();
+            $dateEnd = Carbon::create($request->periode)->endOfYear();
         }
-
-        $dateStart = Carbon::parse('2018-01-31');
-        $dateEnd = Carbon::parse('2018-12-31');
-
+        
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
             $data[] = $this->booking->where('status', true)
@@ -86,13 +98,20 @@ class LaporanController extends Controller
                                     ->whereYear('date', $year->year)
                                     ->get();
         }
-        
-        $view = view('laporan.booking')->with([
-            'data' => $data,
-            'periodes' => $periodes
-        ])->render();
 
-        return $this->sendResponse($request, $view);
+        if ($request->has('return')) {
+            if ($request->return === 'pdf') {
+
+                $view = view('laporan.booking')->with([
+                    'data' => $data,
+                    'periodes' => $periodes
+                ])->render();
+
+                return $this->sendResponse($request, $view);
+            }
+        } else {
+            return view('laporan.select-periode');
+        }
     }
 
     /**
@@ -107,14 +126,15 @@ class LaporanController extends Controller
         $data = [];
         $dataBooking = [];
 
-        if (is_null($request->year)) {
-            $year = Carbon::now()->setTimezone('Asia/Bangkok');
-        } else {
-            $year = Carbon::parse($request->year);
-        }
+        $year = Carbon::now()->setTimezone('Asia/Bangkok');
 
-        $dateStart = Carbon::parse('2018-01-31');
-        $dateEnd = Carbon::parse('2018-12-31');
+        $dateStart = Carbon::now()->startOfYear();
+        $dateEnd = Carbon::now()->endOfYear();
+        if ($request->has('periode')) {
+            $year = Carbon::create($request->periode);
+            $dateStart = Carbon::create($request->periode)->startOfYear();
+            $dateEnd = Carbon::create($request->periode)->endOfYear();
+        }
 
         $services = $this->service->with('bookings')->get();
 
@@ -127,14 +147,20 @@ class LaporanController extends Controller
                                             ->with('service')->get();
         }
         
-        $view = view('laporan.service')->with([
-            'data' => $data,
-            'dataBooking' => $dataBooking,
-            'services' => $services,
-            'periodes' => $periodes
-        ])->render();
+        if ($request->has('return')) {
+            if ($request->return === 'pdf') {
+                $view = view('laporan.service')->with([
+                    'data' => $data,
+                    'dataBooking' => $dataBooking,
+                    'services' => $services,
+                    'periodes' => $periodes
+                ])->render();
 
-        return $this->sendResponse($request, $view);
+                return $this->sendResponse($request, $view);
+            }
+        } else {
+            return view('laporan.select-periode');
+        }
     }
 
     /**
@@ -149,14 +175,15 @@ class LaporanController extends Controller
         $data = [];
         $pelanggans = [];
 
-        if (is_null($request->year)) {
-            $year = Carbon::now()->setTimezone('Asia/Bangkok');
-        } else {
-            $year = Carbon::parse($request->year);
-        }
+        $year = Carbon::now()->setTimezone('Asia/Bangkok');
 
-        $dateStart = Carbon::parse('2018-01-31');
-        $dateEnd = Carbon::parse('2018-12-31');
+        $dateStart = Carbon::now()->startOfYear();
+        $dateEnd = Carbon::now()->endOfYear();
+        if ($request->has('periode')) {
+            $year = Carbon::create($request->periode);
+            $dateStart = Carbon::create($request->periode)->startOfYear();
+            $dateEnd = Carbon::create($request->periode)->endOfYear();
+        }
 
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
@@ -167,24 +194,30 @@ class LaporanController extends Controller
         }
 
         $pelanggans = $this->pelanggan->get();
-        
-        $view = view('laporan.pelanggan')->with([
-            'data' => $data,
-            'periodes' => $periodes,
-            'pelanggans' => $pelanggans
-        ])->render();
 
-        for ($i=0; $i < count($data); $i++) { 
-                // dump($data[$i]);
-            for ($j=0; $j <= $i; $j++) {
-                if (isset($data[$i][$j])) {
-                    $data[$i][$j]->pelanggans = $this->pelanggan->find($data[$i][$j]->pelanggan->id);
+        if ($request->has('return')) {
+            if ($request->return === 'pdf') {
+                $view = view('laporan.pelanggan')->with([
+                    'data' => $data,
+                    'periodes' => $periodes,
+                    'pelanggans' => $pelanggans
+                ])->render();
+
+                for ($i=0; $i < count($data); $i++) { 
+                        // dump($data[$i]);
+                    for ($j=0; $j <= $i; $j++) {
+                        if (isset($data[$i][$j])) {
+                            $data[$i][$j]->pelanggans = $this->pelanggan->find($data[$i][$j]->pelanggan->id);
+                        }
+                    }
+                    
                 }
-            }
-            
-        }
 
-        return $this->sendResponse($request, $view);
+                return $this->sendResponse($request, $view);
+            }
+        } else {
+            return view('laporan.select-periode');
+        }
     }
 
     /**
@@ -198,14 +231,15 @@ class LaporanController extends Controller
         $periodes = [];
         $data = [];
 
-        if (is_null($request->year)) {
-            $year = Carbon::now()->setTimezone('Asia/Bangkok');
-        } else {
-            $year = Carbon::parse($request->year);
-        }
+        $year = Carbon::now()->setTimezone('Asia/Bangkok');
 
-        $dateStart = Carbon::parse('2018-01-31');
-        $dateEnd = Carbon::parse('2018-12-31');
+        $dateStart = Carbon::now()->startOfYear();
+        $dateEnd = Carbon::now()->endOfYear();
+        if ($request->has('periode')) {
+            $year = Carbon::create($request->periode);
+            $dateStart = Carbon::create($request->periode)->startOfYear();
+            $dateEnd = Carbon::create($request->periode)->endOfYear();
+        }
 
         for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
             $periodes[] = $date->format('F');
@@ -213,13 +247,19 @@ class LaporanController extends Controller
                                         ->whereYear('created_at', $year->year)
                                         ->get();
         }
-        
-        $view = view('laporan.pelanggan-baru')->with([
-            'data' => $data,
-            'periodes' => $periodes,
-        ])->render();
 
-        return $this->sendResponse($request, $view);
+        if ($request->has('return')) {
+            if ($request->return === 'pdf') {
+                $view = view('laporan.pelanggan-baru')->with([
+                    'data' => $data,
+                    'periodes' => $periodes,
+                ])->render();
+                
+                return $this->sendResponse($request, $view);
+            }
+        } else {
+            return view('laporan.select-periode');
+        }
     }
 
     /**
@@ -231,9 +271,7 @@ class LaporanController extends Controller
      */
     protected function sendResponse(Request $request, $view)
     {
-        
         return $this->generatePdf($view);
-        
     }
 
     /**

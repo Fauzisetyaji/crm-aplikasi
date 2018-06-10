@@ -127,7 +127,7 @@ class BookingController extends Controller
             'time' => Carbon::parse($request->time)->toDateTimeString(),
             'no_polisi' => $request->no_polisi,
             'status' => 0,
-            'jenis_service' => $request->jenis_service,
+            'jenis_pelayanan' => $request->jenis_service,
             'easyService' => $request->easyService,
             'type_kendaraan' => $request->type_kendaraan,
             'keterangan' => $request->keterangan,
