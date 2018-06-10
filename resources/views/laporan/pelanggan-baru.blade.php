@@ -65,7 +65,7 @@
                             <img width="120px" src="{{ public_path(). '/img/astrido.png' }}">
                         </td>
                         <td width="50%" align="center">
-                            <h2>Laporan Rekapitulasi Data Pelanggan Baru</h2>
+                            <h2>Laporan Pelanggan Baru</h2>
                         </td>
                         <td width="25%" align="right">
                             <h3>
