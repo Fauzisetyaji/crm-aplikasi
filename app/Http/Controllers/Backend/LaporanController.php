@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Service;
 use App\Models\Pelanggan;
+use App\Models\Keluhan;
 
 class LaporanController extends Controller
 {
@@ -42,9 +43,16 @@ class LaporanController extends Controller
     protected $pelanggan;
 
     /**
+     * The Keluhan instance
+     *
+     * @var \App\Models\Keluhan
+     */
+    public $keluhan;
+
+    /**
      * Create a new controller instance.
      */
-    public function __construct(Booking $booking, Service $service, Pelanggan $pelanggan)
+    public function __construct(Booking $booking, Service $service, Pelanggan $pelanggan, Keluhan $keluhan)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -57,6 +65,7 @@ class LaporanController extends Controller
         $this->booking = $booking;
         $this->service = $service;
         $this->pelanggan = $pelanggan;
+        $this->keluhan = $keluhan;
     }
 
     /**
@@ -154,6 +163,50 @@ class LaporanController extends Controller
                     'dataBooking' => $dataBooking,
                     'services' => $services,
                     'periodes' => $periodes
+                ])->render();
+
+                return $this->sendResponse($request, $view);
+            }
+        } else {
+            return view('laporan.select-periode');
+        }
+    }
+
+    /**
+     * get laporan keluhan
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getLaporanKeluhan(Request $request)
+    {
+        $periodes = [];
+        $data = [];
+        $pelanggans = [];
+
+        $year = Carbon::now()->setTimezone('Asia/Bangkok');
+
+        $dateStart = Carbon::now()->startOfYear();
+        $dateEnd = Carbon::now()->endOfYear();
+        if ($request->has('periode')) {
+            $year = Carbon::create($request->periode);
+            $dateStart = Carbon::create($request->periode)->startOfYear();
+            $dateEnd = Carbon::create($request->periode)->endOfYear();
+        }
+
+        for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
+            $periodes[] = $date->format('F');
+            $data[] = $this->keluhan->where('status', true)
+                                    ->whereMonth('created_at', $date->month)
+                                    ->whereYear('created_at', $year->year)
+                                    ->with('pelanggan')->get();
+        }
+
+        if ($request->has('return')) {
+            if ($request->return === 'pdf') {
+                $view = view('laporan.keluhan')->with([
+                    'data' => $data,
+                    'periodes' => $periodes,
                 ])->render();
 
                 return $this->sendResponse($request, $view);

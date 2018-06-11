@@ -60,6 +60,7 @@ class KeluhanController extends Controller
         $keluhan = $this->keluhan->find($id);
 
         $keluhan->update([
+            'status' => true,
             'tanggapan' => $request->tanggapan,
         ]);
 

@@ -121,7 +121,7 @@
                             <li><a href="{{ route('laporan.bookings') }}">Booking Service</a></li>
                             <li><a href="{{ route('laporan.pelanggans') }}">Top Poin</a></li>
                             <li><a href="{{ route('laporan.pelanggans') }}">Top Pelanggan</a></li>
-                            <li><a href="{{ route('laporan.pelanggans') }}">Keluahan</a></li>
+                            <li><a href="{{ route('laporan.keluhan') }}">Keluahan</a></li>
                             <li><a href="{{ route('laporan.services') }}">Top Service</a></li>
                             <li><a href="{{ route('laporan.pelanggans-baru') }}">Pelanggan Baru</a></li>
                         </ul>
