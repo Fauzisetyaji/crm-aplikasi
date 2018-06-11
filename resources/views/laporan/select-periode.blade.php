@@ -14,7 +14,7 @@
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('periode') ? ' has-error' : '' }}">
-                    <label for="name" class="col-md-2 col-md-offset-3 control-label">Tahun Periode</label>
+                    <label for="name" class="col-md-2 col-md-offset-3 control-label"> Pilih Tahun Periode</label>
                     <div class="col-md-3">
                         <input type="text" name="periode" class="form-control periode" value="{{ old('periode') }}" placeholder="dd-mm-yyyy">
                         @if ($errors->has('periode'))
