@@ -48,8 +48,9 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 
 		Route::name('laporan.bookings')->get('laporan/booking', 'LaporanController@getLaporanBooking');
 		Route::name('laporan.services')->get('laporan/service', 'LaporanController@getLaporanService');
-		Route::name('laporan.keluhan')->get('laporan/keluhan', 'LaporanController@getLaporanKeluhan');
+		Route::name('laporan.keluhans')->get('laporan/keluhan', 'LaporanController@getLaporanKeluhan');
 		Route::name('laporan.pelanggans')->get('laporan/pelanggan', 'LaporanController@getLaporanPelanggan');
+		Route::name('laporan.poins')->get('laporan/poins', 'LaporanController@getLaporanPoin');
 		Route::name('laporan.pelanggans-baru')->get('laporan/pelanggan-baru', 'LaporanController@getLaporanPelangganBaru');
 	});
 

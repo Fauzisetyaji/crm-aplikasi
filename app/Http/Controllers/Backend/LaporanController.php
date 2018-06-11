@@ -217,6 +217,63 @@ class LaporanController extends Controller
     }
 
     /**
+     * get laporan poin pelanggan
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getLaporanPoin(Request $request)
+    {
+        $periodes = [];
+        $data = [];
+        $pelanggans = [];
+
+        $year = Carbon::now()->setTimezone('Asia/Bangkok');
+
+        $dateStart = Carbon::now()->startOfYear();
+        $dateEnd = Carbon::now()->endOfYear();
+        if ($request->has('periode')) {
+            $year = Carbon::create($request->periode);
+            $dateStart = Carbon::create($request->periode)->startOfYear();
+            $dateEnd = Carbon::create($request->periode)->endOfYear();
+        }
+
+        for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
+            $periodes[] = $date->format('F');
+            $data[] = $this->booking->where('status', true)
+                                    ->whereMonth('date', $date->month)
+                                    ->whereYear('date', $year->year)
+                                    ->with('pelanggan')->get();
+        }
+
+        $pelanggans = $this->pelanggan->get();
+
+        if ($request->has('return')) {
+            if ($request->return === 'pdf') {
+                $view = view('laporan.poin')->with([
+                    'data' => $data,
+                    'periodes' => $periodes,
+                    'pelanggans' => $pelanggans
+                ])->render();
+
+                for ($i=0; $i < count($data); $i++) { 
+                        // dump($data[$i]);
+                    for ($j=0; $j <= $i; $j++) {
+                        if (isset($data[$i][$j])) {
+                            $data[$i][$j]->pelanggans = $this->pelanggan->find($data[$i][$j]->pelanggan->id);
+                        }
+                    }
+                    
+                }
+
+                return $this->sendResponse($request, $view);
+            }
+        } else {
+            return view('laporan.select-periode');
+        }
+    }
+
+    /**
      * get laporan pelanggan
      *
      * @param Request $request

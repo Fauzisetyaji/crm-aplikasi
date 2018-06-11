@@ -65,7 +65,7 @@
                             <img width="120px" src="{{ public_path(). '/img/astrido.png' }}">
                         </td>
                         <td width="50%" align="center">
-                            <h2>Laporan Rekapitulasi Data Keluhan</h2>
+                            <h2>Laporan Top Poin</h2>
                         </td>
                         <td width="25%" align="right">
                             <h3>
@@ -127,9 +127,11 @@
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
                                                 <p style="text-align: center; font-size: 12px; font-weight: 800;">Periode</p>
                                             </td>
+                                            @foreach($pelanggans as $pelanggan)
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Total Keluhan</p>
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">{{ $pelanggan->nm_pelanggan }}</p>
                                             </td>
+                                            @endforeach
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -140,6 +142,12 @@
                                             </td>
                                             <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
+                                            </td>
+                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
+                                            </td>
+                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_service', 'tms')) }}</p>
                                             </td>
                                         </tr>
                                         @endforeach
