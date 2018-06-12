@@ -21,7 +21,6 @@
     <script src="js/ie-support/html5.js"></script>
     <script src="js/ie-support/respond.js"></script>
     <![endif]-->
-
 </head>
 <body class="{{ Request::path() == '/' ? 'header-collapse' : '' }}">
     
@@ -29,8 +28,8 @@
         <header class="site-header">
             <div class="container">
                 <a id="branding" href="index.html">
-                    <img src="{{ asset('frontend-assets/images/logo.png') }}" alt="Company Logo" class="logo">
-                    <h1 class="site-title">Astrido<span> Toyota</span></h1>
+                    <img src="{{ asset('img/logo-astrido.png') }}" alt="Company Logo" class="logo">
+                    <h1 class="site-title">Astrido Toyota <span> Pondok Cabe</span></h1>
                 </a>
 
                 <nav class="main-navigation">
@@ -64,14 +63,27 @@
         <footer class="site-footer">
             <div class="container">
                 <div class="social-links">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <!--<a href="https://www.twitter.com"><i  class=>share twitter</a>></i>
+                    <a href="https://www.facebook.com"><i  class=>share facebook</a>></i>-->
+                   <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v3.0';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="box_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Bagikan</a></div>
+
+
+                    <a href="#"><i class=twitter></i></a>
                     <a href="#"><i class="fa fa-google-plus"></i></a>
                     <a href="#"><i class="fa fa-pinterest"></i></a>
                 </div>
                 <div class="copy">
-                    <p>Copyright 2018 {{ config('app.name', 'Laravel') }}. All rights reserved.</p>
+                    <p>Fauzi Setyaji Copyright 2018  {{ config('app.name', 'Laravel') }}. <a href="https://www.budiluhur.ac.id"><i  class=>Universitas Budi Luhur</a></i>.</p>
                 </div>
+
             </div>
         </footer> <!-- .site-footer -->
 
@@ -83,7 +95,8 @@
     <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
     <script src="{{ asset('frontend-assets/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend-assets/js/app.js') }}"></script>
-    
+  
+
 </body>
 
 </html>

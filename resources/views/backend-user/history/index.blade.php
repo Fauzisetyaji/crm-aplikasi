@@ -26,11 +26,11 @@
                 <tbody>
                     @foreach($list as $key => $item)
                     <tr class="{{ ($item->cancellation) ? 'danger' : ($item->status ? 'info' : '') }}" title="{{ ($item->cancellation) ? 'Dibatalkan' : '' }}">
-                        <td scope="row">{{ str_pad($key + count($list), 10, '0', STR_PAD_LEFT) }}</td>
+                        <td scope="row">{{ $item->booking_number }}</td>
                         <td>
                             <a href="{{ route('my-booking.show', $item->id) }}">{{ date('d-m-Y', strtotime($item->date)) }}</a>
                         </td>
-                        <td>{{ $item->jenis_service }}</td>
+                        <td>{{ $item->jenis_pelayanan }}</td>
                         <td>-</td>
                         <td>{!! strip_tags(str_limit($item->keterangan, 80)) !!}</td>
                         <td>{{ isset($saran[$key]) ? $saran[$key] : (isset($saran[0]) ? $saran[0] : '-') }}</td>

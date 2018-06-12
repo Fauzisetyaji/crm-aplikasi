@@ -133,13 +133,13 @@
                                         
     									<tr style="border: 2px solid black; border-spacing: 5px;">
                                             <td style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ str_pad(1 , 10, '0', STR_PAD_LEFT) }}</p>
+                                                <p style="text-align: center;">{{ str_pad(1 , 7, '0', STR_PAD_LEFT) }}</p>
                                             </td>
                                             <td style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
                                                 <p style="text-align: center;">{{ $booking->date }}</p>
                                             </td>
                                             <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ $booking->jenis_service }}</p>
+                                                <p style="text-align: center;">{{ $booking->jenis_pelayanan }}</p>
                                             </td>
                                             <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
                                                 <p style="text-align: center;">-</p>
@@ -148,7 +148,7 @@
                                                 <p style="text-align: center;">{{ $booking->keterangan }}</p>
                                             </td>
                                             <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ isset($saran[1]) ? $saran[1] : (isset($saran[0]) ? $saran[0] : '-') }}</p>
+                                                <p style="text-align: center;">{{ isset($saran[0]) ? $saran[0] : (isset($saran[0]) ? $saran[0] : '-') }}</p>
                                             </td>
                                             <td style="border-top: 1px solid #000; width: 80px; text-align: center;">
                                                 <p style="text-align: center;">{{ isset($mekaniks[1]) ? $mekaniks[1]->nm_mekanik : (isset($mekaniks[0]) ? $mekaniks[0]->nm_mekanik : '-') }}</p>

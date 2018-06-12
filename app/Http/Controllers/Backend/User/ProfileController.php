@@ -174,7 +174,7 @@ class ProfileController extends Controller
     {
         $rewards = $this->reward->get();
 
-        $code = str_pad(0+count($rewards), 10, '0', STR_PAD_LEFT);
+        $code = str_pad( 0 + (count($rewards) + 1), 10, '0', STR_PAD_LEFT);
     
         $reward = $this->reward->findOrFail($id);
         $pelanggan = $this->user->pelanggan;

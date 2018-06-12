@@ -16,13 +16,14 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
+            $table->string('booking_number')->nullable()->default(0);
             $table->date('date')->nullable()->default(null);
             $table->datetime('time')->nullable()->default(null);
             $table->string('no_polisi')->nullable()->default(null);
             $table->datetime('cancellation')->nullable()->default(null);
             $table->boolean('status')->default(0);
-            $table->enum('jenis_service', ['workshop', 'tms'])->default('workshop');
-            $table->enum('easyService', ['pickup', 'send', 'both'])->default('pickup');
+            $table->enum('jenis_pelayanan', ['workshop', 'tms'])->default('workshop');
+            $table->enum('easyService', ['pickup', 'send', 'both', 'self'])->default('pickup');
             $table->enum('type_kendaraan', ['Avanza', 'Agya', 'Calya', 'Rush', 'Yaris']);
             $table->longText('keterangan')->nullable()->default(null);
             $table->uuid('pelanggan_id');

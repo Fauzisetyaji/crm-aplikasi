@@ -20,8 +20,10 @@
                     <tr>
                         <th>#</th>
                         <th>Isi Keluhan</th>
+                        <th>Tanggapan</th>
+                        <th>Staff</th>
                         <th>Waktu dibuat</th>
-                        <th>Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -29,18 +31,10 @@
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $item->detail }}</td>
+                        <td>{{ ($item->tanggapan) ? $item->tanggapan : 'Belum di tanggapi' }}</td>
+                        <td>{{ isset($item->staff) ? $item->staff->nm_staff : '-' }}</td>
                         <td>{{ $item->created_at->format('Y-m-d') }}</td>
-                        <td>
-                            <a href="{{ route('my-keluhan.destroy', $item->id) }}" title="Hapus"
-                               onclick="event.preventDefault(); document.getElementById('delete-form-{{$item->id}}').submit();"
-                               style="color: red; margin-left: 15px;">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
-                            <form id="delete-form-{{$item->id}}" action="{{ route('my-keluhan.destroy', $item->id) }}" method="POST" style="display: none;">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                            </form>
-                        </td>
+                        
                     </tr>
                     @endforeach
                 </tbody>

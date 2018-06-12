@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Keluhan;
 
@@ -16,10 +17,23 @@ class KeluhanController extends Controller
     protected $keluhan;
 
     /**
+     * The User instance.
+     *
+     * @var \Illuminate\Support\Facades\Auth;
+     */
+    protected $user;
+
+    /**
      * Create a new controller instance.
      */
     public function __construct(Keluhan $keluhan)
     {
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+
+            return $next($request);
+        });
+
         $this->keluhan = $keluhan;
     }
 
@@ -36,46 +50,16 @@ class KeluhanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $keluhan = $this->keluhan->find($id);
+
+        return view('backend.keluhan.response', compact('keluhan'));
     }
 
     /**
@@ -87,7 +71,15 @@ class KeluhanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $keluhan = $this->keluhan->find($id);
+
+        $keluhan->update([
+            'status' => true,
+            'tanggapan' => $request->tanggapan,
+            'staff_id' => $this->user->staff->id,
+        ]);
+
+        return redirect(route('keluhan.index'))->with('success', __('Keluhan berhasil ditanggapi'));
     }
 
     /**

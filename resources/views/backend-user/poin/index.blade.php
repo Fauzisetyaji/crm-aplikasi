@@ -22,7 +22,9 @@
                 <div>
                     <hr>
                     <div class="stats">
-                        <i class="ti-reload"></i> Tingkatkan terus poinmu 
+                        <i class="ti-reload"></i><font size="3"> Tingkatkan terus poinmu <br></font>
+                        <i class="ti-reload"></i><b><font size="4">{{$user->pelanggan->nm_pelanggan}}</b></font>
+
                     </div>
                 </div>
             </div>

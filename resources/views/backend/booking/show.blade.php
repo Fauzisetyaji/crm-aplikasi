@@ -34,28 +34,29 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#id</th>
+                        <th>No. Booking</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
                         <th>No. Polisi</th>
                         <th>Status</th>
-                        <th>Jenis Service</th>
+                        <th>Jenis Pelayanan</th>
                         <th>Easy Service</th>
                         <th>Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">{{ $booking->id }}</th>
+                        <th scope="row">{{ $booking->booking_number }}</th>
                         <td>{{ date('d-m-Y', strtotime($booking->date)) }}</td>
                         <td>{{ date('h:i:s', strtotime($booking->time)) }}</td>
                         <td>{{ $booking->no_polisi }}</td>
                         <td>{{ ($booking->status) ? 'Diterima' : ($booking->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
-                        <td>{{ $booking->jenis_service }}</td>
+                        <td>{{ $booking->jenis_pelayanan }}</td>
                         <td>
                             @if($booking->easyService === 'send') Pick-Up My Car
                             @elseif($booking->easyService === 'pickup') Send-Up My Car
                             @elseif($booking->easyService === 'both') Pick-Up & Send-Up My Car
+                            @elseif($booking->easyService === 'self') Selfe Service
                             @endif
                         </td>
                         <td>{!! strip_tags(str_limit($booking->keterangan, 80)) !!}</td>
@@ -69,7 +70,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Id Service</th>
                         <th>Nama</th>
                         <th>Jenis</th>
                         <th>Poin</th>
@@ -95,8 +96,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#id</th>
-                        <th>Kode Pelanggan</th>
+                        <th>Id Pelanggan</th>
+
                         <th>Nama</th>
                         <th>NPWP</th>
                         <th>Alamat</th>
@@ -108,7 +109,7 @@
                     @foreach($pelanggans as $key => $pelanggan)
                     <tr>
                         <th scope="row">{{ $pelanggan->id }}</th>
-                        <td>{{ ($pelanggan->kode_pelanggan) ? $pelanggan->kode_pelanggan : '-' }}</td>
+                        
                         <td>{{ $pelanggan->nm_pelanggan }}</td>
                         <td>{{ ($pelanggan->id_number) ? $pelanggan->id_number : '-' }}</td>
                         <td>{{ $pelanggan->alamat }}</td>

@@ -65,7 +65,7 @@
                             <img width="120px" src="{{ public_path(). '/img/astrido.png' }}">
                         </td>
                         <td width="50%" align="center">
-                            <h2>Laporan Rekapitulasi Tahunan Booking Service</h2>
+                            <h2>Laporan Top Poin</h2>
                         </td>
                         <td width="25%" align="right">
                             <h3>
@@ -122,63 +122,36 @@
                         <td width="100%" valign="top">
                             <section>
                                 <table cellpadding="3" cellspacing="2" width="100%">
-    								<thead>
-    									<tr style="background-color: #eee;">
-    										<td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-    											<p style="text-align: center; font-size: 12px; font-weight: 800;">Periode</p>
-    										</td>
-    										<td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Total</p>
-                                            </td>
+                                    <thead>
+                                        <tr style="background-color: #eee;">
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">TMS</p>
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Periode</p>
                                             </td>
+                                            @foreach($pelanggans as $pelanggan)
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Workshop</p>
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">{{ $pelanggan->nm_pelanggan }}</p>
                                             </td>
-                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Pick My Car</p>
-                                            </td>
-                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Send My Car</p>
-                                            </td>
-                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-    											<p style="text-align: center; font-size: 12px; font-weight: 800;">Pick & Send</p>
-    										</td>
-    										<td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Self Service</p>
-                                            </td>
-    									</tr>
-    								</thead>
-    								<tbody>
+                                            @endforeach
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         @foreach($data as $key => $item)
-    									<tr style="border: 2px solid black; border-spacing: 5px;">
+                                        <tr style="border: 2px solid black; border-spacing: 5px;">
                                             <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $periodes[$key] }}</p>
                                             </td>
-                                            <td class="{{ (count($item) > 0) ? 'yellow' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
                                             </td>
-                                            <td class="{{ (count($item->where('jenis_pelayanan', 'tms')) > 0) ? 'blue' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_pelayanan', 'tms')) }}</p>
+                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
                                             </td>
-                                            <td class="{{ (count($item->where('jenis_pelayanan', 'workshop')) > 0) ? 'blue' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_pelayanan', 'workshop')) }}</p>
+                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_service', 'tms')) }}</p>
                                             </td>
-                                            <td class="{{ (count($item->where('easyService', 'pickup')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'pickup')) }}</p>
-                                            </td>
-                                            <td class="{{ (count($item->where('easyService', 'send')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'send')) }}</p>
-                                            </td>
-                                            <td class="{{ (count($item->where('easyService', 'both')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'both')) }}</p>
-                                            </td>
-                                            <td class="{{ (count($item->where('easyService', 'self')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'self')) }}</p>
-    									</tr>
+                                        </tr>
                                         @endforeach
-    								</tbody>
+                                    </tbody>
                                 </table>
                             </section>
                         </td>

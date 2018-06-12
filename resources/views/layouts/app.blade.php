@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +20,7 @@
 
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -34,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Astrido Toyota
+                        Astrido Toyota Pondok Cabe
                     </a>
                 </div>
 
@@ -80,6 +82,7 @@
                 </div>
             </div>
         </nav>
+        
         <div class="container-fluid">
             <div class="row">
             @if (!Auth::guest())
@@ -115,9 +118,12 @@
                     <li><a class="dropdown-btn">Laporan</a></li>
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
-                            <li><a href="{{ route('laporan.booking') }}">Booking Service</a></li>
-                            <li><a href="">Top Service</a></li>
-                            <li><a href="">Top Pelanggan</a></li>
+                            <li><a href="{{ route('laporan.bookings') }}">Booking Service</a></li>
+                            <li><a href="{{ route('laporan.poins') }}">Top Poin</a></li>
+                            <li><a href="{{ route('laporan.pelanggans') }}">Top Pelanggan</a></li>
+                            <li><a href="{{ route('laporan.keluhans') }}">Keluahan</a></li>
+                            <li><a href="{{ route('laporan.services') }}">Top Service</a></li>
+                            <li><a href="{{ route('laporan.pelanggans-baru') }}">Pelanggan Baru</a></li>
                         </ul>
                     </div>
                   </ul>
@@ -151,8 +157,11 @@
                     <div class="dropdown-container">
                         <ul class="nav nav-sidebar">
                             <li><a href="{{ route('laporan.booking') }}">Booking Service</a></li>
-                            <li><a href="">Top Service</a></li>
-                            <li><a href="">Top Pelanggan</a></li>
+                            <li><a href="{{ route('laporan.pelanggan') }}">Top Poin</a></li>
+                            <li><a href="{{ route('laporan.pelanggan') }}">Top Pelanggan</a></li>
+                            <li><a href="{{ route('laporan.pelanggan') }}">Keluahan</a></li>
+                            <li><a href="{{ route('laporan.service') }}">Top Service</a></li>
+                            <li><a href="{{ route('laporan.pelanggan-baru') }}">Pelanggan Baru</a></li>
                         </ul>
                     </div>
                   </ul>

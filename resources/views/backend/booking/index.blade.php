@@ -17,12 +17,12 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>No. Booking</th>
                         <th>Tanggal</th>
                         <th>Jam</th>
                         <th>No. Polisi</th>
                         <th>Status</th>
-                        <th>Jenis Service</th>
+                        <th>Jenis Pelayanan</th>
                         <th>Easy Service</th>
                         <th>Keterangan</th>
                         <th>Action</th>
@@ -31,18 +31,19 @@
                 <tbody>
                     @foreach($list as $key => $item)
                     <tr class="{{ ($item->cancellation) ? 'danger' : ($item->status ? 'info' : '') }}" title="{{ ($item->cancellation) ? 'Dibatalkan' : '' }}">
-                        <th scope="row">{{ $key + 1 }}</th>
+                        <th scope="row">{{ $item->booking_number }}</th>
                         <td>
                             <a href="{{ route('booking.show', $item->id) }}">{{ date('d-m-Y', strtotime($item->date)) }}</a>
                         </td>
                         <td>{{ date('h:i:s', strtotime($item->time)) }}</td>
                         <td>{{ $item->no_polisi }}</td>
                         <td>{{ ($item->status) ? 'Diterima' : ($item->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
-                        <td>{{ $item->jenis_service }}</td>
+                        <td>{{ $item->jenis_pelayanan }}</td>
                         <td>
-                            @if($item->easyService === 'send') Pick-Up My Car
-                            @elseif($item->easyService === 'pickup') Send-Up My Car
+                            @if($item->easyService === 'pickup') Pick-Up My Car
+                            @elseif($item->easyService === 'send') Send-Up My Car
                             @elseif($item->easyService === 'both') Pick-Up & Send-Up My Car
+                            @elseif($item->easyService === 'self') Selfe Service
                             @endif
                         </td>
                         <td>{!! strip_tags(str_limit($item->keterangan, 80)) !!}</td>
