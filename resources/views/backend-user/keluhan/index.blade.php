@@ -21,6 +21,7 @@
                         <th>#</th>
                         <th>Isi Keluhan</th>
                         <th>Tanggapan</th>
+                        <th>Staff</th>
                         <th>Waktu dibuat</th>
                         
                     </tr>
@@ -31,6 +32,7 @@
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $item->detail }}</td>
                         <td>{{ ($item->tanggapan) ? $item->tanggapan : 'Belum di tanggapi' }}</td>
+                        <td>{{ isset($item->staff) ? $item->staff->nm_staff : '-' }}</td>
                         <td>{{ $item->created_at->format('Y-m-d') }}</td>
                         
                     </tr>

@@ -83,7 +83,7 @@ class UsersTableSeeder extends Seeder
             if ($user->roles === 'staff') {
                 $user->staff()->create([
                     'kode_staff' => null,
-                    'nm_staff' => $user->username,
+                    'nm_staff' => $user->username .' astrido',
                     'tgl_lahir' => '1990-10-10',
                     'alamat' => 'Jakarta',
                     'no_tlp' => '1234'+$key,
@@ -93,7 +93,7 @@ class UsersTableSeeder extends Seeder
 
             if ($user->roles === 'kepala-cabang') {
                 $user->kepalaCabang()->create([
-                    'nm_kepala_cabang' => $user->username,
+                    'nm_kepala_cabang' => $user->username .' astrido',
                     'no_tlp' => '1234'+$key,
                     'user_id' => $user->id,
                 ]);

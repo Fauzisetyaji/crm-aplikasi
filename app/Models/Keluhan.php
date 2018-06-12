@@ -22,7 +22,7 @@ class Keluhan extends Model
      * @var array
      */
     protected $fillable = [
-        'detail', 'status', 'pelanggan_id', 'tanggapan'
+        'detail', 'status', 'pelanggan_id', 'tanggapan', 'staff_id'
     ];
 
     /**
@@ -33,5 +33,15 @@ class Keluhan extends Model
     public function pelanggan()
     {
         return $this->belongsTo(Pelanggan::class, 'pelanggan_id');
+    }
+
+    /**
+     * Get Staff
+     *
+     * @return data type
+     */
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'staff_id');
     }
 }

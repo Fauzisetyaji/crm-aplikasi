@@ -19,9 +19,8 @@
                     <tr>
                         <th>#</th>
                         <th>Keluhan</th>
-                        
-                        
                         <th>User</th>
+                        <th>Staff</th>
                         <th>Waktu dibuat</th>
                         <th>Action</th>
                     </tr>
@@ -42,6 +41,7 @@
                         
                         
                         <td>{{ $item->pelanggan->nm_pelanggan }}</td>
+                        <td>{{ isset($item->staff) ? $item->staff->nm_staff : '-' }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td>
                             @if(is_null($item->tanggapan))
