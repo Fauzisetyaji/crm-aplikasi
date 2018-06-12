@@ -22,7 +22,7 @@
                         <th>Jam</th>
                         <th>No. Polisi</th>
                         <th>Status</th>
-                        <th>Jenis Service</th>
+                        <th>Jenis Pelayanan</th>
                         <th>Easy Service</th>
                         <th>Keterangan</th>
                         <th>Action</th>
@@ -38,7 +38,7 @@
                         <td>{{ date('h:i:s', strtotime($item->time)) }}</td>
                         <td>{{ $item->no_polisi }}</td>
                         <td>{{ ($item->status) ? 'Diterima' : ($item->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
-                        <td>{{ $item->jenis_service }}</td>
+                        <td>{{ $item->jenis_pelayanan }}</td>
                         <td>
                             @if($item->easyService === 'pickup') Pick-Up My Car
                             @elseif($item->easyService === 'send') Send-Up My Car

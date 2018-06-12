@@ -159,11 +159,11 @@
                                             <td class="{{ (count($item) > 0) ? 'yellow' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
                                             </td>
-                                            <td class="{{ (count($item->where('jenis_service', 'tms')) > 0) ? 'blue' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_service', 'tms')) }}</p>
+                                            <td class="{{ (count($item->where('jenis_pelayanan', 'tms')) > 0) ? 'blue' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_pelayanan', 'tms')) }}</p>
                                             </td>
-                                            <td class="{{ (count($item->where('jenis_service', 'workshop')) > 0) ? 'blue' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_service', 'workshop')) }}</p>
+                                            <td class="{{ (count($item->where('jenis_pelayanan', 'workshop')) > 0) ? 'blue' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_pelayanan', 'workshop')) }}</p>
                                             </td>
                                             <td class="{{ (count($item->where('easyService', 'pickup')) > 0) ? 'green' : ' ' }}" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('easyService', 'pickup')) }}</p>

@@ -39,7 +39,7 @@
                         <th>Jam</th>
                         <th>No. Polisi</th>
                         <th>Status</th>
-                        <th>Jenis Service</th>
+                        <th>Jenis Pelayanan</th>
                         <th>Easy Service</th>
                         <th>Keterangan</th>
                     </tr>
@@ -51,7 +51,7 @@
                         <td>{{ date('h:i:s', strtotime($booking->time)) }}</td>
                         <td>{{ $booking->no_polisi }}</td>
                         <td>{{ ($booking->status) ? 'Diterima' : ($booking->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
-                        <td>{{ $booking->jenis_service }}</td>
+                        <td>{{ $booking->jenis_pelayanan }}</td>
                         <td>
                             @if($booking->easyService === 'send') Pick-Up My Car
                             @elseif($booking->easyService === 'pickup') Send-Up My Car
