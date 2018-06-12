@@ -36,7 +36,7 @@
                         <td>{{ $item->no_polisi }}</td>
                         <td>{{ $item->type_kendaraan }}</td>
                         <td>{{ ($item->status) ? 'Diterima' : ($item->cancellation ? 'Ditolak' : 'Menuggu') }}</td>
-                        <td>{{ $item->jenis_service }}</td>
+                        <td>{{ $item->jenis_pelayanan }}</td>
                         <td>
                             @if($item->easyService === 'pickup') Pick-Up My Car
                             @elseif($item->easyService === 'send') Send-Up My Car

@@ -139,7 +139,7 @@
                                                 <p style="text-align: center;">{{ $booking->date }}</p>
                                             </td>
                                             <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
-                                                <p style="text-align: center;">{{ $booking->jenis_service }}</p>
+                                                <p style="text-align: center;">{{ $booking->jenis_pelayanan }}</p>
                                             </td>
                                             <td style="border-top: 1px solid #000; border-right: 1px solid #000; width: 80px;">
                                                 <p style="text-align: center;">-</p>

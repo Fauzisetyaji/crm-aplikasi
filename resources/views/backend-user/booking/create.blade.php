@@ -67,11 +67,11 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('jenis_service') ? ' has-error' : '' }}">
-                    <label for="jenis_service" class="col-md-2 control-label">Type Kendaraan</label>
+                <div class="form-group{{ $errors->has('type_kendaraan') ? ' has-error' : '' }}">
+                    <label for="type_kendaraan" class="col-md-2 control-label">Type Kendaraan</label>
                     <div class="col-md-4">
                         <select
-                            name="type_kendaraan" value="{{ old('jenis_service') }}" class="form-control" required>
+                            name="type_kendaraan" value="{{ old('type_kendaraan') }}" class="form-control" required>
                             <option value="" disabled selected>Pilih type kendaraan</option>
                             <option value="Avanza">Avanza</option>
                             <option value="Agya">Agya</option>
@@ -97,11 +97,11 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('jenis_service') ? ' has-error' : '' }}">
-                    <label for="jenis_service" class="col-md-2 control-label">Jenis Pelayanan</label>
+                <div class="form-group{{ $errors->has('jenis_pelayanan') ? ' has-error' : '' }}">
+                    <label for="jenis_pelayanan" class="col-md-2 control-label">Jenis Pelayanan</label>
                     <div class="col-md-4">
                         <select
-                            name="jenis_service" value="{{ old('jenis_service') }}" class="form-control" required>
+                            name="jenis_pelayanan" value="{{ old('jenis_pelayanan') }}" class="form-control" required>
                             <option value="" disabled selected>Pilih jenis pelayanan</option>
                             <option value="workshop">To workshop</option>
                             <option value="tms">Toyota Mobile Service</option>
