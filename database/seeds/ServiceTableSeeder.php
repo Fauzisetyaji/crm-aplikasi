@@ -15,7 +15,7 @@ class ServiceTableSeeder extends Seeder
     	DB::table('services')->insert([
     		[
                 'id' => Uuid::generate()->string,
-                'nm_service' => 'CPU Diagnostics',
+                'nm_service' => 'Service 1.000 Km',
                 'jenis_service' => 'ringan',
                 'description' => ' detect problems long before they cause a breakdown. Diagnostic tools can also check a cars computer system for manufacturer notifications and stored information about the cars history, giving technicians a complete picture in order to perform the best repair.',
                 'poin' => '1000',
@@ -24,7 +24,7 @@ class ServiceTableSeeder extends Seeder
             ],
             [
                 'id' => Uuid::generate()->string,
-                'nm_service' => 'Suspension',
+                'nm_service' => 'Service 10.000 Km',
                 'jenis_service' => 'berat',
                 'description' => 'makes it possible to control the vehicle while driving. Car suspension works by absorbing the shock from the wheels as it travels along the road, giving the wheels the ability to continue following the road without losing control.',
                 'poin' => '1000',
@@ -33,7 +33,7 @@ class ServiceTableSeeder extends Seeder
             ],
             [
                 'id' => Uuid::generate()->string,
-                'nm_service' => 'Engine',
+                'nm_service' => 'Service 20.000 Km',
                 'jenis_service' => 'berat',
                 'description' => 'repair and tune-up to an engine overhaul, Repco Authorised Service have all the skills and expertise to get you back on the road.',
                 'poin' => '1000',
@@ -42,7 +42,7 @@ class ServiceTableSeeder extends Seeder
             ],
             [
                 'id' => Uuid::generate()->string,
-                'nm_service' => 'Brakes',
+                'nm_service' => 'Service 30.000 Km',
                 'jenis_service' => 'ringan',
                 'description' => 'Quick brake repair and replacement services for domestic and import vehicles. 23-point brake inspection, fixing rotors, calipers and brake pads check.',
                 'poin' => '1000',
@@ -51,7 +51,7 @@ class ServiceTableSeeder extends Seeder
             ],
             [
                 'id' => Uuid::generate()->string,
-                'nm_service' => 'Steering',
+                'nm_service' => 'Service 40.000 Km',
                 'jenis_service' => 'ringan',
                 'description' => 'The system usually contains a power steering pump, steering gear & linkages, drive belts, bearings, valves, hoses and seals. Power steering is a system for reducing the steering effort on cars by using an external power source to assist in turning the wheels.',
                 'poin' => '1000',
@@ -60,7 +60,25 @@ class ServiceTableSeeder extends Seeder
             ],
             [
                 'id' => Uuid::generate()->string,
-                'nm_service' => 'Exhaust System',
+                'nm_service' => 'Service 50.000 Km',
+                'jenis_service' => 'berat',
+                'description' => 'We offer Competitive Precision Exhaust Systems and Repairs including Performance Exhaust Systems.',
+                'poin' => '1000',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'id' => Uuid::generate()->string,
+                'nm_service' => 'Service 60.000 Km',
+                'jenis_service' => 'berat',
+                'description' => 'We offer Competitive Precision Exhaust Systems and Repairs including Performance Exhaust Systems.',
+                'poin' => '1000',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'id' => Uuid::generate()->string,
+                'nm_service' => 'Service 70.000 Km',
                 'jenis_service' => 'berat',
                 'description' => 'We offer Competitive Precision Exhaust Systems and Repairs including Performance Exhaust Systems.',
                 'poin' => '1000',
