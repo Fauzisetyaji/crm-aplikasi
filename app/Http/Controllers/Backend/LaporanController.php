@@ -224,36 +224,14 @@ class LaporanController extends Controller
      */
     public function getLaporanPoin(Request $request)
     {
-        $periodes = [];
         $data = [];
-        $pelanggans = [];
 
-        $year = Carbon::now()->setTimezone('Asia/Bangkok');
-
-        $dateStart = Carbon::now()->startOfYear();
-        $dateEnd = Carbon::now()->endOfYear();
-        if ($request->has('periode')) {
-            $year = Carbon::create($request->periode);
-            $dateStart = Carbon::create($request->periode)->startOfYear();
-            $dateEnd = Carbon::create($request->periode)->endOfYear();
-        }
-
-        for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
-            $periodes[] = $date->format('F');
-            $data[] = $this->booking->where('status', true)
-                                    ->whereMonth('date', $date->month)
-                                    ->whereYear('date', $year->year)
-                                    ->with('pelanggan')->get();
-        }
-
-        $pelanggans = $this->pelanggan->get();
+        $data = $this->pelanggan->orderBy('jml_poin', 'desc')->get();
 
         if ($request->has('return')) {
             if ($request->return === 'pdf') {
                 $view = view('laporan.poin')->with([
                     'data' => $data,
-                    'periodes' => $periodes,
-                    'pelanggans' => $pelanggans
                 ])->render();
 
                 for ($i=0; $i < count($data); $i++) { 
