@@ -22,7 +22,7 @@
                         <th>Judul</th>
                         <th>Gambar</th>
                         <th>Isi Artikel</th>
-                        <th>Author</th>
+                        <!--<th>Author</th>-->
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -37,7 +37,7 @@
                             </div>
                         </td>
                         <td>{{ $item->konten }}</td>
-                        <td>{{ $item->author }}</td>
+                        <!--<td>{{ $item->author }}</td>-->
                         <td>
                             <a href="{{ route('artikel.edit', $item->id) }}" title="Ubah">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
