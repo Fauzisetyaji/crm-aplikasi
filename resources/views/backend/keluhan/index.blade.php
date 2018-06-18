@@ -22,6 +22,7 @@
                         <th>User</th>
                         <th>Staff</th>
                         <th>Waktu dibuat</th>
+                        <th>Waktu ditanggapi</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -43,6 +44,7 @@
                         <td>{{ $item->pelanggan->nm_pelanggan }}</td>
                         <td>{{ isset($item->staff) ? $item->staff->nm_staff : '-' }}</td>
                         <td>{{ $item->created_at }}</td>
+                        <td>{{ isset($item->tanggapan) ? $item->updated_at : '-' }}</td>
                         <td>
                             @if(is_null($item->tanggapan))
                                 <a href="{{ route('keluhan.destroy', $item->id) }}" title="Hapus"
