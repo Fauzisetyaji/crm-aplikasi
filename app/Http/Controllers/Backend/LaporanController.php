@@ -180,33 +180,16 @@ class LaporanController extends Controller
      */
     public function getLaporanKeluhan(Request $request)
     {
-        $periodes = [];
-        $data = [];
-        $pelanggans = [];
+        $data = null;
 
-        $year = Carbon::now()->setTimezone('Asia/Bangkok');
-
-        $dateStart = Carbon::now()->startOfYear();
-        $dateEnd = Carbon::now()->endOfYear();
-        if ($request->has('periode')) {
-            $year = Carbon::create($request->periode);
-            $dateStart = Carbon::create($request->periode)->startOfYear();
-            $dateEnd = Carbon::create($request->periode)->endOfYear();
-        }
-
-        for($date = $dateStart; $date->lte($dateEnd); $date->addMonthNoOverflow()){
-            $periodes[] = $date->format('F');
-            $data[] = $this->keluhan->where('status', true)
-                                    ->whereMonth('created_at', $date->month)
-                                    ->whereYear('created_at', $year->year)
-                                    ->with('pelanggan')->get();
-        }
+        $data = $this->keluhan->where('status', true)
+                    ->where('detail', '!=', null)
+                    ->with('pelanggan')->get();
 
         if ($request->has('return')) {
             if ($request->return === 'pdf') {
                 $view = view('laporan.keluhan')->with([
-                    'data' => $data,
-                    'periodes' => $periodes,
+                    'data' => $data
                 ])->render();
 
                 return $this->sendResponse($request, $view);
