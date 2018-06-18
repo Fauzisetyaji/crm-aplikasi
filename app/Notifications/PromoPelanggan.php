@@ -48,10 +48,7 @@ class PromoPelanggan extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        $link = URL::to('service?' . http_build_query([
-            'id' => $this->user->id,
-            'token' => $notifiable->verification_token,
-        ]));
+        $link = URL::to('/');
 
         return (new MailMessage)
                     ->subject('Penawaran Promo Untuk Anda')
