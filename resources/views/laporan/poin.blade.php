@@ -101,7 +101,7 @@
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td width="5%" valign="top" align="right">
-                                            <p><b>Tanggal</b></p>
+                                            <p><b>Tanggal Cetak</b></p>
                                         </td>
                                         
                                         <td width="5%" valign="top" align="right">

@@ -90,7 +90,7 @@
                                             <p><b>Keperluan</b></p>
                                         </td>
                                         <td width="30%" valign="top">
-                                            <p><b>: Reporting </b></p>
+                                            <p><b>: Reporting Keluhan By Status</b></p>
                                         </td>
                                     </tr>
                                 </table>
@@ -101,10 +101,9 @@
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td width="5%" valign="top" align="right">
-                                            <p><b>Tanggal</b></p>
+                                            <p><b>Tanggal Cetak</b></p>
                                         </td>
-                                        
-                                        <td width="5%" valign="top" align="right">
+                                            <td width="5%" valign="top" align="right">
                                             <p>: {{ date('F d, Y') }}</p>
                                         </td>
                                         
@@ -150,31 +149,31 @@
                                     <tbody>
                                         @foreach($data as $key => $item)
                                         <tr style="border: 2px solid black; border-spacing: 5px;">
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $key + 1 }}</p>
                                             </td>
 
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->pelanggan->nm_pelanggan }}</p>
                                             </td>
 
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->created_at }}</p>
                                             </td>
 
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->detail }}</p>
                                             </td>
 
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->tanggapan }}</p>
                                             </td>
 
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->staff->nm_staff }}</p>
                                             </td>
 
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->updated_at }}</p>
                                             </td>
                                         </tr>
