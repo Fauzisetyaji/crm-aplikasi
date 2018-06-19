@@ -125,6 +125,9 @@
                                     <thead>
                                         <tr style="background-color: #eee;">
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">No</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
                                                 <p style="text-align: center; font-size: 12px; font-weight: 800;">Nama Pelanggan</p>
                                             </td>
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
@@ -147,6 +150,10 @@
                                     <tbody>
                                         @foreach($data as $key => $item)
                                         <tr style="border: 2px solid black; border-spacing: 5px;">
+                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $key + 1 }}</p>
+                                            </td>
+
                                             <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->pelanggan->nm_pelanggan }}</p>
                                             </td>
