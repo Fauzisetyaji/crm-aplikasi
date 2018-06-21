@@ -122,7 +122,7 @@
                             <li><a href="{{ route('laporan.poins') }}">Top Poin</a></li>
                             <li><a href="{{ route('laporan.pelanggans') }}">Top Pelanggan</a></li>
                             <li><a href="{{ route('laporan.keluhans') }}">Keluahan</a></li>
-                            <li><a href="{{ route('laporan.services') }}">Top Service</a></li>
+                            <li><a href="{{ route('laporan.services') }}">Service</a></li>
                             <li><a href="{{ route('laporan.pelanggans-baru') }}">Pelanggan Baru</a></li>
                         </ul>
                     </div>
