@@ -22,7 +22,7 @@ class Kendaraan extends Model
      * @var array
      */
     protected $fillable = [
-        'no_polisi', 'pelanggan_id'
+        'no_polisi', 'jenis_kendaraan', 'pelanggan_id'
     ];
 
     /**

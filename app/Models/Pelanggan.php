@@ -42,7 +42,7 @@ class Pelanggan extends Model
      */
     public function kendaraan()
     {
-        return $this->hasOne(Kendaraan::class, 'pelanggan_id');
+        return $this->hasMany(Kendaraan::class, 'pelanggan_id');
     }
 
     /**

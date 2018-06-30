@@ -68,7 +68,8 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::name('ubah-profile.ubah')->get('ubah-profile', 'ProfileController@ubah');
 		Route::name('ubah-profile.update')->put('ubah-profile/{id}', 'ProfileController@update');
 		Route::name('ubah-profile.updatePassword')->put('ubah-password/{id}', 'ProfileController@updatePassword');
-		Route::name('ubah-profile.updateNopol')->put('ubah-nomor-polisi/{id}', 'ProfileController@updateNopol');
+		Route::name('ubah-profile.tambahNopol')->put('tambah-kendaraan/{id}', 'ProfileController@tambahNopol');
+		Route::name('ubah-profile.deleteNopol')->delete('hapus-kendaraan/{id}', 'ProfileController@deleteNopol');
 	});
 
 	Route::prefix('kepala-cabang')->group(function () {

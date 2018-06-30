@@ -11,6 +11,7 @@ use App\Models\Operasional;
 use App\Models\Service;
 use App\Models\Booking;
 use App\Models\Keluhan;
+use App\Models\Kendaraan;
 
 class BookingController extends Controller
 {
@@ -57,9 +58,16 @@ class BookingController extends Controller
     protected $user;
 
     /**
+     * The Kendaraan instance.
+     *
+     * @var \App\Models\Kendaraan;
+     */
+    protected $kendaraan;
+
+    /**
      * Create a new controller instance.
      */
-    public function __construct(Operasional $operasional, JadwalOperasional $jadwalOperasional, Booking $booking, Service $service, Keluhan $keluhan)
+    public function __construct(Operasional $operasional, JadwalOperasional $jadwalOperasional, Booking $booking, Service $service, Keluhan $keluhan, Kendaraan $kendaraan)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -74,6 +82,7 @@ class BookingController extends Controller
         $this->booking = $booking;
         $this->service = $service;
         $this->keluhan = $keluhan;
+        $this->kendaraan = $kendaraan;
     }
 
     /**
@@ -98,8 +107,9 @@ class BookingController extends Controller
         $jadwalOperasional = $this->jadwalOperasional->get();
         $services = $this->service->get();
         $user = $this->user;
+        $kendaraan = $this->kendaraan->get();
 
-        return view('backend-user.booking.create', compact('jadwalOperasional', 'services', 'user'));
+        return view('backend-user.booking.create', compact('jadwalOperasional', 'services', 'user', 'kendaraan'));
     }
 
     /**
@@ -122,15 +132,17 @@ class BookingController extends Controller
 
         $code = str_pad(0 + ($booking + 1), 7, '0', STR_PAD_LEFT);
 
+        $kendaraan = $this->kendaraan->find($request->kendaraan); 
+
         $this->booking->create([
             'booking_number' => $code,
             'date' => Carbon::parse($request->date),
             'time' => Carbon::parse($request->time)->toDateTimeString(),
-            'no_polisi' => $request->no_polisi,
+            'no_polisi' => $kendaraan->no_polisi,
             'status' => 0,
             'jenis_pelayanan' => $request->jenis_pelayanan,
             'easyService' => $request->easyService,
-            'type_kendaraan' => $request->type_kendaraan,
+            'type_kendaraan' => $kendaraan->jenis_kendaraan,
             'keterangan' => $request->keterangan,
             'pelanggan_id' => $this->user->pelanggan->id,
             'service_id' => $request->service,

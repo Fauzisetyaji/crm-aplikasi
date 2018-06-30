@@ -142,16 +142,34 @@ class ProfileController extends Controller
         return redirect(route('ubah-profile.ubah'))->with('success', __('Profile Anda berhasil di ubah'));
     }
 
-    public function updateNopol(Request $request, $id)
+    public function tambahNopol(Request $request, $id)
     {
-        if ($request->has('nopol')) {
-            $this->kendaraan->firstOrCreate([
-                'no_polisi' => $request->nopol, 
-                'pelanggan_id' => $this->user->pelanggan->id
-            ]);
+        $validator = Validator::make($request->all(), [
+            'no_polisi' => 'unique:kendaraans,no_polisi',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
         }
 
-        return redirect(route('ubah-profile.ubah'))->with('success-3', __('Nomor Polisi Anda berhasil di ubah'));
+        $this->kendaraan->create([
+            'no_polisi' => $request->no_polisi,
+            'jenis_kendaraan' => $request->jenis_kendaraan,
+            'pelanggan_id' => $this->user->pelanggan->id
+        ]);
+
+        return redirect(route('ubah-profile.ubah'))->with('success-3', __('Kendaraan Anda berhasil di tambah'));
+    }
+
+    public function deleteNopol(Request $request, $id)
+    {
+        $kendaraan = $this->kendaraan->find($id);
+        $kendaraan->delete();
+
+        return redirect(route('ubah-profile.ubah'));
     }
 
     public function updatePassword(Request $request, $id)
