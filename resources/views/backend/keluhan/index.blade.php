@@ -18,10 +18,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Keluhan</th>
-                        <th>User</th>
-                        <th>Staff</th>
-                        <th>Waktu dibuat</th>
+                        <th>Nama Pelanggan</th>
+                        <th>Tanggal Keluhan</th>
+                        <th>Isi Keluhan</th>
+                        <th>Isi Tanggapan</th>
+                        <th>Nama Staff</th>
+                        <th>Waktu ditanggapi</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -29,6 +31,8 @@
                     @foreach($list as $key => $item)
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
+                        <td>{{ $item->pelanggan->nm_pelanggan }}</td>
+                        <td>{{ $item->created_at }}</td>
                         <td>
                             @if(is_null($item->tanggapan))
                                 <a href="{{ route('keluhan.edit', $item->id) }}">
@@ -40,9 +44,11 @@
                         </td>
                         
                         
-                        <td>{{ $item->pelanggan->nm_pelanggan }}</td>
+                        
+                        <td>{{ isset($item->tanggapan) ? $item->tanggapan : '-' }}</td>
                         <td>{{ isset($item->staff) ? $item->staff->nm_staff : '-' }}</td>
-                        <td>{{ $item->created_at }}</td>
+                        
+                        <td>{{ isset($item->tanggapan) ? $item->updated_at : '-' }}</td>
                         <td>
                             @if(is_null($item->tanggapan))
                                 <a href="{{ route('keluhan.destroy', $item->id) }}" title="Hapus"

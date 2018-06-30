@@ -23,7 +23,7 @@
                         <th>Tanggapan</th>
                         <th>Staff</th>
                         <th>Waktu dibuat</th>
-                        
+                        <th>Waktu ditanggapi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,8 +33,8 @@
                         <td>{{ $item->detail }}</td>
                         <td>{{ ($item->tanggapan) ? $item->tanggapan : 'Belum di tanggapi' }}</td>
                         <td>{{ isset($item->staff) ? $item->staff->nm_staff : '-' }}</td>
-                        <td>{{ $item->created_at->format('Y-m-d') }}</td>
-                        
+                        <td>{{ $item->created_at }}</td>
+                        <td>{{ isset($item->tanggapan) ? $item->updated_at : '-' }}</td>
                     </tr>
                     @endforeach
                 </tbody>

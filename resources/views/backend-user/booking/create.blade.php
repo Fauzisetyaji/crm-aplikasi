@@ -55,29 +55,15 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('no_polisi') ? ' has-error' : '' }}">
-                    <label for="no_polisi" class="col-md-2 control-label">No. Polisi</label>
-                    <div class="col-md-4">
-                        <input type="text" name="no_polisi" class="form-control" value="" required>
-                        @if ($errors->has('no_polisi'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('no_polisi') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group{{ $errors->has('type_kendaraan') ? ' has-error' : '' }}">
-                    <label for="type_kendaraan" class="col-md-2 control-label">Type Kendaraan</label>
+                <div class="form-group{{ $errors->has('kendaraan') ? ' has-error' : '' }}">
+                    <label for="kendaraan" class="col-md-2 control-label">Type Kendaraan</label>
                     <div class="col-md-4">
                         <select
-                            name="type_kendaraan" value="{{ old('type_kendaraan') }}" class="form-control" required>
-                            <option value="" disabled selected>Pilih type kendaraan</option>
-                            <option value="Avanza">Avanza</option>
-                            <option value="Agya">Agya</option>
-                            <option value="Calya">Calya</option>
-                            <option value="Rush">Rush</option>
-                            <option value="Yaris">Yaris</option>
+                            name="kendaraan" value="{{ old('kendaraan') }}" class="form-control" required>
+                            <option value="" disabled selected>Pilih type kendaraan Anda</option>
+                            @foreach($kendaraan as $key => $item)
+                                <option {{ old('kendaraan') == $item->id ? "selected" : "" }} value="{{ $item->id }}">{{ $item->jenis_kendaraan }}</option>
+                            @endforeach
                             
                         </select>
                     </div>

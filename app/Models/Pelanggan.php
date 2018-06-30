@@ -40,9 +40,9 @@ class Pelanggan extends Model
      *
      * @return data type
      */
-    public function kendaraan($param)
+    public function kendaraan()
     {
-        return $this->hasOne(Kendaraan::class, 'pelanggan_id');
+        return $this->hasMany(Kendaraan::class, 'pelanggan_id');
     }
 
     /**

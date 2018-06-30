@@ -65,7 +65,7 @@
                             <img width="120px" src="{{ public_path(). '/img/astrido.png' }}">
                         </td>
                         <td width="50%" align="center">
-                            <h2>Laporan Rekapitulasi Data Keluhan</h2>
+                            <h2>Laporan Keluhan</h2>
                         </td>
                         <td width="25%" align="right">
                             <h3>
@@ -90,7 +90,7 @@
                                             <p><b>Keperluan</b></p>
                                         </td>
                                         <td width="30%" valign="top">
-                                            <p><b>: Reporting </b></p>
+                                            <p><b>: Reporting Keluhan By Status</b></p>
                                         </td>
                                     </tr>
                                 </table>
@@ -101,10 +101,9 @@
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td width="5%" valign="top" align="right">
-                                            <p><b>Tanggal</b></p>
+                                            <p><b>Tanggal Cetak</b></p>
                                         </td>
-                                        
-                                        <td width="5%" valign="top" align="right">
+                                            <td width="5%" valign="top" align="right">
                                             <p>: {{ date('F d, Y') }}</p>
                                         </td>
                                         
@@ -125,21 +124,57 @@
                                     <thead>
                                         <tr style="background-color: #eee;">
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Periode</p>
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">No</p>
                                             </td>
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Total Keluhan</p>
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Nama Pelanggan</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Tanggal Keluhan</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Isi Keluhan</p>
+                                            </td><td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Isi Tanggapan</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Nama Staff</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Waktu ditanggapi</p>
                                             </td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($data as $key => $item)
                                         <tr style="border: 2px solid black; border-spacing: 5px;">
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $periodes[$key] }}</p>
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $key + 1 }}</p>
                                             </td>
-                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
+
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->pelanggan->nm_pelanggan }}</p>
+                                            </td>
+
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->created_at }}</p>
+                                            </td>
+
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->detail }}</p>
+                                            </td>
+
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->tanggapan }}</p>
+                                            </td>
+
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->staff->nm_staff }}</p>
+                                            </td>
+
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->updated_at }}</p>
                                             </td>
                                         </tr>
                                         @endforeach

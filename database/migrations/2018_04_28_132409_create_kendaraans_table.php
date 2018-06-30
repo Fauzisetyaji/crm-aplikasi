@@ -17,8 +17,7 @@ class CreateKendaraansTable extends Migration
             $table->uuid('id');
             $table->primary('id');
             $table->string('no_polisi')->unique();
-            $table->string('no_rangka')->unique();
-            $table->string('warna');
+            $table->string('jenis_kendaraan');
             $table->uuid('pelanggan_id');
             $table->timestamps();
         });

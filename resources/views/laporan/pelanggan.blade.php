@@ -101,7 +101,7 @@
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td width="5%" valign="top" align="right">
-                                            <p><b>Tanggal</b></p>
+                                            <p><b>Tanggal Cetak</b></p>
                                         </td>
                                         
                                         <td width="5%" valign="top" align="right">
@@ -127,10 +127,14 @@
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
                                                 <p style="text-align: center; font-size: 12px; font-weight: 800;">Periode</p>
                                             </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Total Transaksi</p>
+                                            </td>
                                             @foreach($pelanggans as $pelanggan)
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
                                                 <p style="text-align: center; font-size: 12px; font-weight: 800;">{{ $pelanggan->nm_pelanggan }}</p>
                                             </td>
+
                                             @endforeach
                                         </tr>
                                     </thead>
@@ -139,6 +143,13 @@
                                         <tr style="border: 2px solid black; border-spacing: 5px;">
                                             <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $periodes[$key] }}</p>
+                                            </td>
+
+                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
+                                            </td>
+                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
                                             </td>
                                             <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
@@ -149,6 +160,7 @@
                                             <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_service', 'tms')) }}</p>
                                             </td>
+                                                   
                                         </tr>
                                         @endforeach
                                     </tbody>

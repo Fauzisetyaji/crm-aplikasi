@@ -105,17 +105,17 @@
                         <td>{{ $item->date }}</td>
                         <td>
                             @if($item->count !== '0')
-                                <a href="{{ route('reward.claim', $item->id) }}" title="Claim"
-                                   onclick="event.preventDefault(); document.getElementById('claim-form-{{$item->id}}').submit();"
-                                   class="btn btn-info" role="button">
-                                   Claim
-                                </a>
-                                <form id="claim-form-{{$item->id}}" action="{{ route('reward.claim', $item->id ) }}" method="post" style="display: none;">
-                                    {{ method_field('PUT') }}
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="id_booking" value="{{ $item->id }}">
-                                </form>
-                                @endif
+                            <a href="{{ route('reward.claim', $item->id) }}" title="Claim"
+                               onclick="event.preventDefault(); document.getElementById('claim-form-{{$item->id}}').submit();"
+                               class="btn btn-info" role="button">
+                               Claim
+                            </a>
+                            <form id="claim-form-{{$item->id}}" action="{{ route('reward.claim', $item->id ) }}" method="post" style="display: none;">
+                                {{ method_field('PUT') }}
+                                {{ csrf_field() }}
+                                <input type="hidden" name="id_booking" value="{{ $item->id }}">
+                            </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

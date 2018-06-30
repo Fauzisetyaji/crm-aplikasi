@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Reward;
 use App\Models\Claim;
+use App\Models\Kendaraan;
 
 class ProfileController extends Controller
 {
@@ -34,9 +35,16 @@ class ProfileController extends Controller
     public $claim;
 
     /**
+     * The Kendaraan instance.
+     *
+     * @var App\Models\Kendaraan
+     */
+    public $kendaraan;
+
+    /**
      * Create a new controller instance.
      */
-    public function __construct(Reward $reward, Claim $claim)
+    public function __construct(Reward $reward, Claim $claim, Kendaraan $kendaraan)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -48,6 +56,7 @@ class ProfileController extends Controller
 
         $this->reward = $reward;
         $this->claim = $claim;
+        $this->kendaraan = $kendaraan;
     }
 
     /**
@@ -131,6 +140,36 @@ class ProfileController extends Controller
         ]);
 
         return redirect(route('ubah-profile.ubah'))->with('success', __('Profile Anda berhasil di ubah'));
+    }
+
+    public function tambahNopol(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'no_polisi' => 'unique:kendaraans,no_polisi',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                        ->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $this->kendaraan->create([
+            'no_polisi' => $request->no_polisi,
+            'jenis_kendaraan' => $request->jenis_kendaraan,
+            'pelanggan_id' => $this->user->pelanggan->id
+        ]);
+
+        return redirect(route('ubah-profile.ubah'))->with('success-3', __('Kendaraan Anda berhasil di tambah'));
+    }
+
+    public function deleteNopol(Request $request, $id)
+    {
+        $kendaraan = $this->kendaraan->find($id);
+        $kendaraan->delete();
+
+        return redirect(route('ubah-profile.ubah'));
     }
 
     public function updatePassword(Request $request, $id)

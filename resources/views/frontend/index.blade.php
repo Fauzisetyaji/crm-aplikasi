@@ -155,21 +155,22 @@
             <ul class="news">
                 <li>
                     <div class="entry-date"><span class="date">1</span><span class="month">Februari</span></div>
-                    <div class="entry-summary">Layanan booking service online<br> layanan booking service online sudah dapat digunakan diwebsite ini, silahkan daftar untuk melakukan booking online.<br><a href="http://localhost:8000/user/my-booking/create" class="button">Read more</a></div>
+                    <div class="entry-summary">LAYANAN BOOKING SERVICE ONLINE<br> Layanan booking service online sudah dapat digunakan diwebsite pada ini, silahkan daftar terlebih dahulu untuk melakukan service booking online.<a href="http://localhost:8000/user/my-booking/create"</a> (link)<!--<br><a href="http://localhost:8000/user/my-booking/create" class="button">Read more</a></div>--></a>
                 </li>
                 <li>
                     <div class="entry-date"><span class="date">19</span><span class="month">April</span></div>
-                    <div class="entry-summary">Rewad baru<br> silahkan lihat reward terbaru, claim sebelum kehabisan.<br><a href="http://localhost:8000/user/my-booking/create" class="button">Read more</a></div>
+                    <div class="entry-summary">CLAIM REWAD<br> Kumpulkan poin, claim rewardnya. <a href="http://localhost:8000/user/my-profile"</a> (link)<br><!--<a href="http://localhost:8000/user/my-booking/create" class="button">Read more</a></div>--></a>
                 </li>
                 <li>
                     <div class="entry-date"><span class="date">28</span><span class="month">June</span></div>
-                    <div class="entry-summary">Cara mengatasi aki rusak atau soak!<br> Cara memulihkan aki yang telah ngedrop, rusak maupun soak dapat diterapkan dengan trik yang begitu ringan dan tentunya tak usah mengeluarkan banyak uang alias hemat. Aki motor maupun aki mobil pada dasarnya lama kelamaan pastinya akan terjadi kerusakan.<br><a href="#" class="button">Read more</a></div>
+                    <div class="entry-summary">CARA MENGATASI AKI SOAK<br> Cara memulihkan aki yang telah ngedrop, rusak maupun soak dapat diterapkan dengan trik yang begitu ringan dan tentunya tak usah mengeluarkan banyak uang alias hemat. Aki motor maupun aki mobil pada dasarnya lama kelamaan pastinya akan terjadi kerusakan.<br><!--<a href="#" class="button">Read more</a></div>-->
 
                 </li>
             </ul>
             <div class="text-center">
                 <a href="#" class="button invert">Show more news</a>
             </div>
+
         </div>
     </div>
 

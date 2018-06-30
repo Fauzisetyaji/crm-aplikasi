@@ -65,7 +65,7 @@
                             <img width="120px" src="{{ public_path(). '/img/astrido.png' }}">
                         </td>
                         <td width="50%" align="center">
-                            <h2>Laporan Top Service</h2>
+                            <h2>Laporan Service</h2>
                         </td>
                         <td width="25%" align="right">
                             <h3>
@@ -101,7 +101,7 @@
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td width="5%" valign="top" align="right">
-                                            <p><b>Tanggal</b></p>
+                                            <p><b>Tanggal Cetak</b></p>
                                         </td>
                                         
                                         <td width="5%" valign="top" align="right">
@@ -127,10 +127,14 @@
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
                                                 <p style="text-align: center; font-size: 12px; font-weight: 800;">Periode</p>
                                             </td>
+                                            <!--<td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Total </p>
+                                            </td>-->
                                             @foreach($services as $key => $item)
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
                                                 <p style="text-align: center; font-size: 12px; font-weight: 800;">{{ $item->nm_service }}</p>
                                             </td>
+
                                             @endforeach
                                         </tr>
                                     </thead>
@@ -140,6 +144,13 @@
                                             <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
                                                 <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $periodes[$key] }}</p>
                                             </td>
+                                            <!--@foreach($services as $k => $val)
+                                                
+                                                <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                    <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($val->bookings) }}</p>
+                                                </td>
+                                                
+                                            @endforeach-->
                                             @foreach($services as $k => $val)
                                                 
                                                 <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">

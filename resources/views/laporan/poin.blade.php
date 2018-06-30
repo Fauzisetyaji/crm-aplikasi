@@ -101,7 +101,7 @@
                                 <table cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td width="5%" valign="top" align="right">
-                                            <p><b>Tanggal</b></p>
+                                            <p><b>Tanggal Cetak</b></p>
                                         </td>
                                         
                                         <td width="5%" valign="top" align="right">
@@ -124,30 +124,46 @@
                                 <table cellpadding="3" cellspacing="2" width="100%">
                                     <thead>
                                         <tr style="background-color: #eee;">
+                                            <!--<td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">ID Pelanggan</p>
+                                            </td>-->
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Periode</p>
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">No</p>
                                             </td>
-                                            @foreach($pelanggans as $pelanggan)
                                             <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
-                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">{{ $pelanggan->nm_pelanggan }}</p>
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Nama Pelanggan</p>
                                             </td>
-                                            @endforeach
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Poin Service</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Poin Sparepart</p>
+                                            </td>
+                                            <td height="10" style="border-right: 1px solid #000; width: 60px; text-align: center;">
+                                                <p style="text-align: center; font-size: 12px; font-weight: 800;">Total Poin</p>
+                                            </td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($data as $key => $item)
                                         <tr style="border: 2px solid black; border-spacing: 5px;">
-                                            <td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $periodes[$key] }}</p>
+                                            <!--<td class="red" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->kode_pelanggan }}</p>
+                                            </td>-->
+                                            <td class="" style="padding-top: 12px; padding-bottom: 12px; border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $key + 1 }}</p>
                                             </td>
                                             <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->nm_pelanggan }}</p>
                                             </td>
                                             <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item) }}</p>
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->jml_poin }}</p>
                                             </td>
                                             <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
-                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ count($item->where('jenis_service', 'tms')) }}</p>
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->jml_poin }}</p>
+                                            </td>
+                                            <td class="" style="border-top: 1px solid #000; border-right: 1px solid #000; width: 50px;">
+                                                <p style="text-align: center; font-size: 9px; font-weight: 600;">{{ $item->jml_poin }}</p>
                                             </td>
                                         </tr>
                                         @endforeach

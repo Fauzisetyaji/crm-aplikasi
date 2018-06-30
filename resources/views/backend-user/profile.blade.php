@@ -165,4 +165,102 @@
         </div>
     </div>
 </div>
+
+<div class="col-md-4">
+    @if(session()->has('success-3'))
+        <div class="alert alert-success">
+            {{ session()->get('success-3') }}
+        </div>
+    @endif
+    @if($errors->has('no_polisi'))
+        <div class="alert alert-danger">
+            {{ $errors->first('no_polisi') }}
+        </div>
+    @endif
+    <div class="panel panel-default">
+        <div class="panel-heading">Nomor Kendaraan</div>
+        <div class="panel-body">
+            <form role="form" action="{{ route('ubah-profile.tambahNopol', $user->id) }}" method="post" class="form-horizontal">
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
+
+                <div class="form-group">
+                    <label for="no_polisi" class="col-md-4 control-label">Nomor Polisi</label>
+                    <div class="col-md-6">
+                        <input id="no_polisi" type="text" class="form-control" name="no_polisi" value="{{ old('no_polisi') }}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="jenis_kendaraan" class="col-md-4 control-label">Kendaraan</label>
+                    <div class="col-md-6">
+                        <select
+                            name="jenis_kendaraan" value="{{ old('jenis_kendaraan') }}" class="form-control" required>
+                            <option value="" disabled selected>Pilih type kendaraan</option>
+                            <option value="Avanza">Avanza</option>
+                            <option value="Agya">Agya</option>
+                            <option value="Calya">Calya</option>
+                            <option value="Rush">Rush</option>
+                            <option value="Yaris">Yaris</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="col-md-9 col-md-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Kendaraan Saya
+            @if(session()->has('success-3'))
+                <div class="alert alert-success">
+                    {{ session()->get('success-3') }}
+                </div>
+            @endif
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama Polisi</th>
+                        <th>Jenis</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($user->pelanggan->kendaraan)
+                        @foreach($user->pelanggan->kendaraan as $key => $item)
+                        <tr>
+                            <th scope="row">{{ $key + 1 }}</th>
+                            <td>{{ $item->no_polisi }}</td>
+                            <td>{{ $item->jenis_kendaraan }}</td>
+                            <td>
+                                <a href="{{ route('ubah-profile.deleteNopol', $item->id) }}" title="Hapus"
+                               onclick="event.preventDefault(); document.getElementById('delete-form-{{$item->id}}').submit();"
+                               style="color: red; margin-left: 15px;">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
+                                <form id="delete-form-{{$item->id}}" action="{{ route('ubah-profile.deleteNopol', $item->id) }}" method="POST" style="display: none;">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
 @endsection
