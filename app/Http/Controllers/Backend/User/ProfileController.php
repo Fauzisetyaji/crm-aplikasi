@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Reward;
 use App\Models\Claim;
+use App\Models\Kendaraan;
 
 class ProfileController extends Controller
 {
@@ -34,9 +35,16 @@ class ProfileController extends Controller
     public $claim;
 
     /**
+     * The Kendaraan instance.
+     *
+     * @var App\Models\Kendaraan
+     */
+    public $kendaraan;
+
+    /**
      * Create a new controller instance.
      */
-    public function __construct(Reward $reward, Claim $claim)
+    public function __construct(Reward $reward, Claim $claim, Kendaraan $kendaraan)
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
@@ -48,6 +56,7 @@ class ProfileController extends Controller
 
         $this->reward = $reward;
         $this->claim = $claim;
+        $this->kendaraan = $kendaraan;
     }
 
     /**
@@ -131,6 +140,18 @@ class ProfileController extends Controller
         ]);
 
         return redirect(route('ubah-profile.ubah'))->with('success', __('Profile Anda berhasil di ubah'));
+    }
+
+    public function updateNopol(Request $request, $id)
+    {
+        if ($request->has('nopol')) {
+            $this->kendaraan->firstOrCreate([
+                'no_polisi' => $request->nopol, 
+                'pelanggan_id' => $this->user->pelanggan->id
+            ]);
+        }
+
+        return redirect(route('ubah-profile.ubah'))->with('success-3', __('Nomor Polisi Anda berhasil di ubah'));
     }
 
     public function updatePassword(Request $request, $id)

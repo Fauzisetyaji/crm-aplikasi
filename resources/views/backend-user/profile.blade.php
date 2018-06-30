@@ -165,4 +165,37 @@
         </div>
     </div>
 </div>
+
+<div class="col-md-4">
+    @if(session()->has('success-3'))
+        <div class="alert alert-success">
+            {{ session()->get('success-3') }}
+        </div>
+    @endif
+    <div class="panel panel-default">
+        <div class="panel-heading">Nomor Kendaraan</div>
+        <div class="panel-body">
+            <form role="form" action="{{ route('ubah-profile.updateNopol', $user->id) }}" method="post" class="form-horizontal">
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
+
+                <div class="form-group">
+                    <label for="nopol" class="col-md-4 control-label">Nomor Polisi</label>
+
+                    <div class="col-md-6">
+                        <input id="nopol" type="text" class="form-control" name="nopol" value="{{ old('nopol', $user->pelanggan->kendaraan ? $user->pelanggan->kendaraan->no_polisi : '') }}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

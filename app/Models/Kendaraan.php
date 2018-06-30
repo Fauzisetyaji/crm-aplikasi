@@ -22,7 +22,7 @@ class Kendaraan extends Model
      * @var array
      */
     protected $fillable = [
-        'no_polisi', 'no_rangka', 'warna', 'pelanggan_id'
+        'no_polisi', 'pelanggan_id'
     ];
 
     /**
@@ -32,6 +32,6 @@ class Kendaraan extends Model
      */
     public function owner()
     {
-        return $this->belongsTo(Pelanggan::class, 'pelanggan_id');
+        return $this->belongsTo(Pelanggan::class);
     }
 }

@@ -58,7 +58,7 @@
                 <div class="form-group{{ $errors->has('no_polisi') ? ' has-error' : '' }}">
                     <label for="no_polisi" class="col-md-2 control-label">No. Polisi</label>
                     <div class="col-md-4">
-                        <input type="text" name="no_polisi" class="form-control" value="" required>
+                        <input type="text" name="no_polisi" class="form-control" value="{{ old('no_polisi', $user->pelanggan->kendaraan ? $user->pelanggan->kendaraan->no_polisi : '') }}" required>
                         @if ($errors->has('no_polisi'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('no_polisi') }}</strong>

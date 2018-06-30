@@ -97,8 +97,9 @@ class BookingController extends Controller
     {
         $jadwalOperasional = $this->jadwalOperasional->get();
         $services = $this->service->get();
+        $user = $this->user;
 
-        return view('backend-user.booking.create', compact('jadwalOperasional', 'services'));
+        return view('backend-user.booking.create', compact('jadwalOperasional', 'services', 'user'));
     }
 
     /**

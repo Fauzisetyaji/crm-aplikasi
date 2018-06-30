@@ -68,6 +68,7 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::name('ubah-profile.ubah')->get('ubah-profile', 'ProfileController@ubah');
 		Route::name('ubah-profile.update')->put('ubah-profile/{id}', 'ProfileController@update');
 		Route::name('ubah-profile.updatePassword')->put('ubah-password/{id}', 'ProfileController@updatePassword');
+		Route::name('ubah-profile.updateNopol')->put('ubah-nomor-polisi/{id}', 'ProfileController@updateNopol');
 	});
 
 	Route::prefix('kepala-cabang')->group(function () {
