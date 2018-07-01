@@ -119,13 +119,15 @@ class BookingController extends Controller
         $booking->save();
 
         $pelanggan = $booking->pelanggan()->first();
-        $poin = $pelanggan->jml_poin;
+        if ($pelanggan) {
+            $poin = $pelanggan->jml_poin;
 
-        $pelanggan->update([
-            'jml_poin' => (int)$poin + (int)$service->poin
-        ]);
+            $pelanggan->update([
+                'jml_poin' => (int)$poin + (int)$service->poin
+            ]);
 
-        $booking->pelanggan->user->notify(new BookingConfirmations($booking, $booking->pelanggan->user->id));
+            $booking->pelanggan->user->notify(new BookingConfirmations($booking, $booking->pelanggan->user->id));
+        }
 
         return redirect(route('booking.index'))->with('success', __('Booking has been successfully confirm'));
     }
@@ -142,7 +144,10 @@ class BookingController extends Controller
         $booking->cancellation = Carbon::now()->toDateTimeString();
         $booking->save();
 
-        $booking->pelanggan->user->notify(new BookingConfirmations($booking, $booking->pelanggan->user->id));
+        if ($booking->pelanggan()->first()) {
+            $booking->pelanggan->user->notify(new BookingConfirmations($booking, $booking->pelanggan->user->id));
+        }
+
 
         return redirect(route('booking.index'))->with('success', __('Booking has been successfully canceled'));
     }
