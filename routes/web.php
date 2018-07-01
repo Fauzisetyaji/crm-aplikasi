@@ -63,6 +63,9 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::resource('my-testimoni', 'TestimoniController');
 		Route::resource('my-profile', 'ProfileController');
 		Route::resource('my-history', 'HistoryController');
+
+		Route::name('notification-booking.get')->get('notification-booking/{notification}', 'NotificationController@get');
+
 		Route::name('my-history.cetak')->get('my-history/cetak/{id}', 'HistoryController@cetak');
 		Route::name('reward.claim')->put('reward/claim/{id}', 'ProfileController@claim');
 		Route::name('ubah-profile.ubah')->get('ubah-profile', 'ProfileController@ubah');

@@ -48,6 +48,32 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        @if (!Auth::guest())
+                            @if(Auth::user()->roles ==='pelanggan')
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <i class="fa fa-bell" aria-hidden="true" style="color: {{ count(Auth::user()->unreadNotifications) ? 'red' : 'grey' }}"></i>
+                                    <ul class="dropdown-menu" role="menu">
+                                        @if(count(Auth::user()->unreadNotifications))
+                                            @foreach (Auth::user()->unreadNotifications as $notification)
+                                                <li>
+                                                    <a href="{{ route('notification-booking.get', $notification->id) }}">
+                                                    Booking Number: {{ $notification->data['booking_number'] }} <br/>
+                                                    Service: {{ $notification->data['jenis_pelayanan'] }} <br/>
+                                                    Status: {{ ($notification->data['status']) ? 'DiTerima' : ($notification->data['cancellation'] ? 'Ditolak' : 'Menuggu' ) }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        @else
+                                            <li>
+                                                <a href="#">Belum Ada Notifikasi</a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </a>
+                            </li>
+                            @endif
+                        @endif
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>

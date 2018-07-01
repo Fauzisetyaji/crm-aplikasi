@@ -12,6 +12,7 @@ use App\Models\Service;
 use App\Models\Booking;
 use App\Models\Keluhan;
 use App\Models\Kendaraan;
+use App\Notifications\BookingConfirmations;
 
 class BookingController extends Controller
 {
@@ -134,7 +135,7 @@ class BookingController extends Controller
 
         $kendaraan = $this->kendaraan->find($request->kendaraan); 
 
-        $this->booking->create([
+        $booking = $this->booking->create([
             'booking_number' => $code,
             'date' => Carbon::parse($request->date),
             'time' => Carbon::parse($request->time)->toDateTimeString(),
@@ -148,6 +149,8 @@ class BookingController extends Controller
             'service_id' => $request->service,
             'jadwal_operasional_id' => $request->id_schedule,
         ]);
+
+        $this->user->notify(new BookingConfirmations($booking, $this->user->id));
 
         return redirect()->route('my-booking.index');
     }

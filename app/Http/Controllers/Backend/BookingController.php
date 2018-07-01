@@ -11,6 +11,7 @@ use App\Models\Service;
 use App\Models\Booking;
 use App\Models\Keluhan;
 use App\Models\Pelanggan;
+use App\Notifications\BookingConfirmations;
 
 class BookingController extends Controller
 {
@@ -111,6 +112,7 @@ class BookingController extends Controller
     public function confirm(Request $request, $id)
     {
         $booking = $this->booking->find($id);
+
         $service = $this->service->find($booking->service_id);
         
         $booking->status = true;
@@ -122,6 +124,8 @@ class BookingController extends Controller
         $pelanggan->update([
             'jml_poin' => (int)$poin + (int)$service->poin
         ]);
+
+        $booking->pelanggan->user->notify(new BookingConfirmations($booking, $booking->pelanggan->user->id));
 
         return redirect(route('booking.index'))->with('success', __('Booking has been successfully confirm'));
     }
@@ -137,6 +141,8 @@ class BookingController extends Controller
         $booking = $this->booking->find($id);
         $booking->cancellation = Carbon::now()->toDateTimeString();
         $booking->save();
+
+        $booking->pelanggan->user->notify(new BookingConfirmations($booking, $booking->pelanggan->user->id));
 
         return redirect(route('booking.index'))->with('success', __('Booking has been successfully canceled'));
     }
