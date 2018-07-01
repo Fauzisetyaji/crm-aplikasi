@@ -16,7 +16,8 @@ Route::get('/about', 'Frontend\AboutController@index')->name('user-about');
 Route::get('/service', 'Frontend\ServiceController@index')->name('user-service');
 Route::get('/gallery', 'Frontend\GalleryController@index')->name('user-gallery');
 Route::get('/contact', 'Frontend\ContactController@index')->name('user-contact');
-
+Route::get('/login-guest', 'Auth\LoginController@guest')->name('login-guest');
+Route::post('/register-guest', 'Auth\RegisterController@guest')->name('register-guest');
 Auth::routes();
 
 Route::middleware('auth')->namespace('Backend')->group(function () {
@@ -83,7 +84,11 @@ Route::middleware('auth')->namespace('Backend')->group(function () {
 		Route::name('laporan.pelanggan')->get('laporan/pelanggan', 'LaporanController@getLaporanPelanggan');
 		Route::name('laporan.pelanggan-baru')->get('laporan/pelanggan-baru', 'LaporanController@getLaporanPelangganBaru');
 	});
+});
 
+Route::prefix('guest')->namespace('Backend\Guest')->group(function () {
+	Route::get('/dashboard', 'DashboardController@index')->name('guest-home');
+	Route::resource('guest-booking', 'BookingController');
 });
 
 Route::get('verify-account', 'WebAuthController@verify');

@@ -66,6 +66,14 @@
                                 </a>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <a class="btn btn-link" href="{{ route('login-guest') }}">
+                                    Masuk sebagai tamu
+                                </a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -24,9 +24,9 @@ class CreateBookingsTable extends Migration
             $table->boolean('status')->default(0);
             $table->enum('jenis_pelayanan', ['workshop', 'tms'])->default('workshop');
             $table->enum('easyService', ['pickup', 'send', 'both', 'self'])->default('pickup');
-            $table->enum('type_kendaraan', ['Avanza', 'Agya', 'Calya', 'Rush', 'Yaris']);
+            $table->enum('type_kendaraan', ['Avanza', 'Agya', 'Calya', 'Rush', 'Yaris'])->nullable()->default(null);
             $table->longText('keterangan')->nullable()->default(null);
-            $table->uuid('pelanggan_id');
+            $table->uuid('pelanggan_id')->nullable()->default(null);
             $table->uuid('service_id');
             $table->uuid('jadwal_operasional_id');
             $table->timestamps();

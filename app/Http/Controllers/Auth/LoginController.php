@@ -39,6 +39,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function guest(Request $request) {
+
+        if ($request->session()->has('guest')) {
+            return redirect('guest/dashboard');
+        }
+
+        return view('auth.login-guest');
+    }
+
     public function login(Request $request) {
         $this->validate($request, [
             'userid' => 'required',

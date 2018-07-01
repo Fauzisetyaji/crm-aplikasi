@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Notifications\Registered;
 use App\Models\User;
+use App\Models\Guest;
 use App\Models\Pelanggan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -32,6 +34,13 @@ class RegisterController extends Controller
     protected $pelanggan;
 
     /**
+     * The Guest instance model
+     *
+     * @var \App\Models\Guest
+     */
+    public $guest;
+
+    /**
      * Where to redirect users after registration.
      *
      * @var string
@@ -43,10 +52,11 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(Pelanggan $pelanggan)
+    public function __construct(Pelanggan $pelanggan, Guest $guest)
     {
         $this->middleware('guest');
         $this->pelanggan = $pelanggan;
+        $this->guest = $guest;
     }
 
     /**
@@ -118,6 +128,22 @@ class RegisterController extends Controller
     protected function createPelanggan(array $data)
     {
         return Pelanggan::create($data);
+    }
+
+    public function guest(Request $request)
+    {
+        $guest = $this->guest->create([
+            'email' => $request->email,
+            'nama' => $request->nama_guest,
+            'no_tlp' => $request->no_tlp,
+            'alamat' => $request->alamat,
+            'nomor_polisi' => $request->nopol,
+            'type_kendaraan' => $request->type_kendaraan
+        ]);
+
+        $request->session()->put('guest', $guest);
+
+        return redirect('guest/dashboard');
     }
 
 

@@ -193,6 +193,17 @@
                   </ul>
                 </div>
                 @endif   
+            @else
+                @if(Request::path() != 'login' AND Request::path() != 'register' AND Request::path() != 'login-guest')
+                <div class="col-sm-3 col-md-2 sidebar">
+                  <ul class="nav nav-sidebar">
+                    <li><a href="{{ route('guest-home') }}">Dashboard</a></li>
+                  </ul>
+                  <ul class="nav nav-sidebar">
+                    <li><a href="{{ route('guest-booking.index') }}">Booking Service</a></li>
+                  </ul>
+                </div>
+                @endif
             @endif
                 @yield('content')
             </div>
