@@ -105,6 +105,9 @@ class BookingController extends Controller
      */
     public function create()
     {
+        if (!count($this->user->pelanggan->kendaraan)) {
+            return redirect()->back()->with('errors', __('Anda belum mengupdate data kendaraan di halaman profile'));
+        }
         $jadwalOperasional = $this->jadwalOperasional->get();
         $services = $this->service->get();
         $user = $this->user;

@@ -7,6 +7,11 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             @yield('title')
+            @if(session()->has('errors'))
+                <div class="alert alert-danger">
+                    {{ session()->get('errors') }}
+                </div>
+            @endif
             <div class="pull-right"><a href="{{ route('my-booking.create') }}" class="btn btn-info" style="margin-top: -7px;" role="button">Tambah Booking Baru</a></div>
         </div>
         <div class="panel-body">
